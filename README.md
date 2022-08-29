@@ -39,6 +39,5 @@ The "app" library will utilize the arcade and animation libraries as necessary.
 The app will also tightly couple objects as necessary for improved performance.
 
 INTENTIONAL DIP VIOLATION
-Card to Shoe Dependancy will remain tightly coupled.
-This is because the card will never change (never had to change it upon previous implementations).
-The Shoe is a class right now (still deciding if Shoe should be an interface or class).
+Card will remain a class. Shoe will now be an interface that references a class.
+Considering tightly coupling JPanel Menus with the JFrame Application.
