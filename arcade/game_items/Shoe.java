@@ -4,7 +4,7 @@ import arcade.game_items.*;
 
 import java.util.*;
 
-public class Shoe{ //Should this be an interface/abstract class?
+public interface Shoe{
 	private ArrayList<Card> S;
 
 	public static ArrayList<Card> genStandardDeck(){
@@ -41,9 +41,6 @@ public class Shoe{ //Should this be an interface/abstract class?
 	public static void shuffleShoe(ArrayList<Card> unshuffledShoe){
 		Collections.shuffle(unshuffledShoe);
 	}
-
-	public Shoe(){S=new ArrayList<Card>(52);}
-	public Shoe(byte num_of_decks){S=genStandardDecks(num_of_decks);}
 
 	public Card drawTop(){return S.remove(0);}
 }
