@@ -1,9 +1,7 @@
 package app;
 
-import app.menu.*;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import app.menu.MainMenu;
+import javax.swing.JFrame;
 
 public class DesktopApp extends JFrame{
 	public DesktopApp(int width_px, int height_px){
