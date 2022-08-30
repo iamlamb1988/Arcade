@@ -21,9 +21,11 @@ public class MainMenu extends JPanel implements IMenu{
 		setVisible(true);
 	}
 
+	//IAppItem Overrides:
 	@Override
 	public void setBG(Animation Background){bg=Background;}
 
+	//Paint Override
 	@Override
 	public void paintComponent(Graphics p){
 		bg.drawTopLeft(p);

@@ -1,7 +1,5 @@
 package app.menu;
 
-import animation.*;
+import app.*;
 
-public interface IMenu{
-	public void setBG(Animation Background);
-}
+public interface IMenu extends IAppItem{}
