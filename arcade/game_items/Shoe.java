@@ -1,12 +1,9 @@
 package arcade.game_items;
 
-import arcade.game_items.*;
-
-import java.util.*;
+import java.util.Collections;
+import java.util.ArrayList;
 
 public interface Shoe{
-	private ArrayList<Card> S;
-
 	public static ArrayList<Card> genStandardDeck(){
 		ArrayList<Card> R = new ArrayList<Card>(52);
 
@@ -42,5 +39,5 @@ public interface Shoe{
 		Collections.shuffle(unshuffledShoe);
 	}
 
-	public Card drawTop(){return S.remove(0);}
+	public Card drawTop();
 }

@@ -11,10 +11,10 @@ public class BlackJack implements Game{
 				 DS;	//Discard Pile
 
 	//Need a Currency List... somehow
-	public BlackJack(){
-		S=new Shoe();
-		DS=new Shoe();
-	}
+	//public BlackJack(){
+	//	S=new Shoe();
+	//	DS=new Shoe();
+	//}
 
 	//Game Overrides
 	@Override
