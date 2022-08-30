@@ -11,13 +11,8 @@ The classes will be extensible to several other Casino/Arcade games.
 
 ## Update
 
-The Concrete Shoe class has a small test script in the next to test built in Java Shuffle.
-
-## Problems
-
-Stack Overflow occurs upon ShoeTest Button click upon program start. This may be a recursive issue.
-Should there be a list of "Possible" JPanels within the Desktop App class for faster reference?
-Need to have a clear drawn vision of the Panel Swapping mechanism.
+The Application successfully transfers from MainMenu to ShoeTest instances.
+Unfortunately needed to reference the Singleton Class global App in each class..
 
 ## Next Master Push Goals
 - [ ] Test GUI with Buttons Draw Card, Discard Card, Shuffle, Reset.

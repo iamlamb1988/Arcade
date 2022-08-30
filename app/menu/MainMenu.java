@@ -24,7 +24,7 @@ public class MainMenu extends JPanel implements IMenu{
 		JButton sbs = new JButton("Shoe Tester");
 		sbs.setLocation(10,10);
 		sbs.setSize(150,40);
-		sbs.addActionListener(DesktopApp.genPanelSwapAction(parent,this,new ShoeTest(width_px,height_px)));
+		sbs.addActionListener(new PanelSwapAction(parent,this,new ShoeTest(width_px,height_px)));
 		add(sbs);
 
 		setVisible(true);
@@ -37,6 +37,7 @@ public class MainMenu extends JPanel implements IMenu{
 	//Paint Override
 	@Override
 	public void paintComponent(Graphics p){
+		super.paintComponent(p);
 		bg.drawTopLeft(p);
 	}
 }

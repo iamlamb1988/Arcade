@@ -15,11 +15,12 @@ public class ShoeTest extends JPanel implements IMenu{
 	}
 
 	//IAppItem Overrides:
-	public void setBG(Animation Background){}
+	public void setBG(Animation background){bg=background;}
 
 	//Paint Override
 	@Override
 	public void paintComponent(Graphics p){
+		super.paintComponent(p);
 		bg.drawTopLeft(p);
 	}
 }
