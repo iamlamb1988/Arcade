@@ -11,7 +11,11 @@ The classes will be extensible to several other Casino/Arcade games.
 
 ## Update
 
-The Concrete Shoe class has a small test script in the next to test built in Java Shuffle.
+The Shoe class is now an interface
+
+## Problems
+
+Stack Overflow error upon button click to switch to a ShoeTest -> JPanel. It seems it may be a recursive issue?
 
 ## Next Master Push Goals
 - [ ] Test GUI with Buttons Draw Card, Discard Card, Shuffle, Reset.
