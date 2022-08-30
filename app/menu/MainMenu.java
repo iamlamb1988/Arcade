@@ -12,10 +12,10 @@ public class MainMenu extends JPanel implements IMenu{
 	private MainMenu self;
 	private DesktopApp parent;
 	private Animation bg;
-	public MainMenu(DesktopApp parent, int width_px, int height_px){
+	public MainMenu(DesktopApp parentApp, int width_px, int height_px){
 		super();
 		self=this;
-		this.parent=parent;
+		parent=parentApp;
 		setSize(width_px,height_px);
 		setLayout(null);
 		setBG(new SingleImage(width_px,height_px,255,0,0,255));

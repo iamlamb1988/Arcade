@@ -2,17 +2,20 @@ package app;
 
 import app.menu.*;
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.*;
+import java.util.*;
 
 public class DesktopApp extends JFrame{
+	//private ArrayList<IAppItem> list; //potential list of IAppItems
 	public DesktopApp(int width_px, int height_px){
 		super();
 		setSize(width_px,height_px);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		add(new MainMenu(this,width_px,height_px));
+		MainMenu tmpM = new MainMenu(this,width_px,height_px);
+		list.add(tmpM);
+		add(tmpM);
 		setVisible(true);
 	}
 
@@ -20,7 +23,9 @@ public class DesktopApp extends JFrame{
 		JFrame appFrame,
 		JPanel source,
 		JPanel destination
-	){return genPanelSwapAction(appFrame,source,destination);}
+	){
+		return genPanelSwapAction(appFrame,source,destination);
+	}
 
 	private class PanelSwapAction implements ActionListener{
 		private final JFrame parentFrame;
