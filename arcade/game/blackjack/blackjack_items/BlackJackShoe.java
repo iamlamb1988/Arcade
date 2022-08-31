@@ -1,5 +1,6 @@
 package arcade.game.blackjack.blackjack_items;
 
+import java.util.Collections;
 import java.util.ArrayList;
 import arcade.game_items.Card;
 import arcade.game_items.Shoe;
@@ -19,5 +20,6 @@ public class BlackJackShoe implements Shoe{
 	}
 
     @Override
-    public Card drawTop(){return null;}
+	public void shuffleShoe(){Collections.shuffle(list);}
+    public Card drawTop(){return list.remove(0);}
 }
