@@ -1,12 +1,15 @@
 package app.menu;
 
-import animation.*;
-import app.*;
+import app.PanelSwapAction;
+import app.DesktopApp;
 import app.debug.*;
+import animation.Animation;
+import animation.SingleImage;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import java.awt.Graphics;
+import java.awt.event.ActionListener;
 
 public class MainMenu extends JPanel implements IMenu{
 	private MainMenu self;

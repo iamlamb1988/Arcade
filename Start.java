@@ -1,8 +1,6 @@
 import arcade.game_items.*;
 
-import app.*;
-import arcade.game_items.*;
-import java.util.ArrayList;
+import app.DesktopApp;
 
 public class Start{
 	public static void main(String[] arg){

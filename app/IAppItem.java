@@ -1,6 +1,6 @@
 package app;
 
-import animation.*;
+import animation.Animation;
 
 //Generic AppMenu Items such as Buttons, Labels, Panels, TextFields, etc
 public interface IAppItem{

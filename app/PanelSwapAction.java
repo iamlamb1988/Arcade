@@ -1,7 +1,8 @@
 package app;
 
-import javax.swing.*;
-import java.awt.event.*;
+import javax.swing.JPanel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class PanelSwapAction implements ActionListener{
 		private final DesktopApp parentFrame;

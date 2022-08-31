@@ -1,5 +1,5 @@
 package app.button;
 
-import app.*;
+import app.IAppItem;
 
 public interface IButton extends IAppItem{}

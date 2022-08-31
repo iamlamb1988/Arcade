@@ -1,14 +1,16 @@
 package app.debug;
 
-import app.menu.*;
-import animation.*;
-import arcade.game.blackjack.blackjack_items.*;
-import javax.swing.*;
+import app.menu.IMenu;
+import animation.Animation;
+import animation.SingleImage;
+import arcade.game.blackjack.blackjack_items.BlackJackShoe;
+import javax.swing.JPanel;
+import javax.swing.JButton;
 import java.awt.*;
 
 public class ShoeTest extends JPanel implements IMenu{
 	private Animation bg;
-	private BlackJackShoe sh;
+	private final BlackJackShoe sh;
 
 	public ShoeTest(int width_px, int height_px){
 		setSize(width_px,height_px);
