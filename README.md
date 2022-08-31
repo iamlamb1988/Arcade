@@ -12,9 +12,10 @@ The classes will be extensible to several other Casino/Arcade games.
 ## Update
 
 The Application successfully transfers from MainMenu to ShoeTest instances.
-Unfortunately needed to reference the Singleton Class global App in each class..
+The ShoeTest is ready for text testing interface.
 
 ## Next Master Push Goals
+- [ ] Test BlackJackShoe with the debug temporary class ShoeTest
 - [ ] Test GUI with Buttons Draw Card, Discard Card, Shuffle, Reset.
   - [ ] Build animation library
   - [ ] Build 2D image of BlackJackCard (Front and Back)
