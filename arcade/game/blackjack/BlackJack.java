@@ -2,7 +2,7 @@ package arcade.game.blackjack;
 
 import arcade.currency.Currency;
 import arcade.game.Game;
-import arcade.game_items.*;
+import arcade.game_items.Shoe;
 
 import java.util.List;
 

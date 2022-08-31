@@ -1,6 +1,6 @@
 package arcade.currency.currency_items;
 
-import arcade.currency.*;
+import arcade.currency.CurrencyDecimal;
 
 public class CarbonCoin implements CurrencyDecimal{
 	private double amount;

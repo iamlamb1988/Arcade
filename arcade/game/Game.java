@@ -2,6 +2,7 @@ package arcade.game;
 
 import arcade.currency.Currency;
 import java.util.List;
+
 public interface Game{
 	public String getName();
 

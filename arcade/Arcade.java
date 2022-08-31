@@ -1,6 +1,5 @@
 package arcade;
 
-import java.util.ArrayList;
 public class Arcade{
 	private String name;
 	private double credits;

@@ -1,5 +1,3 @@
-import arcade.game_items.*;
-
 import app.DesktopApp;
 
 public class Start{
