@@ -32,6 +32,7 @@ public interface Shoe{
 				R.add(new Card(tmp.face,tmp.suit));
 			}
 		}
+
 		return R;
 	}
 

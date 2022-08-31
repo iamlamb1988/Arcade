@@ -5,13 +5,14 @@ import arcade.game_items.Card;
 import arcade.game_items.Shoe;
 
 public class BlackJackShoe implements Shoe{
-	private ArrayList<BlacJackCard> list;
+	private ArrayList<BlackJackCard> list;
 	
 	public BlackJackShoe(){ //single deck implementation
-		Shoe tmp=genStandardDeck();
+		list = new ArrayList<BlackJackCard>();
+		ArrayList<Card> tmp=Shoe.genStandardDeck();
 
 		BlackJackCard upgrade;
-		while(tmp.getSize()>0){
+		while(tmp.size()>0){
 			upgrade = new BlackJackCard(tmp.remove(0));
 			list.add(upgrade);
 		}
