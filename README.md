@@ -12,7 +12,7 @@ The classes will be extensible to several other Casino/Arcade games.
 ## Update
 
 The Application successfully transfers from MainMenu to ShoeTest instances.
-The ShoeTest is ready for text testing interface.
+The ShoeTest is able to shuffle cards and draw 1 card. Will crash upon full depleting Shoe.
 
 ## Next Master Push Goals
 - [ ] Test BlackJackShoe with the debug temporary class ShoeTest
