@@ -7,7 +7,7 @@ public class BlackJackCard extends Card{
 
     public BlackJackCard(char faceValue, char suitValue){
         super(faceValue,suitValue);
-		if(faceValue<'9') value = (byte)(faceValue-'0');
+		if(faceValue<='9') value = (byte)(faceValue-'0');
 		else if(faceValue=='T' || faceValue=='J' || faceValue=='Q' || faceValue=='K') value = (byte)10;
 		else if(faceValue=='A') value = (byte)11;
 		else value=(byte)-1; //error return

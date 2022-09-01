@@ -40,5 +40,7 @@ public interface Shoe{
 		Collections.shuffle(unshuffledShoe);
 	}
 
+	public void shuffleShoe();
+
 	public Card drawTop();
 }
