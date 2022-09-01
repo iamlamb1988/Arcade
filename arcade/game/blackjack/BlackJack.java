@@ -31,4 +31,10 @@ public class BlackJack implements Game{
 	public List<Currency> getOutputCredits() {
 		return null;
 	}
+
+	//HonorCode Overrides:
+	@Override
+	public boolean isHonorable(){
+		return false;
+	}
 }

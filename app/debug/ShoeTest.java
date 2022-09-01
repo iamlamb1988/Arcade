@@ -20,8 +20,12 @@ public class ShoeTest extends JPanel implements IMenu{
 		setLayout(null);
 		setBG(new SingleImage(width_px,height_px,0,255,0,255));
 		
-		sh = new BlackJackShoe();
+		sh = new BlackJackShoe().genRogueClone();
+		
 		sh.shuffleShoe();
+		
+
+		System.out.println("DEBUG IS HONORABLE?: "+sh.isHonorable());
 
 		JButton draw = new JButton("Draw"),
 				showShoe = new JButton("Show Shoe"),
@@ -42,7 +46,15 @@ public class ShoeTest extends JPanel implements IMenu{
 
 		showShoe.setLocation(10,10+40+10);   //60
 		showShoe.setSize(150,40);
-		showShoe.addActionListener(null);
+		showShoe.addActionListener(null
+			// new ActionListener(){
+			// @Override
+			// public void actionPerformed(ActionEvent e){
+				// System.out.println("REMAINING CARDS:");
+				// ArrayList<BlackJackCard> list = 
+			// }
+		// }
+		);
 		add(showShoe);
 
 		showDiscard.setLocation(10,60+40+10);//110
