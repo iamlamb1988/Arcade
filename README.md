@@ -11,21 +11,20 @@ The classes will be extensible to several other Casino/Arcade games.
 
 ## Update
 
-The Concrete Shoe class has a small test script in the next to test built in Java Shuffle.
+The Application successfully transfers from MainMenu to ShoeTest instances.
+The ShoeTest is able to shuffle cards and draw 1 card. Will crash upon full depleting Shoe.
 
 ## Next Master Push Goals
+- [ ] Test BlackJackShoe with the debug temporary class ShoeTest
 - [ ] Test GUI with Buttons Draw Card, Discard Card, Shuffle, Reset.
   - [ ] Build animation library
   - [ ] Build 2D image of BlackJackCard (Front and Back)
   - [ ] Build the ImageDrawing Class (Undecided Name)
     NOTE: The Image Drawing class will have a few responsibilities:
-  - [ ] Extract hard images from source folder
-  - [ ] Draw/Generate new images (vector graphics)
-
-## History
-
-BlackJack was successfully developed in the past in JavaFX GUI. The previous implementation severely violated Dependency Inversion Principle.
-Will use SOLID principles to develop the entire system.
+    - [ ] Extract hard images from source folder
+    - [ ] Draw/Generate new images (vector graphics)
+- [ ] Figure out a way to create DEBUG inheritance for Junit testing.
+- [ ] Create Issues within github for this list.
 
 ## Versions
 Will be using Java 17 LTS. Swing library will be used. Original implementation I used was javaFX.
@@ -37,7 +36,3 @@ The "arcade" package will be treated as a library (will be reusable in different
 The "animation" package will be treated as a library (will be reusable in different projects).
 The "app" library will utilize the arcade and animation libraries as necessary.
 The app will also tightly couple objects as necessary for improved performance.
-
-INTENTIONAL DIP VIOLATION
-Card will remain a class. Shoe will now be an interface that references a class.
-Considering tightly coupling JPanel Menus with the JFrame Application.

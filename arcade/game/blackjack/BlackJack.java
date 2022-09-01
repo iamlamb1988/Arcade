@@ -2,7 +2,7 @@ package arcade.game.blackjack;
 
 import arcade.currency.Currency;
 import arcade.game.Game;
-import arcade.game_items.*;
+import arcade.game_items.Shoe;
 
 import java.util.List;
 
@@ -11,10 +11,10 @@ public class BlackJack implements Game{
 				 DS;	//Discard Pile
 
 	//Need a Currency List... somehow
-	public BlackJack(){
-		S=new Shoe();
-		DS=new Shoe();
-	}
+	//public BlackJack(){
+	//	S=new Shoe();
+	//	DS=new Shoe();
+	//}
 
 	//Game Overrides
 	@Override

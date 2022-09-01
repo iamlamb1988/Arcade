@@ -1,7 +1,9 @@
 package animation;
 
-import java.awt.*;
-import java.awt.image.*;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Color;
+import java.awt.image.BufferedImage;
 
 public class SingleImage extends BufferedImage implements Animation{
 	private Graphics2D p;
@@ -21,6 +23,6 @@ public class SingleImage extends BufferedImage implements Animation{
 			}
 		}
 	}
-	
+	@Override
 	public void drawTopLeft(Graphics paintBrush){paintBrush.drawImage(this,0,0,null);}
 }
