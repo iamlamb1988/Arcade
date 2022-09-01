@@ -6,8 +6,10 @@ import animation.SingleImage;
 import arcade.game_items.Shoe;
 import arcade.game.blackjack.blackjack_items.BlackJackShoe;
 import arcade.game.blackjack.blackjack_items.BlackJackCard;
+import arcade.game.blackjack.blackjack_items.*;
 import javax.swing.JPanel;
 import javax.swing.JButton;
+import java.util.ArrayList;
 import java.awt.event.*;
 import java.awt.Graphics;
 
@@ -20,10 +22,9 @@ public class ShoeTest extends JPanel implements IMenu{
 		setLayout(null);
 		setBG(new SingleImage(width_px,height_px,0,255,0,255));
 		
-		sh = new BlackJackShoe().genRogueClone();
-		
+		sh = new BlackJackShoe().genRogueClone();		
 		sh.shuffleShoe();
-		
+		CheatAccessCards cheat = (CheatAccessCards)sh;
 
 		System.out.println("DEBUG IS HONORABLE?: "+sh.isHonorable());
 
@@ -46,14 +47,18 @@ public class ShoeTest extends JPanel implements IMenu{
 
 		showShoe.setLocation(10,10+40+10);   //60
 		showShoe.setSize(150,40);
-		showShoe.addActionListener(null
-			// new ActionListener(){
-			// @Override
-			// public void actionPerformed(ActionEvent e){
-				// System.out.println("REMAINING CARDS:");
-				// ArrayList<BlackJackCard> list = 
-			// }
-		// }
+		showShoe.addActionListener(
+			new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				System.out.println("REMAINING CARDS:");
+				ArrayList<BlackJackCard> list = cheat.getCardsRef();
+				for(BlackJackCard x : list){
+					System.out.println(x.face+" of "+x.suit+" value: "+x.value);
+				}
+				System.out.println("DONE:");
+			}
+		}
 		);
 		add(showShoe);
 
