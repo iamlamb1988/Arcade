@@ -9,6 +9,7 @@ import arcade.game.blackjack.blackjack_items.BlackJackCard;
 import arcade.game.blackjack.blackjack_items.*;
 import javax.swing.JPanel;
 import javax.swing.JButton;
+import java.util.Collections;
 import java.util.ArrayList;
 import java.awt.event.*;
 import java.awt.Graphics;
@@ -41,14 +42,14 @@ public class ShoeTest extends JPanel implements IMenu{
 			public void actionPerformed(ActionEvent e){
 				BlackJackCard x = (BlackJackCard)sh.drawTop();
 				System.out.println(x.face+" of "+x.suit+" : "+x.value);
+				cheat.getDiscardsRef().add(x);
 			}
 		});
 		add(draw);
 
 		showShoe.setLocation(10,10+40+10);   //60
 		showShoe.setSize(150,40);
-		showShoe.addActionListener(
-			new ActionListener(){
+		showShoe.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
 				System.out.println("REMAINING CARDS:");
@@ -56,20 +57,37 @@ public class ShoeTest extends JPanel implements IMenu{
 				for(BlackJackCard x : list){
 					System.out.println(x.face+" of "+x.suit+" value: "+x.value);
 				}
-				System.out.println("DONE:");
+				System.out.println("DONE");
 			}
-		}
-		);
+		});
+
 		add(showShoe);
 
 		showDiscard.setLocation(10,60+40+10);//110
 		showDiscard.setSize(150,40);
-		showDiscard.addActionListener(null);
+		showDiscard.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				System.out.println("DISCARDS CARDS:");
+				ArrayList<BlackJackCard> list = cheat.getDiscardsRef();
+				for(BlackJackCard x : list){
+					System.out.println(x.face+" of "+x.suit+" value: "+x.value);
+				}
+				System.out.println("DONE");
+			}
+		});
 		add(showDiscard);
 
 		shuffle.setLocation(10,110+40+10);   //160
 		shuffle.setSize(150,40);
-		shuffle.addActionListener(null);
+		shuffle.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				System.out.println("SHUFFLE SHOE:");
+				Collections.shuffle(cheat.getCardsRef());
+				System.out.println("DONE");
+			}
+		});
 		add(shuffle);
 
 		reset.setLocation(10,160+40+10);   //210
