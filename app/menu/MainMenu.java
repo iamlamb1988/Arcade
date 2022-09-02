@@ -2,7 +2,7 @@ package app.menu;
 
 import app.PanelSwapAction;
 import app.DesktopApp;
-import app.debug.*;
+import app.debug.ShoeTest;
 import animation.Animation;
 import animation.SingleImage;
 
