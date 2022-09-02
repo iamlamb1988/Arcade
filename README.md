@@ -1,8 +1,11 @@
 # ARCADE
 
 Will have several fun games that supports several different currencies and credits.
-Current Priorities:
-BlackJack
+
+## Current Priorities:
+* Images
+* Animation
+* BlackJack Game
 
 ## Purpose
 
@@ -17,18 +20,13 @@ Have implemented the Cheat and HonorCode interface.
   The HonorCode has a single boolean function that determines if the Arcade item is rogue or potentially rogue.
 
 ## Next Master Push Goals
-- [x] Test BlackJackShoe with the debug temporary class ShoeTest
-     - [x] BlackJackShoe now has an innerClass that extendes itself as an evil twin to allow this to be implemented.
 - [ ] Test GUI with Buttons Draw Card, Discard Card, Shuffle, Reset.
-  - [x] Build initial animation library
-  - [ ] Build 2D image of BlackJackCard (Front and Back)
-  - [ ] Build the ImageDrawing Class (Undecided Name)
-    - [x] Extract hard images from source folder
-    - [ ] Draw/Generate new images (vector graphics)
-- [x] Figure out a way to create DEBUG inheritance for Junit testing.
-- [x] Create Issues within github for this list.
+  - [ ] Draw/Generate new images (vector graphics)
+    - [ ] Build 2D image of BlackJackCard (Front and Back).
+    - [ ] Build the ImgFetcher Class in order pull images from resources.
+    - [ ] Build the AnimationFactory Class in order to draw the 2D Cards
 
-## High level structure.
+## High level structure
 
 The "arcade" package will be treated as a library (will be reusable in different projects).
 The "animation" package will be treated as a library (will be reusable in different projects).
