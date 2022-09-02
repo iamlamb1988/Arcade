@@ -12,12 +12,13 @@ The classes will be extensible to several other Casino/Arcade games.
 ## Update
 
 The Application successfully transfers from MainMenu to ShoeTest instances.
-The ShoeTest is able to shuffle cards and draw 1 card. Will crash upon full depleting Shoe.
+All 5 buttons on Shoe Test working!
 Have implemented the Cheat and HonorCode interface.
   The Cheat is the parent of several interfaces that will allow access to private members.
   The HonorCode has a single boolean function that determines if the Arcade item is rogue or potentially rogue.
+
 ## Next Master Push Goals
-- [ ] Test BlackJackShoe with the debug temporary class ShoeTest
+- [x] Test BlackJackShoe with the debug temporary class ShoeTest
      - [x] BlackJackShoe now has an innerClass that extendes itself as an evil twin to allow this to be implemented.
 - [ ] Test GUI with Buttons Draw Card, Discard Card, Shuffle, Reset.
   - [ ] Build animation library

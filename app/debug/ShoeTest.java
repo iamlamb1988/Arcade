@@ -6,7 +6,7 @@ import animation.SingleImage;
 import arcade.game_items.Shoe;
 import arcade.game.blackjack.blackjack_items.BlackJackShoe;
 import arcade.game.blackjack.blackjack_items.BlackJackCard;
-import arcade.game.blackjack.blackjack_items.*;
+import arcade.game.blackjack.blackjack_items.CheatAccessCards;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.util.Collections;
@@ -58,7 +58,7 @@ public class ShoeTest extends JPanel implements IMenu{
 				for(BlackJackCard x : list){
 					System.out.println(x.face+" of "+x.suit+" value: "+x.value);
 				}
-				System.out.println("DONE/n");
+				System.out.println("DONE\n");
 			}
 		});
 
@@ -73,7 +73,7 @@ public class ShoeTest extends JPanel implements IMenu{
 				for(BlackJackCard x : discard){
 					System.out.println(x.face+" of "+x.suit+" value: "+x.value);
 				}
-				System.out.println("DONE/n");
+				System.out.println("DONE\n");
 			}
 		});
 		add(showDiscard);
@@ -85,7 +85,7 @@ public class ShoeTest extends JPanel implements IMenu{
 			public void actionPerformed(ActionEvent e){
 				System.out.println("SHUFFLE SHOE:");
 				Collections.shuffle(list);
-				System.out.println("DONE");
+				System.out.println("DONE\n");
 			}
 		});
 		add(shuffle);
@@ -100,7 +100,7 @@ public class ShoeTest extends JPanel implements IMenu{
 					list.add(discard.remove(0));
 				}
 				Collections.shuffle(list);
-				System.out.println("DONE");
+				System.out.println("DONE\n");
 			}
 		});
 		add(reset);
