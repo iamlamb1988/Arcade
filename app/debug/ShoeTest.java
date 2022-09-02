@@ -123,6 +123,6 @@ public class ShoeTest extends JPanel implements IMenu{
 	public void paintComponent(Graphics p){
 		super.paintComponent(p);
 		bg.drawTopLeft(p);
-		i.drawTopLeft(p);
+		i.draw(250,150,p);
 	}
 }
