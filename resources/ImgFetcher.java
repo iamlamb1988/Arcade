@@ -19,7 +19,7 @@ public class ImgFetcher{ //only fetches hard saved images, does not generate.
 		BufferedImage R=new BufferedImage(width_px,height_px,BufferedImage.TYPE_INT_ARGB);
 		Graphics2D P = (Graphics2D)R.getGraphics();
 		AffineTransform T=new AffineTransform();
-		T.scale((double)R.getWidth()/width_px,(double)R.getHeight()/height_px);
+		T.scale((double)width_px/org.getWidth(null),(double)height_px/org.getHeight(null));
 		while(!P.drawImage(org,T,null)){}//idempotent function.. wait to finish
 		return R;
 	}

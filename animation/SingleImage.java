@@ -28,8 +28,8 @@ public class SingleImage extends BufferedImage implements Animation{
 		}
 	}
 
-	public SingleImage(int width_px, int height_px, Image img){
-		super(width_px,height_px,BufferedImage.TYPE_INT_ARGB);
+	public SingleImage(Image img){
+		super(img.getWidth(null),img.getHeight(null),BufferedImage.TYPE_INT_ARGB);
 		p=(Graphics2D)this.createGraphics();
 		iF=new ImgFetcher();
 
