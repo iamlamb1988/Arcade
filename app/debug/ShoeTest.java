@@ -1,6 +1,7 @@
 package app.debug;
 
 import app.menu.IMenu;
+import app.srcfactory.AnimationFactory;
 import animation.Animation;
 import animation.SingleImage;
 import arcade.game_items.Shoe;
@@ -11,18 +12,24 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.util.Collections;
 import java.util.ArrayList;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.Graphics;
 
 public class ShoeTest extends JPanel implements IMenu{
-	private Animation bg;
+	private Animation bg,
+					  i;
+
 	private final BlackJackShoe sh;
 
 	public ShoeTest(int width_px, int height_px){
 		setSize(width_px,height_px);
 		setLayout(null);
 		setBG(new SingleImage(width_px,height_px,0,255,0,255));
-		
+
+		AnimationFactory aF = new AnimationFactory();
+		i= aF.genShoeImage(100,100);
+
 		sh = new BlackJackShoe().genRogueClone();		
 		sh.shuffleShoe();
 		CheatAccessCards cheat = (CheatAccessCards)sh;
@@ -84,7 +91,7 @@ public class ShoeTest extends JPanel implements IMenu{
 			@Override
 			public void actionPerformed(ActionEvent e){
 				System.out.println("SHUFFLE SHOE:");
-				Collections.shuffle(list);
+				sh.shuffleShoe();
 				System.out.println("DONE\n");
 			}
 		});
@@ -99,7 +106,7 @@ public class ShoeTest extends JPanel implements IMenu{
 				while(discard.size()>0){
 					list.add(discard.remove(0));
 				}
-				Collections.shuffle(list);
+				sh.shuffleShoe();
 				System.out.println("DONE\n");
 			}
 		});
@@ -116,5 +123,6 @@ public class ShoeTest extends JPanel implements IMenu{
 	public void paintComponent(Graphics p){
 		super.paintComponent(p);
 		bg.drawTopLeft(p);
+		i.draw(250,150,p);
 	}
 }
