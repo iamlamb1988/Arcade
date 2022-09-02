@@ -11,8 +11,7 @@ The classes will be extensible to several other Casino/Arcade games.
 
 ## Update
 
-The Application successfully transfers from MainMenu to ShoeTest instances.
-All 5 buttons on Shoe Test working!
+All 5 buttons on ShoeTest working!
 Have implemented the Cheat and HonorCode interface.
   The Cheat is the parent of several interfaces that will allow access to private members.
   The HonorCode has a single boolean function that determines if the Arcade item is rogue or potentially rogue.
@@ -21,11 +20,10 @@ Have implemented the Cheat and HonorCode interface.
 - [x] Test BlackJackShoe with the debug temporary class ShoeTest
      - [x] BlackJackShoe now has an innerClass that extendes itself as an evil twin to allow this to be implemented.
 - [ ] Test GUI with Buttons Draw Card, Discard Card, Shuffle, Reset.
-  - [ ] Build animation library
+  - [x] Build initial animation library
   - [ ] Build 2D image of BlackJackCard (Front and Back)
   - [ ] Build the ImageDrawing Class (Undecided Name)
-    NOTE: The Image Drawing class will have a few responsibilities:
-    - [ ] Extract hard images from source folder
+    - [x] Extract hard images from source folder
     - [ ] Draw/Generate new images (vector graphics)
 - [x] Figure out a way to create DEBUG inheritance for Junit testing.
 - [x] Create Issues within github for this list.
@@ -34,5 +32,4 @@ Have implemented the Cheat and HonorCode interface.
 
 The "arcade" package will be treated as a library (will be reusable in different projects).
 The "animation" package will be treated as a library (will be reusable in different projects).
-The "app" library will utilize the arcade and animation libraries as necessary.
-The app will also tightly couple objects as necessary for improved performance.
+The "app" package will utilize the arcade and animation libraries as necessary.
