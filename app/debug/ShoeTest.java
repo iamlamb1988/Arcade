@@ -26,6 +26,8 @@ public class ShoeTest extends JPanel implements IMenu{
 		sh = new BlackJackShoe().genRogueClone();		
 		sh.shuffleShoe();
 		CheatAccessCards cheat = (CheatAccessCards)sh;
+		ArrayList<BlackJackCard> list = cheat.getCardsRef();
+		ArrayList<BlackJackCard> discard = cheat.getDiscardsRef();
 
 		System.out.println("DEBUG IS HONORABLE?: "+sh.isHonorable());
 
@@ -42,7 +44,7 @@ public class ShoeTest extends JPanel implements IMenu{
 			public void actionPerformed(ActionEvent e){
 				BlackJackCard x = (BlackJackCard)sh.drawTop();
 				System.out.println(x.face+" of "+x.suit+" : "+x.value);
-				cheat.getDiscardsRef().add(x);
+				discard.add(x);
 			}
 		});
 		add(draw);
@@ -52,12 +54,11 @@ public class ShoeTest extends JPanel implements IMenu{
 		showShoe.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				System.out.println("REMAINING CARDS:");
-				ArrayList<BlackJackCard> list = cheat.getCardsRef();
+				System.out.println("REMAINING CARDS: "+list.size());
 				for(BlackJackCard x : list){
 					System.out.println(x.face+" of "+x.suit+" value: "+x.value);
 				}
-				System.out.println("DONE");
+				System.out.println("DONE/n");
 			}
 		});
 
@@ -68,12 +69,11 @@ public class ShoeTest extends JPanel implements IMenu{
 		showDiscard.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				System.out.println("DISCARDS CARDS:");
-				ArrayList<BlackJackCard> list = cheat.getDiscardsRef();
-				for(BlackJackCard x : list){
+				System.out.println("DISCARDS CARDS: "+discard.size());
+				for(BlackJackCard x : discard){
 					System.out.println(x.face+" of "+x.suit+" value: "+x.value);
 				}
-				System.out.println("DONE");
+				System.out.println("DONE/n");
 			}
 		});
 		add(showDiscard);
@@ -84,7 +84,7 @@ public class ShoeTest extends JPanel implements IMenu{
 			@Override
 			public void actionPerformed(ActionEvent e){
 				System.out.println("SHUFFLE SHOE:");
-				Collections.shuffle(cheat.getCardsRef());
+				Collections.shuffle(list);
 				System.out.println("DONE");
 			}
 		});
@@ -92,7 +92,17 @@ public class ShoeTest extends JPanel implements IMenu{
 
 		reset.setLocation(10,160+40+10);   //210
 		reset.setSize(150,40);
-		reset.addActionListener(null);
+		reset.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				System.out.println("RESET SHOE:");
+				while(discard.size()>0){
+					list.add(discard.remove(0));
+				}
+				Collections.shuffle(list);
+				System.out.println("DONE");
+			}
+		});
 		add(reset);
 
 		setVisible(true);
