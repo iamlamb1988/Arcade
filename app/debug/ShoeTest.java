@@ -84,7 +84,7 @@ public class ShoeTest extends JPanel implements IMenu{
 			@Override
 			public void actionPerformed(ActionEvent e){
 				System.out.println("SHUFFLE SHOE:");
-				Collections.shuffle(list);
+				sh.shuffleShoe();
 				System.out.println("DONE\n");
 			}
 		});
@@ -99,7 +99,7 @@ public class ShoeTest extends JPanel implements IMenu{
 				while(discard.size()>0){
 					list.add(discard.remove(0));
 				}
-				Collections.shuffle(list);
+				sh.shuffleShoe();
 				System.out.println("DONE\n");
 			}
 		});
