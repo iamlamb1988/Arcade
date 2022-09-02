@@ -11,7 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.util.Collections;
 import java.util.ArrayList;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.Graphics;
 
 public class ShoeTest extends JPanel implements IMenu{

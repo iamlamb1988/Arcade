@@ -28,7 +28,7 @@ Have implemented the Cheat and HonorCode interface.
     - [ ] Extract hard images from source folder
     - [ ] Draw/Generate new images (vector graphics)
 - [x] Figure out a way to create DEBUG inheritance for Junit testing.
-- [ ] Create Issues within github for this list.
+- [x] Create Issues within github for this list.
 
 ## High level structure.
 
