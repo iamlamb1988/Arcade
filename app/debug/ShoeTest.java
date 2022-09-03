@@ -28,7 +28,7 @@ public class ShoeTest extends JPanel implements IMenu{
 		setBG(new SingleImage(width_px,height_px,0,255,0,255));
 
 		AnimationFactory aF = new AnimationFactory();
-		i= aF.genShoeImage(100,100);
+		i= aF.genCardImage2D('A', 'S', 100, 125, 10);
 
 		sh = new BlackJackShoe().genRogueClone();		
 		sh.shuffleShoe();

@@ -7,7 +7,8 @@ import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 
 //The purpose of this class is to build and load images.
-public class ImgFetcher{ //only fetches hard saved images, does not generate.
+public class ImgFetcher{ //Should resources be within app folder?
+	//Needs a memory generator..
 	private Image genShoeImage(){
 		Image R=Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("Deck.png"));
 		while(R.getWidth(null)<0 || R.getHeight(null)<0){} //wait to finish..
