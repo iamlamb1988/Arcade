@@ -23,4 +23,20 @@ public class ImgFetcher{ //only fetches hard saved images, does not generate.
 		while(!P.drawImage(org,T,null)){}//idempotent function.. wait to finish
 		return R;
 	}
+
+	private Image genFileImage(String PathName){
+		Image R=Toolkit.getDefaultToolkit().getImage(this.getClass().getResource(PathName));
+		while(R.getWidth(null)<0 || R.getHeight(null)<0){} //wait to finish..
+		return R;
+	}
+
+	public BufferedImage genShoeImage(String PathName, int width_px, int height_px){
+		Image org=genFileImage(PathName);
+		BufferedImage R=new BufferedImage(width_px,height_px,BufferedImage.TYPE_INT_ARGB);
+		Graphics2D P = (Graphics2D)R.getGraphics();
+		AffineTransform T=new AffineTransform();
+		T.scale((double)width_px/org.getWidth(null),(double)height_px/org.getHeight(null));
+		while(!P.drawImage(org,T,null)){}//idempotent function.. wait to finish
+		return R;
+	}
 }
