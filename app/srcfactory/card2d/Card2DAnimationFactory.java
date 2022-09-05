@@ -1,11 +1,11 @@
 package app.srcfactory.card2d;
 
 import app.srcfactory.AnimationFactory;
+import animation.Animation;
 import animation.SingleImage;
 import java.awt.image.BufferedImage;
-import java.awt.Graphics2D;
 import java.awt.Color;
-import java.awt.image.BufferedImage;
+import java.awt.Graphics2D;
 
 //This class preserves Card Images
 public class Card2DAnimationFactory extends AnimationFactory{
@@ -13,11 +13,11 @@ public class Card2DAnimationFactory extends AnimationFactory{
 	private final byte LEN_RATIO;
 	private final byte WDT_RATIO;
 
-	private BufferedImage bg;
-	private BufferedImage BGborder;
-	private BufferedImage BackBG;
+	private Animation bg;
+	private Animation BackBG;
 
-	
+	private Animation ACE;
+
 	private boolean isUpSeparate; //Are the bg and BGborder separate?
 
 	public Card2DAnimationFactory(){
@@ -27,10 +27,17 @@ public class Card2DAnimationFactory extends AnimationFactory{
 		isUpSeparate=false;
 	}
 
-	//if overlapTL, will overlap images at the top left (TL) corner.
-	public void mergeBGandBorder(boolean overlapTL){
-		
+	public boolean isBG_Set(){return bg!=null;}
+	public boolean isBackGB_Set(){return BackBG!=null;}
+
+	public void setBG(BufferedImage newBG){
+		BufferedImage R = new BufferedImage(newBG.getWidth(),newBG.getHeight(),BufferedImage.TYPE_INT_ARGB);
+		Graphics2D P = R.createGraphics();
+		while(!P.drawImage(newBG,0,0,null)){}
+		bg=new SingleImage(R);
 	}
+
+	
 
 	//Should this function move to Card2DAnimationFactory?
 	public SingleImage genCardImage2D(char face, char suit,
