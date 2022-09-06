@@ -2,16 +2,17 @@ package resources;
 
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.awt.AffineTransform;
+import java.awt.geom.AffineTransform;
+import java.awt.Graphics2D;
 
-public class CardImgFetcher extends ImgFetcher(){
+public class CardImgFetcher extends ImgFetcher{
 	private String[] fileName;
 	private Image[] base;
 
 	public CardImgFetcher(){
 		super();
 		fileName = new String[19];
-		base = new BufferedImage[19];
+		base = new Image[19];
 
 		fileName[0]="Zero.png";
 		fileName[1]="One.png";
@@ -38,9 +39,21 @@ public class CardImgFetcher extends ImgFetcher(){
 		for(short i=0;i<10;++i){
 			base[i]=genFileImage(fileName[i]);
 		}
-		genTen(base[1].getWidth(),base[1].getHeight());
+		genTen(base[1].getWidth(null),base[1].getHeight(null));
 		for(short i=11;i<fileName.length;++i){
 			base[i]=genFileImage(fileName[i]);
+		}
+	}
+
+	public void fetchAll(int width_px, int height_px){
+		fetchAll();
+		for(short i=0;i<base.length;++i){
+			AffineTransform T=new AffineTransform();
+			BufferedImage B = new BufferedImage(width_px,height_px,BufferedImage.TYPE_INT_ARGB);
+			Graphics2D P = B.createGraphics();
+			T.scale((double)width_px/base[i].getWidth(null),(double)height_px/base[i].getHeight(null));
+			while(!P.drawImage(base[i],T,null)){}
+			base[i]=B;
 		}
 	}
 
@@ -52,9 +65,9 @@ public class CardImgFetcher extends ImgFetcher(){
 			   OldOneW=base[1].getWidth(null),
 			   OldOneH=base[1].getHeight(null);
 
-		BufferedImage R = new BufferedImage(width_px,height_px,BufferedIamge.TYPE_INT_ARGB),
-					  Z = new BufferedImage(width_px/2,height_px,BufferedIamge.TYPE_INT_ARGB),
-					  O = new BufferedImage(Z.getWidth(),height_px,BufferedIamge.TYPE_INT_ARGB);
+		BufferedImage R = new BufferedImage(width_px,height_px,BufferedImage.TYPE_INT_ARGB),
+					  Z = new BufferedImage(width_px/2,height_px,BufferedImage.TYPE_INT_ARGB),
+					  O = new BufferedImage(Z.getWidth(),height_px,BufferedImage.TYPE_INT_ARGB);
 
 		AffineTransform ZeroT = new AffineTransform(),
 						OneT = new AffineTransform();
@@ -72,5 +85,25 @@ public class CardImgFetcher extends ImgFetcher(){
 		while(!P.drawImage(O,0,0,null)){}
 		while(!P.drawImage(Z,Z.getWidth(),0,null)){}
 		base[10]=R;
+	}
+
+	public Image getCardFace(char face){
+		byte index;
+		if(face=='T') index=(byte)10;
+		else if(face=='J') index=(byte)11;
+		else if(face=='Q') index=(byte)12;
+		else if(face=='K') index=(byte)13;
+		else if(face=='A') index=(byte)14;
+		else{
+			index = (byte)(face-'0');
+			if(index < 2 || index > 9) return null;
+		}
+
+		if(base[index]==null) return super.genFileImage(fileName[index]);
+		Image org = base[index];
+		BufferedImage R = new BufferedImage(org.getWidth(null),org.getHeight(null),BufferedImage.TYPE_INT_ARGB);
+		Graphics2D P = R.createGraphics();
+		while(!P.drawImage(org,0,0,null)){}
+		return R;
 	}
 }

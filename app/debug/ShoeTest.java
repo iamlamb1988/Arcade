@@ -24,6 +24,7 @@ public class ShoeTest extends JPanel implements IMenu{
 	private final BlackJackShoe sh;
 
 	public ShoeTest(int width_px, int height_px){
+		super();
 		setSize(width_px,height_px);
 		setLayout(null);
 		setBG(new SingleImage(width_px,height_px,0,255,0,255));
@@ -36,8 +37,6 @@ public class ShoeTest extends JPanel implements IMenu{
 		CheatAccessCards cheat = (CheatAccessCards)sh;
 		ArrayList<BlackJackCard> list = cheat.getCardsRef();
 		ArrayList<BlackJackCard> discard = cheat.getDiscardsRef();
-
-		System.out.println("DEBUG IS HONORABLE?: "+sh.isHonorable());
 
 		JButton draw = new JButton("Draw"),
 				showShoe = new JButton("Show Shoe"),

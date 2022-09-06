@@ -30,6 +30,11 @@ public class ImgFetcher{ //Should resources be within app folder?
 		return R;
 	}
 
+	// protected Image genFileImage(String PathnName, int width_px, int height_px);{
+		// Image R=Toolkit.getDefaultToolkit().getImage(this.getClass().getResource(PathName));
+		// while(R.getWidth(null)<0 || R.getHeight(null)<0){} //wait to finish..
+	// }
+
 	//Needs moved to a different class (this class does not exist yet..)
 	public BufferedImage genShoeImage(String PathName, int width_px, int height_px){
 		Image org=genFileImage(PathName);
