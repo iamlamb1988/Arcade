@@ -106,4 +106,19 @@ public class CardImgFetcher extends ImgFetcher{
 		while(!P.drawImage(org,0,0,null)){}
 		return R;
 	}
+
+	public Image getCardSuit(char suit){
+		byte index;
+		if(suit=='C'){index=(byte)15;}
+		else if(suit=='D'){index=(byte)16;}
+		else if(suit=='H'){index=(byte)17;}
+		else if(suit=='S'){index=(byte)18;}
+		else return null;
+
+		Image org = base[index];
+		BufferedImage R = new BufferedImage(org.getWidth(null),org.getHeight(null),BufferedImage.TYPE_INT_ARGB);
+		Graphics2D P = R.createGraphics();
+		while(!P.drawImage(org,0,0,null)){}
+		return R;
+	}
 }

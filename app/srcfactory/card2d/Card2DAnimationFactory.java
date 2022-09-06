@@ -13,22 +13,34 @@ public class Card2DAnimationFactory extends AnimationFactory{
 	//Ratios for Standard Card (3.5" x 2.5")
 	private final byte LEN_RATIO;
 	private final byte WDT_RATIO;
+	private final double LEN_TO_WDT_FACTOR;
+	private final double WDT_TO_LEN_FACTOR;
 
 	private CardImgFetcher cif;
 
 	private Animation bg;
 	private Animation BackBG;
 
+	//Redundant? No because of Animation.
+	private Animation[] faceImg;
+	private Animation[] suitImg;
+	private Animation[] fullImage;
 	private boolean isUpSeparate; //Are the bg and BGborder separate?
 
 	private void constructorHelp(){
 		isUpSeparate=false;
+		faceImg = new Animation[13];
+		suitImg = new Animation[4];
+		fullImage = new Animation[52];
 	}
 
 	public Card2DAnimationFactory(){
 		super();
 		LEN_RATIO=(byte)7;
 		WDT_RATIO=(byte)5;
+		LEN_TO_WDT_FACTOR=(double)LEN_RATIO/WDT_RATIO;
+		WDT_TO_LEN_FACTOR=(double)WDT_RATIO/LEN_RATIO;
+
 		constructorHelp();
 		cif = new CardImgFetcher();
 		cif.fetchAll();
@@ -38,6 +50,9 @@ public class Card2DAnimationFactory extends AnimationFactory{
 		super();
 		LEN_RATIO=(byte)7;
 		WDT_RATIO=(byte)5;
+		LEN_TO_WDT_FACTOR=(double)LEN_RATIO/WDT_RATIO;
+		WDT_TO_LEN_FACTOR=(double)WDT_RATIO/LEN_RATIO;
+
 		constructorHelp();
 		cif = new CardImgFetcher();
 		cif.fetchAll(width_px,height_px);
@@ -50,12 +65,34 @@ public class Card2DAnimationFactory extends AnimationFactory{
 		BufferedImage R = new BufferedImage(newBG.getWidth(),newBG.getHeight(),BufferedImage.TYPE_INT_ARGB);
 		Graphics2D P = R.createGraphics();
 		while(!P.drawImage(newBG,0,0,null)){}
-		bg=new SingleImage(R);
+		bg = new SingleImage(R);
+	}
+
+	public void setFaces(int width_px, int height_px){
+		faceImg[0]=new SingleImage(cif.getCardFace('2'));
+		faceImg[1]=new SingleImage(cif.getCardFace('3'));
+		faceImg[2]=new SingleImage(cif.getCardFace('4'));
+		faceImg[3]=new SingleImage(cif.getCardFace('5'));
+		faceImg[4]=new SingleImage(cif.getCardFace('6'));
+		faceImg[5]=new SingleImage(cif.getCardFace('7'));
+		faceImg[6]=new SingleImage(cif.getCardFace('8'));
+		faceImg[7]=new SingleImage(cif.getCardFace('9'));
+		faceImg[8]=new SingleImage(cif.getCardFace('T'));
+		faceImg[9]=new SingleImage(cif.getCardFace('J'));
+		faceImg[10]=new SingleImage(cif.getCardFace('Q'));
+		faceImg[11]=new SingleImage(cif.getCardFace('K'));
+		faceImg[12]=new SingleImage(cif.getCardFace('A'));
+	}
+
+	public void setSuits(int width_px, int height_px){
+		suitImg[0]=new SingleImage(cif.getCardSuit('C'));
+		suitImg[1]=new SingleImage(cif.getCardSuit('D'));
+		suitImg[2]=new SingleImage(cif.getCardSuit('H'));
+		suitImg[3]=new SingleImage(cif.getCardSuit('S'));
 	}
 
 	public SingleImage genCardFace(char face){return new SingleImage(cif.getCardFace(face));}
 
-	//Should this function move to Card2DAnimationFactory?
 	public SingleImage genCardImage2D(char face, char suit,
 		int width_px, int height_px,
 		int borderThickness_px){

@@ -13,17 +13,15 @@ public class AnimationTest extends JPanel implements IMenu{
 	private Animation bg,
 					  i;
 
+	
 	public AnimationTest(int width_px, int height_px){
 		super();
 		setSize(width_px,height_px);
 		setLayout(null);
 		setBG(new SingleImage(width_px,height_px,255,255,0,255));
 
-		// CardImgFetcher cif = new CardImgFetcher();
-		// cif.fetchAll();
-
-		Card2DAnimationFactory cf = new Card2DAnimationFactory(80,80);
-		i=cf.genCardFace('K');
+		Card2DAnimationFactory c2Df = new Card2DAnimationFactory(150,150);
+		i=c2Df.genCardFace('K');
 
 		JButton up = new JButton("Up");
 		up.setLocation(10,10);
