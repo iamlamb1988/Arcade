@@ -32,7 +32,7 @@ public class ShoeTest extends JPanel implements IMenu{
 		Card2DAnimationFactory aF = new Card2DAnimationFactory();
 		i= aF.genCardImage2D('A', 'S', 100, 125, 10);
 
-		sh = new BlackJackShoe().genRogueClone();		
+		sh = new BlackJackShoe().genRogueClone();
 		sh.shuffleShoe();
 		CheatAccessCards cheat = (CheatAccessCards)sh;
 		ArrayList<BlackJackCard> list = cheat.getCardsRef();

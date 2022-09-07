@@ -16,6 +16,15 @@ public class Card2DAnimationFactory extends AnimationFactory{
 	private final double LEN_TO_WDT_FACTOR;
 	private final double WDT_TO_LEN_FACTOR;
 
+	private int actualWidth_px;
+	private int actualHeight_px;
+	private int actualFaceWidth_px;
+	private int actualFaceHeight_px;
+	private int actualSuitWidth_px;
+	private int actualSuitHeight_px;
+	private int actualTopOffset_px;		//spacing from edge to TL of face value
+	private int actualSideOffset_px;	//spacing from edge to TL of face value
+
 	private CardImgFetcher cif;
 
 	private Animation bg;
@@ -56,10 +65,32 @@ public class Card2DAnimationFactory extends AnimationFactory{
 		constructorHelp();
 		cif = new CardImgFetcher();
 		cif.fetchAll(width_px,height_px);
+		actualWidth_px=width_px;
+		actualHeight_px=height_px;
 	}
 
 	public boolean isBG_Set(){return bg!=null;}
 	public boolean isBackGB_Set(){return BackBG!=null;}
+
+	public void setActualSize(int width_px, int height_px){
+		actualWidth_px=width_px;
+		actualHeight_px=height_px;
+	}
+
+	public void setSpacing(int topOffSet_px, int sideOffSet_px){
+		actualTopOffset_px=topOffSet_px;
+		actualSideOffset_px=sideOffSet_px;
+	}
+
+	public void setSuitSize(int width_px, int height_px){
+		actualSuitWidth_px=width_px;
+		actualSuitHeight_px=height_px;
+	}
+
+	public void setFaceSize(int width_px, int height_px){
+		actualFaceWidth_px=width_px;
+		actualFaceHeight_px=height_px;
+	}
 
 	public void setBG(BufferedImage newBG){
 		BufferedImage R = new BufferedImage(newBG.getWidth(),newBG.getHeight(),BufferedImage.TYPE_INT_ARGB);
@@ -89,6 +120,16 @@ public class Card2DAnimationFactory extends AnimationFactory{
 		suitImg[1]=new SingleImage(cif.getCardSuit('D'));
 		suitImg[2]=new SingleImage(cif.getCardSuit('H'));
 		suitImg[3]=new SingleImage(cif.getCardSuit('S'));
+	}
+
+	//Full gen requires all sub images and dimensions set
+	public SingleImage genCard2D(char face, char suit){
+		BufferedImage R = new BufferedImage(actualWidth_px,actualHeight_px,BufferedImage.TYPE_INT_ARGB);
+		BufferedImage TR = new BufferedImage(actualWidth_px,actualHeight_px/2,BufferedImage.TYPE_INT_ARGB);
+		Graphics2D P=TR.createGraphics();
+
+		
+		return null;
 	}
 
 	public SingleImage genCardFace(char face){return new SingleImage(cif.getCardFace(face));}
