@@ -85,9 +85,9 @@ public class Card2DAnimationFactory extends AnimationFactory{
 
 	private byte getSuitIndex(char suit){
 		if(suit=='C') return 0;
-		else if(suit=='D') return 1;
-		else if(suit=='H') return 2;
-		else if(suit=='S') return 3;
+		else if(suit=='D') return (byte)1;
+		else if(suit=='H') return (byte)2;
+		else if(suit=='S') return (byte)3;
 
 		return -1;
 	}
@@ -115,12 +115,7 @@ public class Card2DAnimationFactory extends AnimationFactory{
 		actualFaceHeight_px=height_px;
 	}
 
-	public void setBG(BufferedImage newBG){
-		BufferedImage R = new BufferedImage(newBG.getWidth(),newBG.getHeight(),BufferedImage.TYPE_INT_ARGB);
-		Graphics2D P = R.createGraphics();
-		while(!P.drawImage(newBG,0,0,null)){}
-		bg = new SingleImage(R);
-	}
+	public void setBG(Animation newBG){bg = newBG.clone();}
 
 	public void setFaces(int width_px, int height_px){
 		faceImg[0]=new SingleImage(cif.getCardFace('2'));
@@ -137,6 +132,8 @@ public class Card2DAnimationFactory extends AnimationFactory{
 		faceImg[11]=new SingleImage(cif.getCardFace('K'));
 		faceImg[12]=new SingleImage(cif.getCardFace('A'));
 	}
+	
+	//additional methods/overloads for custom images.
 
 	public void setSuits(int width_px, int height_px){
 		suitImg[0]=new SingleImage(cif.getCardSuit('C'));
@@ -145,14 +142,19 @@ public class Card2DAnimationFactory extends AnimationFactory{
 		suitImg[3]=new SingleImage(cif.getCardSuit('S'));
 	}
 
+	//additional methods/overloads for custom images.
+
 	//Full gen requires all sub images and dimensions set
 	public void setCard2D(char face, char suit){
-		byte Index;
-		BufferedImage R = new BufferedImage(actualWidth_px,actualHeight_px,BufferedImage.TYPE_INT_ARGB);
-		BufferedImage TR = new BufferedImage(actualWidth_px,actualHeight_px/2,BufferedImage.TYPE_INT_ARGB),
+		byte faceIndex=getFaceIndex(face),
+			 suitIndex=getSuitIndex(suit),
+			 index=(byte)(faceIndex+13*suitIndex);
+
+		BufferedImage R = new BufferedImage(actualWidth_px,actualHeight_px,BufferedImage.TYPE_INT_ARGB),
+					  TR = new BufferedImage(actualWidth_px,actualHeight_px/2,BufferedImage.TYPE_INT_ARGB),
 					  BR = new BufferedImage(actualWidth_px,actualHeight_px/2,BufferedImage.TYPE_INT_ARGB);
 
-		//Draw Top Half TR -> Top Return
+		//Draw Top Half TR -> Top Return BR -> Bottom Return
 		Graphics2D P=TR.createGraphics();
 		bg.drawTopLeft(P);
 
@@ -171,11 +173,25 @@ public class Card2DAnimationFactory extends AnimationFactory{
 		//draw to finalized set
 		P=R.createGraphics();
 		while(!P.drawImage(TR,0,0,null)){}
-		while(!P.drawImage(TR,0,TR.getHeight(),null)){}
+		while(!P.drawImage(BR,0,TR.getHeight(),null)){}
 
 		//set to standard index value
+		fullImage[index] = new SingleImage(R);
 	}
 
+	public void setCards(){
+		// for(byte s=0;s<suitImg.length;++s){
+			// for(byte f=0;f<faceImg.length;++f){
+				// setCard2D(
+			// }
+		// }
+
+	}
+	public Animation getCard2D(char face, char suit){
+		 return fullImage[getSuitIndex(suit)*13+getFaceIndex(face)].clone();
+	}
+
+	//Obsolete
 	public SingleImage genCardFace(char face){return new SingleImage(cif.getCardFace(face));}
 
 	public SingleImage genCardImage2D(char face, char suit,

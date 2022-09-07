@@ -13,7 +13,6 @@ public class AnimationTest extends JPanel implements IMenu{
 	private Animation bg,
 					  i;
 
-	
 	public AnimationTest(int width_px, int height_px){
 		super();
 		setSize(width_px,height_px);
@@ -21,7 +20,13 @@ public class AnimationTest extends JPanel implements IMenu{
 		setBG(new SingleImage(width_px,height_px,255,255,0,255));
 
 		Card2DAnimationFactory c2Df = new Card2DAnimationFactory(150,150);
+		c2Df.setActualSize(100,125);
+		c2Df.setSpacing(7,7);
+		c2Df.setSuitSize(30,20);
+		c2Df.setFaceSize(20,30);
+		c2Df.setBG(c2Df.genCardImage2D('A', 'S', 100, 125, 10)); //ARBITRARY NEEDS FIXED UPON 2D REFACTOR
 		i=c2Df.genCardFace('K');
+		// i=c2Df.getCard2D('A','S');
 
 		JButton up = new JButton("Up");
 		up.setLocation(10,10);

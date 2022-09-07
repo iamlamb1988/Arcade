@@ -38,6 +38,9 @@ public class SingleImage extends BufferedImage implements Animation{
 
 	//Animation Overrides
 	@Override
+	public Animation clone(){return new SingleImage(this);}
+
+	@Override
 	public void drawTopLeft(Graphics paintBrush){paintBrush.drawImage(this,0,0,null);}
 
 	@Override
