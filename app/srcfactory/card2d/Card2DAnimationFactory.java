@@ -8,6 +8,7 @@ import java.lang.Math;
 import java.awt.image.BufferedImage;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
 
 //This class preserves Card Images
 public class Card2DAnimationFactory extends AnimationFactory{
@@ -159,18 +160,18 @@ public class Card2DAnimationFactory extends AnimationFactory{
 		faceImg[getFaceIndex(face)].draw(actualSideOffset_px,actualTopOffset_px,P);
 
 		//draw suit
-		suitImg[getSuitIndex(suit)].draw(actualWidth_px=actualSideOffset_px,actualTopOffset_px);
+		suitImg[getSuitIndex(suit)].draw(actualWidth_px-actualSideOffset_px,actualTopOffset_px,P);
 
 		//Prepare rotation of 180 and shift half of height
 		AffineTransform T = new AffineTransform();
 		T.rotate(Math.PI,actualWidth_px/2,actualHeight_px/2);
-		P=BR.getGraphics();
+		P=(Graphics2D)BR.getGraphics();
 		while(!P.drawImage(TR,T,null)){}
 
 		//draw to finalized set
 		P=R.createGraphics();
 		while(!P.drawImage(TR,0,0,null)){}
-		while(!P.drawImage(TR,0,TR.getHeight(),null){}
+		while(!P.drawImage(TR,0,TR.getHeight(),null)){}
 
 		//set to standard index value
 	}
