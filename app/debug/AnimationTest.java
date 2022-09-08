@@ -22,11 +22,15 @@ public class AnimationTest extends JPanel implements IMenu{
 		Card2DAnimationFactory c2Df = new Card2DAnimationFactory(150,150);
 		c2Df.setActualSize(100,125);
 		c2Df.setSpacing(7,7);
-		c2Df.setSuitSize(30,20);
+		c2Df.setSuitSize(20,30);
 		c2Df.setFaceSize(20,30);
+
 		c2Df.setBG(c2Df.genCardImage2D('A', 'S', 100, 125, 10)); //ARBITRARY NEEDS FIXED UPON 2D REFACTOR
-		i=c2Df.genCardFace('K');
-		// i=c2Df.getCard2D('A','S');
+		c2Df.setFaces();
+		c2Df.setSuits();
+		c2Df.setCards();
+		// i=c2Df.genCardFace('K');
+		i=c2Df.getCard2D('A','S');
 
 		JButton up = new JButton("Up");
 		up.setLocation(10,10);

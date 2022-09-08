@@ -117,29 +117,29 @@ public class Card2DAnimationFactory extends AnimationFactory{
 
 	public void setBG(Animation newBG){bg = newBG.clone();}
 
-	public void setFaces(int width_px, int height_px){
-		faceImg[0]=new SingleImage(cif.getCardFace('2'));
-		faceImg[1]=new SingleImage(cif.getCardFace('3'));
-		faceImg[2]=new SingleImage(cif.getCardFace('4'));
-		faceImg[3]=new SingleImage(cif.getCardFace('5'));
-		faceImg[4]=new SingleImage(cif.getCardFace('6'));
-		faceImg[5]=new SingleImage(cif.getCardFace('7'));
-		faceImg[6]=new SingleImage(cif.getCardFace('8'));
-		faceImg[7]=new SingleImage(cif.getCardFace('9'));
-		faceImg[8]=new SingleImage(cif.getCardFace('T'));
-		faceImg[9]=new SingleImage(cif.getCardFace('J'));
-		faceImg[10]=new SingleImage(cif.getCardFace('Q'));
-		faceImg[11]=new SingleImage(cif.getCardFace('K'));
-		faceImg[12]=new SingleImage(cif.getCardFace('A'));
+	public void setFaces(){
+		faceImg[0]=new SingleImage(cif.getCardFace('2'),actualFaceWidth_px,actualFaceHeight_px);
+		faceImg[1]=new SingleImage(cif.getCardFace('3'),actualFaceWidth_px,actualFaceHeight_px);
+		faceImg[2]=new SingleImage(cif.getCardFace('4'),actualFaceWidth_px,actualFaceHeight_px);
+		faceImg[3]=new SingleImage(cif.getCardFace('5'),actualFaceWidth_px,actualFaceHeight_px);
+		faceImg[4]=new SingleImage(cif.getCardFace('6'),actualFaceWidth_px,actualFaceHeight_px);
+		faceImg[5]=new SingleImage(cif.getCardFace('7'),actualFaceWidth_px,actualFaceHeight_px);
+		faceImg[6]=new SingleImage(cif.getCardFace('8'),actualFaceWidth_px,actualFaceHeight_px);
+		faceImg[7]=new SingleImage(cif.getCardFace('9'),actualFaceWidth_px,actualFaceHeight_px);
+		faceImg[8]=new SingleImage(cif.getCardFace('T'),actualFaceWidth_px,actualFaceHeight_px);
+		faceImg[9]=new SingleImage(cif.getCardFace('J'),actualFaceWidth_px,actualFaceHeight_px);
+		faceImg[10]=new SingleImage(cif.getCardFace('Q'),actualFaceWidth_px,actualFaceHeight_px);
+		faceImg[11]=new SingleImage(cif.getCardFace('K'),actualFaceWidth_px,actualFaceHeight_px);
+		faceImg[12]=new SingleImage(cif.getCardFace('A'),actualFaceWidth_px,actualFaceHeight_px);
 	}
 	
 	//additional methods/overloads for custom images.
 
-	public void setSuits(int width_px, int height_px){
-		suitImg[0]=new SingleImage(cif.getCardSuit('C'));
-		suitImg[1]=new SingleImage(cif.getCardSuit('D'));
-		suitImg[2]=new SingleImage(cif.getCardSuit('H'));
-		suitImg[3]=new SingleImage(cif.getCardSuit('S'));
+	public void setSuits(){
+		suitImg[0]=new SingleImage(cif.getCardSuit('C'),actualSuitWidth_px,actualSuitHeight_px);
+		suitImg[1]=new SingleImage(cif.getCardSuit('D'),actualSuitWidth_px,actualSuitHeight_px);
+		suitImg[2]=new SingleImage(cif.getCardSuit('H'),actualSuitWidth_px,actualSuitHeight_px);
+		suitImg[3]=new SingleImage(cif.getCardSuit('S'),actualSuitWidth_px,actualSuitHeight_px);
 	}
 
 	//additional methods/overloads for custom images.
@@ -162,11 +162,11 @@ public class Card2DAnimationFactory extends AnimationFactory{
 		faceImg[getFaceIndex(face)].draw(actualSideOffset_px,actualTopOffset_px,P);
 
 		//draw suit
-		suitImg[getSuitIndex(suit)].draw(actualWidth_px-actualSideOffset_px,actualTopOffset_px,P);
+		suitImg[getSuitIndex(suit)].draw(actualWidth_px-actualSuitWidth_px-actualSideOffset_px,actualTopOffset_px,P);
 
 		//Prepare rotation of 180 and shift half of height
 		AffineTransform T = new AffineTransform();
-		T.rotate(Math.PI,actualWidth_px/2,actualHeight_px/2);
+		T.rotate(Math.PI,BR.getWidth()/2,BR.getHeight()/2);
 		P=(Graphics2D)BR.getGraphics();
 		while(!P.drawImage(TR,T,null)){}
 
@@ -180,13 +180,35 @@ public class Card2DAnimationFactory extends AnimationFactory{
 	}
 
 	public void setCards(){
-		// for(byte s=0;s<suitImg.length;++s){
-			// for(byte f=0;f<faceImg.length;++f){
-				// setCard2D(
-			// }
-		// }
+		char[] f = new char[13];
+		char[] s = new char[4];
 
+		f[0]='2';
+		f[1]='3';
+		f[2]='4';
+		f[3]='5';
+		f[4]='6';
+		f[5]='7';
+		f[6]='8';
+		f[7]='9';
+		f[8]='T';
+		f[9]='J';
+		f[10]='Q';
+		f[11]='K';
+		f[12]='A';
+
+		s[0]='C';
+		s[1]='D';
+		s[2]='H';
+		s[3]='S';
+
+		for(byte si=0;si<s.length;++si){
+			for(byte fi=0;fi<f.length;++fi){
+				setCard2D(f[fi],s[si]);
+			}
+		}
 	}
+
 	public Animation getCard2D(char face, char suit){
 		 return fullImage[getSuitIndex(suit)*13+getFaceIndex(face)].clone();
 	}
