@@ -25,7 +25,7 @@ Focused on 2D Graphics for reusability in future Java Projects.
   - [ ] Build 2D Animation generator of BlackJackCard (Front and Back) (Card2DAnimationFactory.java)
   - [x] Build the ImageDrawing Class (CardImgFetcher.java)
     - [x] Extract hard images from source folder
-    - [ ] Draw/Generate new images (vector graphics)
+    - [x] Draw/Generate new images (vector graphics) (needs some refactoring but successful)
 - [x] Figure out a way to create DEBUG inheritance for Junit testing.
 - [x] Create Issues within github for this list.
 
