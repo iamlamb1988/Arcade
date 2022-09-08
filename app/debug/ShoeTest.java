@@ -30,8 +30,16 @@ public class ShoeTest extends JPanel implements IMenu{
 		setBG(new SingleImage(width_px,height_px,0,255,0,255));
 
 		Card2DAnimationFactory aF = new Card2DAnimationFactory();
-		i= aF.genCardImage2D('A', 'S', 100, 125, 10);
+		aF.setActualSize(100,125);
+		aF.setSpacing(7,7);
+		aF.setSuitSize(20,30);
+		aF.setFaceSize(20,30);
+		aF.setBG(aF.genCardBorder(100, 125, 10)); //ARBITRARY NEEDS FIXED UPON 2D REFACTOR
+		aF.setFaces();
+		aF.setSuits();
+		aF.setCards();
 
+		i=null;
 		sh = new BlackJackShoe().genRogueClone();
 		sh.shuffleShoe();
 		CheatAccessCards cheat = (CheatAccessCards)sh;
@@ -51,7 +59,9 @@ public class ShoeTest extends JPanel implements IMenu{
 			public void actionPerformed(ActionEvent e){
 				BlackJackCard x = (BlackJackCard)sh.drawTop();
 				System.out.println(x.face+" of "+x.suit+" : "+x.value);
+				i=aF.getCard2D(x.face,x.suit);
 				discard.add(x);
+				repaint();
 			}
 		});
 		add(draw);
@@ -107,6 +117,8 @@ public class ShoeTest extends JPanel implements IMenu{
 					list.add(discard.remove(0));
 				}
 				sh.shuffleShoe();
+				i=null;
+				repaint();
 				System.out.println("DONE\n");
 			}
 		});
@@ -123,6 +135,8 @@ public class ShoeTest extends JPanel implements IMenu{
 	public void paintComponent(Graphics p){
 		super.paintComponent(p);
 		bg.drawTopLeft(p);
-		i.draw(250,150,p);
+		if(i!=null)
+			i.draw(250,150,p);
+		
 	}
 }

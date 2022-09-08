@@ -11,23 +11,23 @@ The classes will be extensible to several other Casino/Arcade games.
 
 ## Update
 
-All 5 buttons on ShoeTest working!
-Have implemented the Cheat and HonorCode interface.
-  The Cheat is the parent of several interfaces that will allow access to private members.
-  The HonorCode has a single boolean function that determines if the Arcade item is rogue or potentially rogue.
-Focused on 2D Graphics for reusability in future Java Projects.
+Animation is relatively independant and extensible for mutually exclusive development.
+The srcFactory classes are relatively tightly coupled. (Violate Diversion Independancy Principle)
+This should be OK because this is not a graphically intensive program but need enough to show a visual aid.
+Looking to provide some default hardcoded extensions for basic default templates.
+
+If all Master Push Goals are complete, will then focus on building runnable test cases for Cards, Shoe, and Animation along with all of their children.
+Will most likely involve DIP refactoring for individualized testing.
 
 ## Next Master Push Goals
-- [x] Test BlackJackShoe with the debug temporary class ShoeTest
-     - [x] BlackJackShoe now has an innerClass that extendes itself as an evil twin to allow this to be implemented.
+- [ ] Implement interface for back button on the Panel Swap class.
 - [ ] Test GUI with Buttons Draw Card, Discard Card, Shuffle, Reset.
   - [x] Build initial animation library
+  - [ ] Clean up some useless functions. Some functions have unused parameters.
   - [ ] Build 2D Animation generator of BlackJackCard (Front and Back) (Card2DAnimationFactory.java)
-  - [x] Build the ImageDrawing Class (CardImgFetcher.java)
-    - [x] Extract hard images from source folder
-    - [x] Draw/Generate new images (vector graphics) (needs some refactoring but successful)
-- [x] Figure out a way to create DEBUG inheritance for Junit testing.
-- [x] Create Issues within github for this list.
+
+- [ ] Looking to remove the AnimationTest class and allow the ShoeTest to cycle through cards
+- [ ] ShoeTest should not crash after drawing all cards out of Deck.
 
 ## High level structure.
 

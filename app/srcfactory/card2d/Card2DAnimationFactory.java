@@ -216,7 +216,7 @@ public class Card2DAnimationFactory extends AnimationFactory{
 	//Obsolete
 	public SingleImage genCardFace(char face){return new SingleImage(cif.getCardFace(face));}
 
-	public SingleImage genCardImage2D(char face, char suit,
+	public SingleImage genCardBorder(
 		int width_px, int height_px,
 		int borderThickness_px){
 		BufferedImage R = new BufferedImage(width_px,height_px,BufferedImage.TYPE_INT_ARGB);
