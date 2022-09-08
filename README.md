@@ -15,14 +15,15 @@ All 5 buttons on ShoeTest working!
 Have implemented the Cheat and HonorCode interface.
   The Cheat is the parent of several interfaces that will allow access to private members.
   The HonorCode has a single boolean function that determines if the Arcade item is rogue or potentially rogue.
+Focused on 2D Graphics for reusability in future Java Projects.
 
 ## Next Master Push Goals
 - [x] Test BlackJackShoe with the debug temporary class ShoeTest
      - [x] BlackJackShoe now has an innerClass that extendes itself as an evil twin to allow this to be implemented.
 - [ ] Test GUI with Buttons Draw Card, Discard Card, Shuffle, Reset.
   - [x] Build initial animation library
-  - [ ] Build 2D image of BlackJackCard (Front and Back)
-  - [ ] Build the ImageDrawing Class (Undecided Name)
+  - [ ] Build 2D Animation generator of BlackJackCard (Front and Back) (Card2DAnimationFactory.java)
+  - [x] Build the ImageDrawing Class (CardImgFetcher.java)
     - [x] Extract hard images from source folder
     - [ ] Draw/Generate new images (vector graphics)
 - [x] Figure out a way to create DEBUG inheritance for Junit testing.

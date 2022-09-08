@@ -2,6 +2,7 @@ package app.debug;
 
 import app.menu.IMenu;
 import app.srcfactory.AnimationFactory;
+import app.srcfactory.card2d.Card2DAnimationFactory;
 import animation.Animation;
 import animation.SingleImage;
 import arcade.game_items.Shoe;
@@ -23,20 +24,19 @@ public class ShoeTest extends JPanel implements IMenu{
 	private final BlackJackShoe sh;
 
 	public ShoeTest(int width_px, int height_px){
+		super();
 		setSize(width_px,height_px);
 		setLayout(null);
 		setBG(new SingleImage(width_px,height_px,0,255,0,255));
 
-		AnimationFactory aF = new AnimationFactory();
-		i= aF.genShoeImage(100,100);
+		Card2DAnimationFactory aF = new Card2DAnimationFactory();
+		i= aF.genCardImage2D('A', 'S', 100, 125, 10);
 
-		sh = new BlackJackShoe().genRogueClone();		
+		sh = new BlackJackShoe().genRogueClone();
 		sh.shuffleShoe();
 		CheatAccessCards cheat = (CheatAccessCards)sh;
 		ArrayList<BlackJackCard> list = cheat.getCardsRef();
 		ArrayList<BlackJackCard> discard = cheat.getDiscardsRef();
-
-		System.out.println("DEBUG IS HONORABLE?: "+sh.isHonorable());
 
 		JButton draw = new JButton("Draw"),
 				showShoe = new JButton("Show Shoe"),

@@ -3,6 +3,7 @@ package app.menu;
 import app.PanelSwapAction;
 import app.DesktopApp;
 import app.debug.ShoeTest;
+import app.debug.AnimationTest;
 import animation.Animation;
 import animation.SingleImage;
 
@@ -29,6 +30,14 @@ public class MainMenu extends JPanel implements IMenu{
 		sbs.setSize(150,40);
 		sbs.addActionListener(new PanelSwapAction(parent,this,new ShoeTest(width_px,height_px)));
 		add(sbs);
+
+
+		//Add Test Animation button
+		JButton anm = new JButton("Animate Factory Test");
+		anm.setLocation(10, 50);
+		anm.setSize(150,40);
+		anm.addActionListener(new PanelSwapAction(parent,this,new AnimationTest(width_px,height_px)));
+		add(anm);
 
 		setVisible(true);
 	}
