@@ -25,7 +25,7 @@ public class AnimationTest extends JPanel implements IMenu{
 		c2Df.setSuitSize(20,30);
 		c2Df.setFaceSize(20,30);
 
-		c2Df.setBG(c2Df.genCardImage2D('A', 'S', 100, 125, 10)); //ARBITRARY NEEDS FIXED UPON 2D REFACTOR
+		c2Df.setBG(c2Df.genCardBorder(100, 125, 10)); //ARBITRARY NEEDS FIXED UPON 2D REFACTOR
 		c2Df.setFaces();
 		c2Df.setSuits();
 		c2Df.setCards();
