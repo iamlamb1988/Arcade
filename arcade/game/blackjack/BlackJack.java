@@ -21,6 +21,7 @@ public class BlackJack implements Game{
 	public String getName(){
 		return "Name of blackjack game";
 	}
+	public boolean isHonest(){return isHonorable();}
 
 	@Override
 	public List<Currency> getInputCredits() {

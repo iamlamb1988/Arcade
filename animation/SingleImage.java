@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.awt.geom.AffineTransform;
 
 public class SingleImage extends BufferedImage implements Animation{
 	private Graphics2D p;
@@ -36,7 +37,20 @@ public class SingleImage extends BufferedImage implements Animation{
 		while(!p.drawImage(img,0,0,null)){}
 	}
 
+	public SingleImage(Image img, int width_px, int height_px){
+		super(img.getWidth(null),img.getHeight(null),BufferedImage.TYPE_INT_ARGB);
+		p=(Graphics2D)this.createGraphics();
+		iF=new ImgFetcher();
+
+		AffineTransform T = new AffineTransform();
+		T.scale((double)width_px/img.getWidth(null),(double)height_px/img.getHeight(null));
+		while(!p.drawImage(img,T,null)){}
+	}
+
 	//Animation Overrides
+	@Override
+	public Animation clone(){return new SingleImage(this);}
+
 	@Override
 	public void drawTopLeft(Graphics paintBrush){paintBrush.drawImage(this,0,0,null);}
 
