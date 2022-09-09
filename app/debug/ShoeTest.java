@@ -7,7 +7,8 @@ import animation.Animation;
 import animation.SingleImage;
 import arcade.game_items.Shoe;
 import arcade.game.blackjack.blackjack_items.BlackJackShoe;
-import arcade.game.blackjack.blackjack_items.BlackJackCard;
+import arcade.game.blackjack.blackjack_items.instances.BlackJackShoe_Default;
+import arcade.game.blackjack.blackjack_items.instances.BlackJackCard;
 import arcade.game.blackjack.blackjack_items.CheatAccessCards;
 import javax.swing.JPanel;
 import javax.swing.JButton;
@@ -40,7 +41,7 @@ public class ShoeTest extends JPanel implements IMenu{
 		aF.setCards();
 
 		i=null;
-		sh = new BlackJackShoe().genRogueClone();
+		sh = new BlackJackShoe_Default().genRogueClone();
 		sh.shuffleShoe();
 		CheatAccessCards cheat = (CheatAccessCards)sh;
 		ArrayList<BlackJackCard> list = cheat.getCardsRef();
