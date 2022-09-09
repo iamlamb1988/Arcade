@@ -11,22 +11,25 @@ The classes will be extensible to several other Casino/Arcade games.
 
 ## Update
 
-Animation is relatively independant and extensible for mutually exclusive development.
-The srcFactory classes are relatively tightly coupled. (Violate Diversion Independancy Principle)
-This should be OK because this is not a graphically intensive program but need enough to show a visual aid.
-Looking to provide some default hardcoded extensions for basic default templates.
+This master push demonstrates that test works primitively.
 
-Looking to create 2D classes or an interface that contains 2D animation located in the class folder
-Animation works but now need to attach animations to all game items with no library dependancies. (After this set of Master Push Goals are complete.)
+The Cards are not yet attached to the image.
+The plan is to allow extensible image (Front and Back) to a BlackJackCard and/or BlackJackShoe.
+The test shoed is only drawing according to the Card Drawn and the CardAnimator is not attached as a member to a card.
+
+DESIGN DECISION DILEMMA:
+If we create a class BlackJackCard2D extends BlackJackCard then we have tightly coupled DIP violation. (Possible Animator interface?)
+Right now, BlackJackShoe is a class (Should it be an interface.?)
+IF BlackJackShoe becomes an interface, should default class implementations exist in an "instances" package?
+
+Want to plan for 3D implementation (Not necessarily for blackjack but for ski-ball, roulette wheel, etc).
+INDEPENDANCY is crucial.
 
 ## Next Master Push Goals
 - [ ] Implement interface for back button on the Panel Swap class. (will require careful planning, looking to avoid global references.)
-- [x] Test GUI with Buttons Draw Card, Discard Card, Shuffle, Reset.
-  - [x] Build initial animation library
   - [ ] Clean up some useless functions. Some functions have unused parameters.
   - [ ] Build 2D Animation generator of BlackJackCard (Front and Back) (Card2DAnimationFactory.java)
 
-- [x] Looking to remove the AnimationTest class and allow the ShoeTest to cycle through cards
 - [ ] ShoeTest should not crash after drawing all cards out of Deck.
 
 ## High level structure.
