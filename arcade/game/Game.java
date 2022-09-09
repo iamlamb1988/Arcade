@@ -1,5 +1,6 @@
 package arcade.game;
 
+import arcade.HonorCode;
 import arcade.currency.Currency;
 import java.util.List;
 
@@ -10,6 +11,4 @@ public interface Game extends HonorCode{
 	//Generally will be one input and output credit
 	public List<Currency> getInputCredits();
 	public List<Currency> getOutputCredits();
-
-	
 }
