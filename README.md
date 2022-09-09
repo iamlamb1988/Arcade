@@ -17,15 +17,12 @@ The Cards are not yet attached to the image.
 The plan is to allow extensible image (Front and Back) to a BlackJackCard and/or BlackJackShoe.
 The test shoed is only drawing according to the Card Drawn and the CardAnimator is not attached as a member to a card.
 
-DESIGN DECISION DILEMMA:
-If we create a class BlackJackCard2D extends BlackJackCard then we have tightly coupled DIP violation. (Possible Animator interface?)
-Right now, BlackJackShoe is a class (Should it be an interface.?)
-IF BlackJackShoe becomes an interface, should default class implementations exist in an "instances" package?
+The "arcade" package will have interfaces for it's sub components. Any classes that implement will be in an "instances" folder. The filename of these instances will end in "_Default" and will end in "DefaultX" where X is an integer if there is more than 1.
 
-Want to plan for 3D implementation (Not necessarily for blackjack but for ski-ball, roulette wheel, etc).
-INDEPENDANCY is crucial.
+The purpose of this is to allow simple classes in "app" to tightly couple by extending OR implementing the interfaces of the given objects to utilize DIP principle.
 
 ## Next Master Push Goals
+
 - [ ] Implement interface for back button on the Panel Swap class. (will require careful planning, looking to avoid global references.)
   - [ ] Clean up some useless functions. Some functions have unused parameters.
   - [ ] Build 2D Animation generator of BlackJackCard (Front and Back) (Card2DAnimationFactory.java)
