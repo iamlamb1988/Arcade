@@ -29,8 +29,8 @@ public class Card2DAnimationFactory extends AnimationFactory{
 
 	private CardImgFetcher cif;
 
-	private Animation bg;
-	private Animation BackBG; //Not yet used...
+	private Animation bg; //background of face
+	private Animation BackBG;
 
 	//Redundant? No because of Animation.
 	private Animation[] faceImg;
@@ -117,6 +117,8 @@ public class Card2DAnimationFactory extends AnimationFactory{
 
 	public void setBG(Animation newBG){bg = newBG.clone();}
 
+	public void setBackBG(Animation newBG){BackBG = newBG.clone();}
+
 	public void setFaces(){
 		faceImg[0]=new SingleImage(cif.getCardFace('2'),actualFaceWidth_px,actualFaceHeight_px);
 		faceImg[1]=new SingleImage(cif.getCardFace('3'),actualFaceWidth_px,actualFaceHeight_px);
@@ -132,7 +134,7 @@ public class Card2DAnimationFactory extends AnimationFactory{
 		faceImg[11]=new SingleImage(cif.getCardFace('K'),actualFaceWidth_px,actualFaceHeight_px);
 		faceImg[12]=new SingleImage(cif.getCardFace('A'),actualFaceWidth_px,actualFaceHeight_px);
 	}
-	
+
 	//additional methods/overloads for custom images.
 
 	public void setSuits(){
@@ -213,6 +215,7 @@ public class Card2DAnimationFactory extends AnimationFactory{
 		 return fullImage[getSuitIndex(suit)*13+getFaceIndex(face)].clone();
 	}
 
+	public Animation genCardBG(){return BackBG.clone();}
 	//Obsolete
 	public SingleImage genCardFace(char face){return new SingleImage(cif.getCardFace(face));}
 

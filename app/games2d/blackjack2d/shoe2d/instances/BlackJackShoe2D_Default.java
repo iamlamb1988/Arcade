@@ -21,6 +21,7 @@ public class BlackJackShoe2D_Default extends BlackJackShoe_Default implements Bl
 		aF.setSuitSize(20,30);
 		aF.setFaceSize(20,30);
 		aF.setBG(aF.genCardBorder(100, 125, 10)); //ARBITRARY NEEDS FIXED UPON 2D REFACTOR
+		aF.setBackBG(aF.genCardBorder(100, 125, 10)); //ARBITRARY NEEDS FIXED UPON 2D REFACTOR
 		aF.setFaces();
 		aF.setSuits();
 		aF.setCards();
@@ -33,17 +34,13 @@ public class BlackJackShoe2D_Default extends BlackJackShoe_Default implements Bl
 		BlackJackCard original;
 		while(list.size()>0){
 			original = list.remove(0);
-			upgradeList.add(new BlackJackCard2D(original,null,null));
+			upgradeList.add(new BlackJackCard2D(original,aF.getCard2D(original.face,original.suit),aF.genCardBG()));
 		}
-		// list=upgradeList; //not allowed
 
 		//4. Add 2D Cards back to original List..
 		while(upgradeList.size()>0){
 			list.add(upgradeList.remove(0));
 		}
-
-		//5. destruct animation factory.
-		
 	}
 	//BlackJackShoe Overrides:
 	public void drawShoeTL(Graphics brush){}
