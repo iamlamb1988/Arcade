@@ -1,8 +1,7 @@
 package app.debug;
 
 import app.menu.IMenu;
-import app.srcfactory.AnimationFactory;
-import app.srcfactory.card2d.Card2DAnimationFactory;
+import app.games2d.blackjack2d.shoe2d.instances.BlackJackShoe2D_Default;
 import animation.Animation;
 import animation.SingleImage;
 import arcade.game_items.Shoe;
@@ -30,18 +29,8 @@ public class ShoeTest extends JPanel implements IMenu{
 		setLayout(null);
 		setBG(new SingleImage(width_px,height_px,0,255,0,255));
 
-		Card2DAnimationFactory aF = new Card2DAnimationFactory();
-		aF.setActualSize(100,125);
-		aF.setSpacing(7,7);
-		aF.setSuitSize(20,30);
-		aF.setFaceSize(20,30);
-		aF.setBG(aF.genCardBorder(100, 125, 10)); //ARBITRARY NEEDS FIXED UPON 2D REFACTOR
-		aF.setFaces();
-		aF.setSuits();
-		aF.setCards();
-
 		i=null;
-		sh = new BlackJackShoe_Default().genRogueClone();
+		sh = new BlackJackShoe2D_Default(100,125).genRogueClone();
 		sh.shuffleShoe();
 		CheatAccessCards cheat = (CheatAccessCards)sh;
 		ArrayList<BlackJackCard> list = cheat.getCardsRef();
@@ -60,7 +49,6 @@ public class ShoeTest extends JPanel implements IMenu{
 			public void actionPerformed(ActionEvent e){
 				BlackJackCard x = (BlackJackCard)sh.drawTop();
 				System.out.println(x.face+" of "+x.suit+" : "+x.value);
-				i=aF.getCard2D(x.face,x.suit);
 				discard.add(x);
 				repaint();
 			}

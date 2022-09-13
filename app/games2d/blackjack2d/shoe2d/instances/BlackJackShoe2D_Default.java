@@ -1,6 +1,14 @@
 package app.games2d.blackjack2d.shoe2d.instances;
 
+import arcade.game.blackjack.blackjack_items.instances.BlackJackShoe_Default;
+import arcade.game.blackjack.blackjack_items.instances.BlackJackCard;
+import arcade.game.blackjack.blackjack_items.BlackJackShoe;
+import app.games2d.blackjack2d.shoe2d.BlackJackCard2D;
+import app.games2d.blackjack2d.shoe2d.BlackJackShoe2D;
 import app.games2d.Drawable2D;
+import app.srcfactory.card2d.Card2DAnimationFactory;
+import java.util.ArrayList;
+import java.awt.Graphics;
 
 public class BlackJackShoe2D_Default extends BlackJackShoe_Default implements BlackJackShoe2D{
 	public BlackJackShoe2D_Default(int width_px, int height_px){
@@ -18,20 +26,23 @@ public class BlackJackShoe2D_Default extends BlackJackShoe_Default implements Bl
 		aF.setCards();
 
 		//2. Set Background.
-		aF.setBG(af.genShoeImg(width_px,height_px));
+		aF.setBG(aF.genShoeImage(width_px,height_px));
 
 		//3. Assign images to 2D Cards.
-		ArrayList<BlackJackShoe2D_Default> upgradeList = new ArrayList<BlackJackShoe2D_Default>();
-		BlackJackCard2D_Default original;
+		ArrayList<BlackJackCard2D> upgradeList = new ArrayList<BlackJackCard2D>();
+		BlackJackCard original;
 		while(list.size()>0){
 			original = list.remove(0);
-			upgradeList.add(new BlackJackCard2D_Default(original,null,null));
+			upgradeList.add(new BlackJackCard2D(original,null,null));
 		}
-		list=upgradeList;
+		list=(ArrayList<BlackJackCard>)upgradeList;
 
 		//3. destruct animation factory.
 		
 	}
+	//BlackJackShoe Overrides:
+	public void drawShoeTL(Graphics brush){}
+	public void drawShoe(Graphics brush, int xPos_px, int yPos_px){}
 
 	//Drawable2D Overrides:
 	public void drawTL(Graphics brush){}
