@@ -50,6 +50,6 @@ public class BlackJackShoe2D_Default extends BlackJackShoe_Default implements Bl
 	public void drawShoe(Graphics brush, int xPos_px, int yPos_px){}
 
 	//Drawable2D Overrides:
-	public void drawTL(Graphics brush){}
-	public void draw(Graphics brush, int xPos_px, int yPos_px){}
+	public void dwblDrawTL(Graphics brush){}
+	public void dwblDraw(Graphics brush, int xPos_px, int yPos_px){}
 }
