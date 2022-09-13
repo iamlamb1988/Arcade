@@ -1,6 +1,7 @@
 package app.debug;
 
 import app.menu.IMenu;
+import app.games2d.blackjack2d.shoe2d.BlackJackCard2D;
 import app.games2d.blackjack2d.shoe2d.instances.BlackJackShoe2D_Default;
 import animation.Animation;
 import animation.SingleImage;
