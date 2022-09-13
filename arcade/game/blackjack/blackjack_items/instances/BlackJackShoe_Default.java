@@ -30,10 +30,10 @@ public class BlackJackShoe_Default implements Shoe, HonorCode{
 		list = new ArrayList<BlackJackCard>(52);
 		discard = new ArrayList<BlackJackCard>(52);
 		for(BlackJackCard x : originalShoe.list){
-			list.add(new BlackJackCard(x.face,x.suit));
+			list.add(x.clone());
 		}
 		for(BlackJackCard x : originalShoe.discard){
-			discard.add(new BlackJackCard(x.face,x.suit));
+			discard.add(x.clone());
 		}
 
 		if(this instanceof RogueBJShoe) honest=false;
@@ -55,7 +55,9 @@ public class BlackJackShoe_Default implements Shoe, HonorCode{
 	}
 
 	private class RogueBJShoe extends BlackJackShoe_Default implements BlackJackShoe, CheatAccessCards{
-		private RogueBJShoe(BlackJackShoe_Default org){super(org);}
+		private RogueBJShoe(BlackJackShoe_Default org){
+			super(org);
+		}
 
 		//CheatAccessCards Overrides:
 		@Override
