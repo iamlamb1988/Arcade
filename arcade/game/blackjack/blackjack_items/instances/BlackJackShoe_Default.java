@@ -9,8 +9,8 @@ import java.util.Collections;
 import java.util.ArrayList;
 
 public class BlackJackShoe_Default implements Shoe, HonorCode{
-	ArrayList<BlackJackCard> list,
-							 discard;
+	protected ArrayList<BlackJackCard> list,
+									   discard;
 	private boolean honest;
 
 	public BlackJackShoe_Default(){ //single deck implementation
