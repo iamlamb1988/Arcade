@@ -6,7 +6,7 @@ import app.games2d.Drawable2D;
 import java.awt.Graphics;
 
 public class BlackJackCard2D extends BlackJackCard implements Drawable2D{
-	private Animation face;
+	private Animation front;
 	private Animation back;
 
 	public BlackJackCard2D(BlackJackCard original, Animation frontAnm, Animation backAnm){
@@ -15,8 +15,8 @@ public class BlackJackCard2D extends BlackJackCard implements Drawable2D{
 		back=backAnm.clone();
 	}
 
-	public void drawFaceTL(Graphics brush){face.drawTL(brush);}
-	public void drawFace(Graphics brush, int xPos_px, int yPos_px){front.draw(xPos_px,yPos_px,brush);}
+	public void drawFrontTL(Graphics brush){front.drawTL(brush);}
+	public void drawFront(Graphics brush, int xPos_px, int yPos_px){front.draw(xPos_px,yPos_px,brush);}
 	public void drawBackTL(Graphics brush){back.drawTopLeft(brush);}
 	public void drawBack(Graphics brush, int xPos_px, int yPos_px){back.draw(xPos_px,yPos_px,brush);}
 

@@ -35,9 +35,14 @@ public class BlackJackShoe2D_Default extends BlackJackShoe_Default implements Bl
 			original = list.remove(0);
 			upgradeList.add(new BlackJackCard2D(original,null,null));
 		}
-		list=(ArrayList<BlackJackCard>)upgradeList;
+		// list=upgradeList; //not allowed
 
-		//3. destruct animation factory.
+		//4. Add 2D Cards back to original List..
+		while(upgradeList.size()>0){
+			list.add(upgradeList.remove(0));
+		}
+
+		//5. destruct animation factory.
 		
 	}
 	//BlackJackShoe Overrides:
