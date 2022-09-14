@@ -26,7 +26,7 @@ public class BlackJackShoe_Default implements Shoe, HonorCode{
 		honest=true;
 	}
 
-	private BlackJackShoe_Default(BlackJackShoe_Default originalShoe){
+	protected BlackJackShoe_Default(BlackJackShoe_Default originalShoe){
 		list = new ArrayList<BlackJackCard>(52);
 		discard = new ArrayList<BlackJackCard>(52);
 		for(BlackJackCard x : originalShoe.list){

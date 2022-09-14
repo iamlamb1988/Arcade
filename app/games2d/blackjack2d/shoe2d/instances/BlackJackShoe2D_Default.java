@@ -3,6 +3,7 @@ package app.games2d.blackjack2d.shoe2d.instances;
 import arcade.game.blackjack.blackjack_items.instances.BlackJackShoe_Default;
 import arcade.game.blackjack.blackjack_items.instances.BlackJackCard;
 import arcade.game.blackjack.blackjack_items.BlackJackShoe;
+import arcade.game.blackjack.blackjack_items.CheatAccessCards;
 import app.games2d.blackjack2d.shoe2d.BlackJackCard2D;
 import app.games2d.blackjack2d.shoe2d.BlackJackShoe2D;
 import app.games2d.Drawable2D;
@@ -42,6 +43,11 @@ public class BlackJackShoe2D_Default extends BlackJackShoe_Default implements Bl
 			list.add(upgradeList.remove(0));
 		}
 	}
+
+	private BlackJackShoe2D_Default(BlackJackShoe2D_Default original){
+		super(original);
+	}
+
 	//BlackJackShoe Overrides:
 	public void drawShoeTL(Graphics brush){}
 	public void drawShoe(Graphics brush, int xPos_px, int yPos_px){}
@@ -49,4 +55,17 @@ public class BlackJackShoe2D_Default extends BlackJackShoe_Default implements Bl
 	//Drawable2D Overrides:
 	public void dwblDrawTL(Graphics brush){}
 	public void dwblDraw(Graphics brush, int xPos_px, int yPos_px){}
+
+	private class RogueBJShoe2D extends BlackJackShoe2D_Default implements BlackJackShoe, CheatAccessCards{
+		private RogueBJShoe2D(BlackJackShoe2D_Default org){
+			super(org);
+		}
+
+		//CheatAccessCards Overrides:
+		@Override
+		public ArrayList<BlackJackCard> getCardsRef(){return this.list;}
+
+		@Override
+		public ArrayList<BlackJackCard> getDiscardsRef(){return this.discard;}
+	}
 }

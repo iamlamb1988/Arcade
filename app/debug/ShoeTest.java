@@ -19,8 +19,8 @@ import java.awt.event.ActionListener;
 import java.awt.Graphics;
 
 public class ShoeTest extends JPanel implements IMenu{
-	private Animation bg,
-					  i;
+	private Animation bg;
+	private BlackJackCard2D c;
 
 	private final BlackJackShoe sh;
 
@@ -30,7 +30,6 @@ public class ShoeTest extends JPanel implements IMenu{
 		setLayout(null);
 		setBG(new SingleImage(width_px,height_px,0,255,0,255));
 
-		i=null;
 		sh = new BlackJackShoe2D_Default(100,125).genRogueClone();
 		sh.shuffleShoe();
 		CheatAccessCards cheat = (CheatAccessCards)sh;
@@ -48,9 +47,9 @@ public class ShoeTest extends JPanel implements IMenu{
 		draw.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				BlackJackCard x = (BlackJackCard)sh.drawTop();
-				System.out.println(x.face+" of "+x.suit+" : "+x.value);
-				discard.add(x);
+				c = (BlackJackCard2D)sh.drawTop();
+				System.out.println(c.face+" of "+c.suit+" : "+c.value);
+				discard.add(c);
 				repaint();
 			}
 		});
@@ -107,7 +106,7 @@ public class ShoeTest extends JPanel implements IMenu{
 					list.add(discard.remove(0));
 				}
 				sh.shuffleShoe();
-				i=null;
+				c=null;
 				repaint();
 				System.out.println("DONE\n");
 			}
@@ -125,8 +124,7 @@ public class ShoeTest extends JPanel implements IMenu{
 	public void paintComponent(Graphics p){
 		super.paintComponent(p);
 		bg.drawTopLeft(p);
-		if(i!=null)
-			i.draw(250,150,p);
-		
+		if(c!=null)
+			c.drawFront(p,150,250);
 	}
 }
