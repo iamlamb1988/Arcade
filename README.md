@@ -9,23 +9,28 @@ BlackJack
 The initial purpose of this class is to rebuild the BlackJack game using good OOP practices and SOLID principles.
 The classes will be extensible to several other Casino/Arcade games.
 
+Most games will have an Expected Value (EV) calculator that can generate how much currency you will win or lose over time.
+Some systems will be much harder to implement than others.
+
+As the focus is BlackJack for now, the program will simulate millions of hands and generate Basic Strategy tables using various counting system techniques.
+
 ## Update
 
-This master push demonstrates that test works primitively.
+Card2D and BlackJackShoe2D are successfully implemented using DIP principles.
+The generic Card Object is still the only generic that is a class while others are interfaces. (May be a DIP violation later but have no intentions of ever changing the basic definition.)
 
-The Cards are not yet attached to the image.
-The plan is to allow extensible image (Front and Back) to a BlackJackCard and/or BlackJackShoe.
-The test shoed is only drawing according to the Card Drawn and the CardAnimator is not attached as a member to a card.
+Cards still cycle through as before and drawing the image attached in the field.
 
-The "arcade" package will have interfaces for it's sub components. Any classes that implement will be in an "instances" folder. The filename of these instances will end in "_Default" and will end in "DefaultX" where X is an integer if there is more than 1.
+The resource and srcfactory classes need some work but successfully do the job.
+Looking to add some hardened simple values that extend Card2DAnimationFactory to keep this design simple.
 
-The purpose of this is to allow simple classes in "app" to tightly couple by extending OR implementing the interfaces of the given objects to utilize DIP principle.
+Future plan is to overhaul the readme with development diagrams to paint the clear structural development design.
 
 ## Next Master Push Goals
 
 - [ ] Implement interface for back button on the Panel Swap class. (will require careful planning, looking to avoid global references.)
   - [ ] Clean up some useless functions. Some functions have unused parameters.
-  - [ ] Build 2D Animation generator of BlackJackCard (Front and Back) (Card2DAnimationFactory.java)
+  - [x] Build 2D Animation generator of BlackJackCard (Front and Back) (Card2DAnimationFactory.java)
 
 - [ ] ShoeTest should not crash after drawing all cards out of Deck.
 
