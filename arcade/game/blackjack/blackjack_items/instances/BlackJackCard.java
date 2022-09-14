@@ -1,4 +1,4 @@
-package arcade.game.blackjack.blackjack_items;
+package arcade.game.blackjack.blackjack_items.instances;
 
 import arcade.game_items.*;
 
@@ -15,5 +15,14 @@ public class BlackJackCard extends Card{
 
 	public BlackJackCard(Card originalCard){ //will create a copy of card
 		this(originalCard.face,originalCard.suit);
+	}
+
+	private BlackJackCard(char faceValue, char suitValue, byte pointValue){
+		super(faceValue,suitValue);
+		value=pointValue;
+	}
+
+	public BlackJackCard clone(){
+		return new BlackJackCard(face,suit,value);
 	}
 }
