@@ -32,7 +32,7 @@ Future plan is to overhaul the readme with development diagrams to paint the cle
   - [ ] Clean up some useless functions. Some functions have unused parameters.
   - [x] Build 2D Animation generator of BlackJackCard (Front and Back) (Card2DAnimationFactory.java)
 
-- [ ] ShoeTest should not crash after drawing all cards out of Deck.
+- [x] ShoeTest should not crash after drawing all cards out of Deck.
 
 ## High level structure.
 

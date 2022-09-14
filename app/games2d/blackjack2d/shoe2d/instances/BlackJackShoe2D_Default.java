@@ -35,7 +35,7 @@ public class BlackJackShoe2D_Default extends BlackJackShoe_Default implements Bl
 		BlackJackCard original;
 		while(list.size()>0){
 			original = list.remove(0);
-			upgradeList.add(new BlackJackCard2D(original,aF.getCard2D(original.face,original.suit),aF.genCardBG()));
+			upgradeList.add(new BlackJackCard2D(original,aF.genCard2D(original.face,original.suit),aF.genCardBG()));
 		}
 
 		//4. Add 2D Cards back to original List..

@@ -211,13 +211,11 @@ public class Card2DAnimationFactory extends AnimationFactory{
 		}
 	}
 
-	public Animation getCard2D(char face, char suit){
+	public Animation genCard2D(char face, char suit){
 		 return fullImage[getSuitIndex(suit)*13+getFaceIndex(face)].clone();
 	}
 
 	public Animation genCardBG(){return BackBG.clone();}
-	//Obsolete
-	public SingleImage genCardFace(char face){return new SingleImage(cif.getCardFace(face));}
 
 	public SingleImage genCardBorder(
 		int width_px, int height_px,
