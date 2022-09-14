@@ -40,7 +40,7 @@ public class BlackJackShoe_Default implements Shoe, HonorCode{
 		else honest=true;
 	}
 
-	public RogueBJShoe genRogueClone(){
+	public CheatAccessCards genRogueClone(){
 		return new RogueBJShoe(this);
 	}
 

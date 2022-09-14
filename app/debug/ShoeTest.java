@@ -30,7 +30,7 @@ public class ShoeTest extends JPanel implements IMenu{
 		setLayout(null);
 		setBG(new SingleImage(width_px,height_px,0,255,0,255));
 
-		sh = new BlackJackShoe2D_Default(100,125).genRogueClone();
+		sh = (BlackJackShoe2D_Default)(new BlackJackShoe2D_Default(100,125).genRogueClone());
 		sh.shuffleShoe();
 		CheatAccessCards cheat = (CheatAccessCards)sh;
 		ArrayList<BlackJackCard> list = cheat.getCardsRef();
@@ -125,6 +125,6 @@ public class ShoeTest extends JPanel implements IMenu{
 		super.paintComponent(p);
 		bg.drawTopLeft(p);
 		if(c!=null)
-			c.drawFront(p,150,250);
+			c.drawFront(p,250,150);
 	}
 }

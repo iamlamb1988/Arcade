@@ -48,6 +48,11 @@ public class BlackJackShoe2D_Default extends BlackJackShoe_Default implements Bl
 		super(original);
 	}
 
+	@Override
+	public CheatAccessCards genRogueClone(){
+		return new RogueBJShoe2D(this);
+	}
+
 	//BlackJackShoe Overrides:
 	public void drawShoeTL(Graphics brush){}
 	public void drawShoe(Graphics brush, int xPos_px, int yPos_px){}

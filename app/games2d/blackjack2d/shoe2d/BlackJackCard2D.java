@@ -11,10 +11,10 @@ public class BlackJackCard2D extends BlackJackCard implements Drawable2D{
 
 	public BlackJackCard2D(BlackJackCard original, Animation frontAnm, Animation backAnm){
 		super(original);
-		if(front!=null)
+		if(frontAnm!=null)
 			front=frontAnm.clone();
 
-		if(back!=null)
+		if(backAnm!=null)
 			back=backAnm.clone();
 
 	}
