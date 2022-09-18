@@ -109,6 +109,20 @@ public class Card2DAnimationFactory extends AnimationFactory{
 		actualHeight_px=height_px;
 	}
 
+	public Card2DAnimationFactory(int height_px){
+		super();
+		LEN_RATIO=(byte)7;
+		WDT_RATIO=(byte)5;
+		LEN_TO_WDT_FACTOR=(double)LEN_RATIO/WDT_RATIO;
+		WDT_TO_LEN_FACTOR=(double)WDT_RATIO/LEN_RATIO;
+
+		constructorHelp();
+		cif = new CardImgFetcher();
+		actualWidth_px=(int)(height_px*WDT_TO_LEN_FACTOR);
+		actualHeight_px=height_px;
+		cif.fetchAll(actualWidth_px,actualHeight_px);
+	}
+
 	private byte getFaceIndex(char face){
 		if(face=='T') return (byte)8;
 		else if(face=='J') return (byte)9;
@@ -220,9 +234,6 @@ public class Card2DAnimationFactory extends AnimationFactory{
 	}
 
 	public void setCards(){
-		// char[] f = new char[13];
-		// char[] s = new char[4];
-
 		for(byte si=0;si<sArr.length;++si){
 			for(byte fi=0;fi<fArr.length;++fi){
 				setCard2D(fArr[fi],sArr[si]);
@@ -238,7 +249,8 @@ public class Card2DAnimationFactory extends AnimationFactory{
 
 	public SingleImage genCardBorder(
 		int width_px, int height_px,
-		int borderThickness_px){
+		int borderThickness_px
+	){
 		BufferedImage R = new BufferedImage(width_px,height_px,BufferedImage.TYPE_INT_ARGB);
 		Graphics2D P = (Graphics2D)R.createGraphics();
 

@@ -32,7 +32,7 @@ The next master push will focus mainly on the image fetchers and srcfactory clas
 
 ## High level structure.
 
-To be updated with images.
+![Generic Game Structure](readmesrcs/GameSetup.jpg)
 The "arcade" package will be treated as a library (will be reusable in different projects).
 The "animation" package will be treated as a library (will be reusable in different projects).
 The "app" package will utilize the arcade and animation libraries as necessary.
