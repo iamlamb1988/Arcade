@@ -212,11 +212,35 @@ public class Card2DAnimationFactory extends AnimationFactory{
 		Graphics2D P=TR.createGraphics();
 		bg.drawTopLeft(P);
 
+		//set Hearts and Diamonds to read
+		Animation tmpFace, tmpSuit;
+		if(suit=='H' || suit=='D'){
+			BufferedImage tmp = (BufferedImage)faceImg[faceIndex];
+			for(int x=0;x<tmp.getWidth();++x){
+				for(int y=0;y<tmp.getHeight();++y){
+					if(tmp.getRGB(x,y) == 0xFF000000){tmp.setRGB(x,y,0xFFFF0000);}
+				}
+			}
+			tmpFace=new SingleImage(tmp);
+
+			tmp = (BufferedImage)suitImg[suitIndex];
+			for(int x=0;x<tmp.getWidth();++x){
+				for(int y=0;y<tmp.getHeight();++y){
+					if(tmp.getRGB(x,y) == 0xFF000000){tmp.setRGB(x,y,0xFFFF0000);}
+				}
+			}
+			tmpSuit=new SingleImage(tmp);
+
+		}else{
+			tmpFace=faceImg[faceIndex];
+			tmpSuit=suitImg[suitIndex];
+		}
+
 		//Draw face
-		faceImg[getFaceIndex(face)].draw(actualSideOffset_px,actualTopOffset_px,P);
+		tmpFace.draw(actualSideOffset_px,actualTopOffset_px,P);
 
 		//draw suit
-		suitImg[getSuitIndex(suit)].draw(actualWidth_px-actualSuitWidth_px-actualSideOffset_px,actualTopOffset_px,P);
+		tmpSuit.draw(actualWidth_px-actualSuitWidth_px-actualSideOffset_px,actualTopOffset_px,P);
 
 		//Prepare rotation of 180 and shift half of height
 		AffineTransform T = new AffineTransform();

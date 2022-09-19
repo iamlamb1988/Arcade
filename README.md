@@ -26,8 +26,8 @@ The next master push will focus mainly on the image fetchers and srcfactory clas
 - [ ] Implement interface for back button on the Panel Swap class. (will require careful planning, looking to avoid global references.)
 - [ ] Clean up some useless functions. Some functions have unused parameters.
 - [ ] Overhaul README.md with flow images:
-	- [ ] Generic library independancy
-	- [ ] Generic game item diversion independancy
+	- [x] Generic library independancy
+	- [x] Generic game item diversion independancy
 	- [ ] Generic animation diversion independancy
 
 ## High level structure.
