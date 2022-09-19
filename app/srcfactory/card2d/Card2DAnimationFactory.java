@@ -216,6 +216,9 @@ public class Card2DAnimationFactory extends AnimationFactory{
 		Animation tmpFace, tmpSuit;
 		if(suit=='H' || suit=='D'){
 			BufferedImage tmp = (BufferedImage)faceImg[faceIndex];
+			tmp = new BufferedImage(tmp.getWidth(),tmp.getHeight(),BufferedImage.TYPE_INT_ARGB);
+			Graphics2D tmpP = tmp.createGraphics();
+			while(!tmpP.drawImage((BufferedImage)faceImg[faceIndex],0,0,null)){}
 			for(int x=0;x<tmp.getWidth();++x){
 				for(int y=0;y<tmp.getHeight();++y){
 					if(tmp.getRGB(x,y) == 0xFF000000){tmp.setRGB(x,y,0xFFFF0000);}
@@ -224,6 +227,9 @@ public class Card2DAnimationFactory extends AnimationFactory{
 			tmpFace=new SingleImage(tmp);
 
 			tmp = (BufferedImage)suitImg[suitIndex];
+			tmp = new BufferedImage(tmp.getWidth(),tmp.getHeight(),BufferedImage.TYPE_INT_ARGB);
+			tmpP = tmp.createGraphics();
+			while(!tmpP.drawImage((BufferedImage)suitImg[suitIndex],0,0,null)){}
 			for(int x=0;x<tmp.getWidth();++x){
 				for(int y=0;y<tmp.getHeight();++y){
 					if(tmp.getRGB(x,y) == 0xFF000000){tmp.setRGB(x,y,0xFFFF0000);}
