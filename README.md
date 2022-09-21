@@ -21,18 +21,10 @@ Construction of Card2DAnimation factory now separates red and black cards.
 
 Back Button implmented but must pass JFrame parent and previous IMenu reference.
 
-Began to construct BlackJackTable interface along with a class implementation of BlackJackTable_Default. (I know... not on the master goal list this sprint)
-
-Having doubts on Panel Swap class, it may not be relevant if a/the "Previous" IMenu is passed into a constructor. This will allow Anonymous ActionListener classes to implement and clear/reset state along with custom implementation. More to discuss after this.
-
 ## Next Master Push Goals
-
-- [x] Implement interface for back button on the Panel Swap class.
-- [x] Clean up some useless functions. Some functions have unused parameters.
-- [ ] Overhaul README.md with flow images:
-	- [x] Generic library independancy
-	- [x] Generic game item diversion independancy
-	- [ ] Generic animation diversion independancy
+- [ ] Improve structure diagram. Elaborate more on 2D implementation.
+- [ ] Develop Table Interface and Default Table implementation.
+- [ ] Verify Shoe interface has everything needed to implement Table simplicity.
 
 ## High level structure.
 
