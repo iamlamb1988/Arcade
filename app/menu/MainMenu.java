@@ -9,6 +9,7 @@ import animation.SingleImage;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MainMenu extends JPanel implements IMenu{
@@ -27,9 +28,20 @@ public class MainMenu extends JPanel implements IMenu{
 		JButton sbs = new JButton("Shoe Tester");
 		sbs.setLocation(10,10);
 		sbs.setSize(150,40);
-		sbs.addActionListener(new PanelSwapAction(parent,this,new ShoeTest(width_px,height_px)));
+		sbs.addActionListener(new PanelSwapAction(parent,this,new ShoeTest(parent,this,width_px,height_px)));
 		add(sbs);
 
+		//Add Table Test
+		JButton sbt = new JButton("Table Tester");
+		sbt.setLocation(10,60);
+		sbt.setSize(150,40);
+		sbt.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				System.out.println("Not yet ready for debugging.");
+			}
+		});
+		add(sbt);
 		setVisible(true);
 	}
 

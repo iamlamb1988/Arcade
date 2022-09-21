@@ -1,5 +1,6 @@
 package app.srcfactory.card2d;
 
+import arcade.game_items.Card;
 import app.srcfactory.AnimationFactory;
 import animation.Animation;
 import animation.SingleImage;
@@ -27,6 +28,12 @@ public class Card2DAnimationFactory extends AnimationFactory{
 	private int actualTopOffset_px;		//spacing from edge to TL of face value
 	private int actualSideOffset_px;	//spacing from edge to TL of face value
 
+	private char[] sArr; //suite Array
+	private char[] fArr; //face Array
+
+	Card[][] ref2;
+	Card[]   ref1;
+
 	private CardImgFetcher cif;
 
 	private Animation bg; //background of face
@@ -40,6 +47,37 @@ public class Card2DAnimationFactory extends AnimationFactory{
 
 	private void constructorHelp(){
 		isUpSeparate=false;
+		sArr=new char[4];
+		fArr=new char[13];
+		sArr[0]='C';
+		sArr[1]='D';
+		sArr[2]='H';
+		sArr[3]='S';
+
+		fArr[0]='2';
+		fArr[1]='3';
+		fArr[2]='4';
+		fArr[3]='5';
+		fArr[4]='6';
+		fArr[5]='7';
+		fArr[6]='8';
+		fArr[7]='9';
+		fArr[8]='T';
+		fArr[9]='J';
+		fArr[10]='Q';
+		fArr[11]='K';
+		fArr[12]='A';
+
+		ref1 = new Card[52];
+		ref2 = new Card[4][13];
+
+		for(short s=0;s<4;++s){
+			for(short f=0;f<13;++f){
+				ref2[s][f] = new Card(fArr[f],sArr[s]);
+				ref1[4*s+f]= ref2[s][f];
+			}
+		}
+
 		faceImg = new Animation[13];
 		suitImg = new Animation[4];
 		fullImage = new Animation[52];
@@ -69,6 +107,20 @@ public class Card2DAnimationFactory extends AnimationFactory{
 		cif.fetchAll(width_px,height_px);
 		actualWidth_px=width_px;
 		actualHeight_px=height_px;
+	}
+
+	public Card2DAnimationFactory(int height_px){
+		super();
+		LEN_RATIO=(byte)7;
+		WDT_RATIO=(byte)5;
+		LEN_TO_WDT_FACTOR=(double)LEN_RATIO/WDT_RATIO;
+		WDT_TO_LEN_FACTOR=(double)WDT_RATIO/LEN_RATIO;
+
+		constructorHelp();
+		cif = new CardImgFetcher();
+		actualWidth_px=(int)(height_px*WDT_TO_LEN_FACTOR);
+		actualHeight_px=height_px;
+		cif.fetchAll(actualWidth_px,actualHeight_px);
 	}
 
 	private byte getFaceIndex(char face){
@@ -160,11 +212,41 @@ public class Card2DAnimationFactory extends AnimationFactory{
 		Graphics2D P=TR.createGraphics();
 		bg.drawTopLeft(P);
 
+		//set Hearts and Diamonds to read
+		Animation tmpFace, tmpSuit;
+		if(suit=='H' || suit=='D'){
+			BufferedImage tmp = (BufferedImage)faceImg[faceIndex];
+			tmp = new BufferedImage(tmp.getWidth(),tmp.getHeight(),BufferedImage.TYPE_INT_ARGB);
+			Graphics2D tmpP = tmp.createGraphics();
+			while(!tmpP.drawImage((BufferedImage)faceImg[faceIndex],0,0,null)){}
+			for(int x=0;x<tmp.getWidth();++x){
+				for(int y=0;y<tmp.getHeight();++y){
+					if(tmp.getRGB(x,y) == 0xFF000000){tmp.setRGB(x,y,0xFFFF0000);}
+				}
+			}
+			tmpFace=new SingleImage(tmp);
+
+			tmp = (BufferedImage)suitImg[suitIndex];
+			tmp = new BufferedImage(tmp.getWidth(),tmp.getHeight(),BufferedImage.TYPE_INT_ARGB);
+			tmpP = tmp.createGraphics();
+			while(!tmpP.drawImage((BufferedImage)suitImg[suitIndex],0,0,null)){}
+			for(int x=0;x<tmp.getWidth();++x){
+				for(int y=0;y<tmp.getHeight();++y){
+					if(tmp.getRGB(x,y) == 0xFF000000){tmp.setRGB(x,y,0xFFFF0000);}
+				}
+			}
+			tmpSuit=new SingleImage(tmp);
+
+		}else{
+			tmpFace=faceImg[faceIndex];
+			tmpSuit=suitImg[suitIndex];
+		}
+
 		//Draw face
-		faceImg[getFaceIndex(face)].draw(actualSideOffset_px,actualTopOffset_px,P);
+		tmpFace.draw(actualSideOffset_px,actualTopOffset_px,P);
 
 		//draw suit
-		suitImg[getSuitIndex(suit)].draw(actualWidth_px-actualSuitWidth_px-actualSideOffset_px,actualTopOffset_px,P);
+		tmpSuit.draw(actualWidth_px-actualSuitWidth_px-actualSideOffset_px,actualTopOffset_px,P);
 
 		//Prepare rotation of 180 and shift half of height
 		AffineTransform T = new AffineTransform();
@@ -182,31 +264,9 @@ public class Card2DAnimationFactory extends AnimationFactory{
 	}
 
 	public void setCards(){
-		char[] f = new char[13];
-		char[] s = new char[4];
-
-		f[0]='2';
-		f[1]='3';
-		f[2]='4';
-		f[3]='5';
-		f[4]='6';
-		f[5]='7';
-		f[6]='8';
-		f[7]='9';
-		f[8]='T';
-		f[9]='J';
-		f[10]='Q';
-		f[11]='K';
-		f[12]='A';
-
-		s[0]='C';
-		s[1]='D';
-		s[2]='H';
-		s[3]='S';
-
-		for(byte si=0;si<s.length;++si){
-			for(byte fi=0;fi<f.length;++fi){
-				setCard2D(f[fi],s[si]);
+		for(byte si=0;si<sArr.length;++si){
+			for(byte fi=0;fi<fArr.length;++fi){
+				setCard2D(fArr[fi],sArr[si]);
 			}
 		}
 	}
@@ -219,7 +279,8 @@ public class Card2DAnimationFactory extends AnimationFactory{
 
 	public SingleImage genCardBorder(
 		int width_px, int height_px,
-		int borderThickness_px){
+		int borderThickness_px
+	){
 		BufferedImage R = new BufferedImage(width_px,height_px,BufferedImage.TYPE_INT_ARGB);
 		Graphics2D P = (Graphics2D)R.createGraphics();
 

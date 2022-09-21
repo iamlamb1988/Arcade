@@ -1,5 +1,7 @@
 package app.debug;
 
+import app.DesktopApp;
+import app.PanelSwapAction;
 import app.menu.IMenu;
 import app.games2d.blackjack2d.shoe2d.BlackJackCard2D;
 import app.games2d.blackjack2d.shoe2d.instances.BlackJackShoe2D_Default;
@@ -24,7 +26,7 @@ public class ShoeTest extends JPanel implements IMenu{
 
 	private final BlackJackShoe sh;
 
-	public ShoeTest(int width_px, int height_px){
+	public ShoeTest(DesktopApp parentApp, IMenu previous, int width_px, int height_px){
 		super();
 		setSize(width_px,height_px);
 		setLayout(null);
@@ -36,11 +38,17 @@ public class ShoeTest extends JPanel implements IMenu{
 		ArrayList<BlackJackCard> list = cheat.getCardsRef();
 		ArrayList<BlackJackCard> discard = cheat.getDiscardsRef();
 
-		JButton draw = new JButton("Draw"),
+		JButton back = new JButton("Main Menu"),
+				draw = new JButton("Draw"),
 				showShoe = new JButton("Show Shoe"),
 				showDiscard = new JButton("Show Discard Pile"),
 				shuffle = new JButton("Shuffle"),
 				reset = new JButton("Reset Shoe");
+
+		back.setSize(150,40);
+		back.setLocation(width_px-back.getWidth()-30,10);
+		back.addActionListener(new PanelSwapAction(parentApp,this,(JPanel)previous));
+		add(back);
 
 		draw.setLocation(10,10);
 		draw.setSize(150,40);
