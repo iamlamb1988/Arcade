@@ -28,7 +28,7 @@ public class MainMenu extends JPanel implements IMenu{
 		JButton sbs = new JButton("Shoe Tester");
 		sbs.setLocation(10,10);
 		sbs.setSize(150,40);
-		sbs.addActionListener(new PanelSwapAction(parent,this,new ShoeTest(width_px,height_px)));
+		sbs.addActionListener(new PanelSwapAction(parent,this,new ShoeTest(parent,this,width_px,height_px)));
 		add(sbs);
 
 		//Add Table Test
