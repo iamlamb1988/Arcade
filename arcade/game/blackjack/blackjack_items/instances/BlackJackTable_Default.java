@@ -1,12 +1,18 @@
 package arcade.game.blackjack.blackjack_items;
 
-import arcade.HonorCode;
+import arcade.game.blackjack.BlackJackTable;
+import arcade.currency.CurrencyDecimal;
 
-//SINGLE RESPONSIBILITY: move cards and money to and from hands and shoes
-//Does NOT enforce rules (The BlackJackGame classes will enforce fair play)
-public interface BlackJackTable extends HonorCode{
-	//Get methods
-	public double getTableCredits();
+//Designed for a single Currency only
+public class BlackJackTable_Default implements BlackJackTable{
+	private BlackJackShoe shoe;
+	private CurrencyDecimal balance;
+
+	private BlackJackCard hole;
+	private ArrayList<BlackJackCard> hand; //face up cards only.
+
+	//BlackJackTable Overrides:
+	public double getTableCredits(){balance.getDecAmnt();}
 	public double getSeatPocketCredits(byte seatIndex);
 	public byte getTableHandValue();
 	public byte getSeatHandValue(byte seatIndex, byte handIndex);
