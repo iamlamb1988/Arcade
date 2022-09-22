@@ -8,7 +8,7 @@ import arcade.game.blackjack.blackjack_items.CheatAccessCards;
 import java.util.Collections;
 import java.util.ArrayList;
 
-public class BlackJackShoe_Default implements Shoe, HonorCode{
+public class BlackJackShoe_Default implements BlackJackShoe, HonorCode{
 	protected ArrayList<BlackJackCard> list,
 									   discard;
 	private boolean honest;

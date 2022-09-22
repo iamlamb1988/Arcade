@@ -1,8 +1,11 @@
-package arcade.game.blackjack.blackjack_items;
+package arcade.game.blackjack.blackjack_items.instances;
 
-import arcade.game.blackjack.BlackJackTable;
-import arcade.game.blackjack.BlackJackShoe_Default;
+import arcade.game.blackjack.blackjack_items.BlackJackTable;
+import arcade.game.blackjack.blackjack_items.BlackJackShoe;
 import arcade.currency.CurrencyDecimal;
+import arcade.currency.currency_items.CarbonCoin;
+import arcade.game_items.Seat;
+import java.util.ArrayList;
 
 //Designed for a single Currency only
 public class BlackJackTable_Default implements BlackJackTable{
@@ -35,7 +38,7 @@ public class BlackJackTable_Default implements BlackJackTable{
 	}
 
 	//BlackJackTable Overrides:
-	public double getTableCredits(){balance.getDecAmnt();}
+	public double getTableCredits(){return balance.getDecAmnt();}
 	public double getSeatPocketCredits(byte seatIndex){return -1;}
 	public byte getTableHandValue(){return -1;}
 	public byte getSeatHandValue(byte seatIndex, byte handIndex){return -1;}
@@ -52,4 +55,8 @@ public class BlackJackTable_Default implements BlackJackTable{
 	public void takeBet(byte seatIndex, byte handIndex){}
 	public void awardBet(byte seatIndex, byte handIndex){}
 	public void clearTable(){}
+
+	//HonorCode Overrides
+	@Override
+	public boolean isHonorable(){return false;}
 }
