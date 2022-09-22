@@ -21,6 +21,12 @@ Construction of Card2DAnimation factory now separates red and black cards.
 
 Back Button implmented but must pass JFrame parent and previous IMenu reference.
 
+Possible Single Responsibility Violation of Interface BlackJackTable.
+The BlackJackTable has 2 responsibilitie:
+Adding moving cards to and from Seats.
+Transferring money to and from Seats.
+Should there be a separate Banker class to move money back and forth? Probably not.. (seems more complicated to keep it as is).
+
 ## Next Master Push Goals
 - [ ] Improve structure diagram. Elaborate more on 2D implementation.
 - [ ] Develop Table Interface and Default Table implementation.
