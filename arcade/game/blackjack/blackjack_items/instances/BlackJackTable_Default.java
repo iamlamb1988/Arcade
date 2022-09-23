@@ -4,7 +4,7 @@ import arcade.game.blackjack.blackjack_items.BlackJackTable;
 import arcade.game.blackjack.blackjack_items.BlackJackShoe;
 import arcade.currency.CurrencyDecimal;
 import arcade.currency.currency_items.CarbonCoin;
-import arcade.game_items.Seat;
+import arcade.game.game_items.Seat;
 import java.util.ArrayList;
 
 //Designed for a single Currency only

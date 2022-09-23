@@ -1,8 +1,8 @@
 package arcade.game.blackjack.blackjack_items.instances;
 
 import arcade.HonorCode;
-import arcade.game_items.Card;
-import arcade.game_items.Shoe;
+import arcade.game.game_items.Card;
+import arcade.game.game_items.Shoe;
 import arcade.game.blackjack.blackjack_items.BlackJackShoe;
 import arcade.game.blackjack.blackjack_items.CheatAccessCards;
 import java.util.Collections;

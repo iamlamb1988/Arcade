@@ -1,4 +1,4 @@
-package arcade.game_items;
+package arcade.game.game_items;
 
 import java.util.Collections;
 import java.util.ArrayList;

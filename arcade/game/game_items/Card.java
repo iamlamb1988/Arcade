@@ -1,4 +1,4 @@
-package arcade.game_items;
+package arcade.game.game_items;
 
 public class Card{
 	public final char face;
