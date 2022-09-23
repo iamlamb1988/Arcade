@@ -18,18 +18,22 @@ Construction of Card2DAnimation factory now separates red and black cards.
 
 Back Button implmented but must pass JFrame parent and previous IMenu reference.
 
+Beginning to think BlackJackTables should have a BuilderClass becuase there is a lot of different possiblilities for ShoeSize, Card Types, Currencies that can be generated.
+The BuilderClass for BlackJackTables can have some hardcoded defaults that will fill all the parameters of a BlackJackTable.
+Right now, the table is not big enough but will not be able to satisfy all conditions without several parameters.
+
 ## Single Responsibility Principle
 BlackJackTable interface has 2 responsibilities:
 * Transfer cards to and from Shoe, Table and Players,
 * Transfers currencies to and from Table and Players
 
-Should there be a "money transfer" class that takes on the currency transfer?
+Should there be a "money transfer" class that takes on the currency transfer? Yes.
 
 ## Next Master Push Goals
 - [ ] Improve structure diagram. Elaborate more on 2D implementation.
 - [ ] Verify Shoe interface has everything needed to implement Table simplicity.
 - [ ] Develop Table Interface and Default Table implementation.
-- [ ] Packages "game" and "game_items" are in the same directory. Should "game_items" be in the "game" directory?
+- [x] Packages "game" and "game_items" are in the same directory.
 
 ## High level structure.
 ![Generic Game Structure](readmesrcs/GameSetup.jpg)
