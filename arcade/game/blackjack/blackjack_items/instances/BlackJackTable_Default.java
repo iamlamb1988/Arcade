@@ -43,7 +43,7 @@ public class BlackJackTable_Default implements BlackJackTable{
 
 	//BlackJackTable Overrides:
 	@Override
-	public boolean isSeatEmpty(){return false;}
+	public boolean isSeatOccupied(byte seatIndex){return seat.get(seatIndex).isOccupied();}
 
 	@Override
 	public double getTableCredits(){return balance.getDecAmnt();}
