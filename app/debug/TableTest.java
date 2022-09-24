@@ -26,11 +26,22 @@ public class TableTest extends JPanel implements IMenu{
 		p.fillRect(0,0,width_px,height_px);
 		bg=new SingleImage(bgg);
 
-		JButton back = new JButton("Main Menu");
+		JButton back = new JButton("Main Menu"),
+				dDraw = new JButton("Dealer Draw"),
+				addPlr = new JButton("Add Player");
+
 		back.setSize(150,40);
 		back.setLocation(width_px-back.getWidth()-30,10);
 		back.addActionListener(new PanelSwapAction(parentApp,this,(JPanel)previous));
 		add(back);
+
+		dDraw.setSize(150,40);
+		dDraw.setLocation(10,10);
+		add(dDraw);
+
+		addPlr.setSize(150,40);
+		addPlr.setLocation(10,60);
+		add(addPlr);
 	}
 
 	//IAppItem Overrides:

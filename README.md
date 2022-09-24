@@ -22,7 +22,7 @@ Beginning to think BlackJackTables should have a BuilderClass becuase there is a
 The BuilderClass for BlackJackTables can have some hardcoded defaults that will fill all the parameters of a BlackJackTable.
 Right now, the table is not big enough but will not be able to satisfy all conditions without several parameters.
 
-## Single Responsibility Principle
+### Single Responsibility Principle Violation
 BlackJackTable interface has 2 responsibilities:
 * Transfer cards to and from Shoe, Table and Players,
 * Transfers currencies to and from Table and Players
