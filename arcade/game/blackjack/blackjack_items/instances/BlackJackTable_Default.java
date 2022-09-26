@@ -84,7 +84,12 @@ public class BlackJackTable_Default implements BlackJackTable{
 	public void awardBet(byte seatIndex, byte handIndex){}
 
 	@Override
-	public void clearTable(){}
+	public void clearTable(){
+		//1. move all cards from all hands.
+		//2. delete all but 1 hand from all seats (Or seats with a person)
+		//3. move all discards to shoe.
+		//4. shuffle shoe.
+	}
 
 	//HonorCode Overrides
 	@Override

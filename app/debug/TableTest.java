@@ -8,6 +8,8 @@ import animation.Animation;
 import animation.SingleImage;
 import javax.swing.JPanel;
 import javax.swing.JButton;
+import java.awt.event.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -37,6 +39,12 @@ public class TableTest extends JPanel implements IMenu{
 
 		dDraw.setSize(150,40);
 		dDraw.setLocation(10,10);
+		dDraw.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				System.out.println("Not yet ready to test.");
+			}
+		});
 		add(dDraw);
 
 		addPlr.setSize(150,40);

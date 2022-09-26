@@ -2,17 +2,18 @@ package arcade.game.blackjack.blackjack_items.instances;
 
 import arcade.customer.Player;
 import arcade.game.blackjack.blackjack_items.instances.BlackJackCard;
+import arcade.game.blackjack.blackjack_items.instances.BlackJackHand_Default;
 import arcade.game.blackjack.blackjack_items.BlackJackSeat;
 import java.util.ArrayList;
 
 //Should THIS class be a private class within BlackJackTable instances?
 public class BlackJackSeat_Default implements BlackJackSeat{
 	private Player player;
-	private ArrayList<Hand> hand;
+	private ArrayList<BlackJackHand_Default> hand;
 
 	public BlackJackSeat_Default(){
-		hand = new ArrayList<Hand>();
-		hand.add(new Hand()); //Add 1 hand
+		hand = new ArrayList<BlackJackHand_Default>();
+		hand.add(new BlackJackHand_Default()); //Add 1 hand
 	}
 
 	//Seat Overrides:
@@ -27,7 +28,7 @@ public class BlackJackSeat_Default implements BlackJackSeat{
 	public double getCreditsBet(byte handIndex){return -1;}
 
 	@Override
-	public byte getNumberOfCardsInHand(byte handIndex){return (byte)hand.get(handIndex).h_hand.size();}
+	public byte getNumberOfCardsInHand(byte handIndex){return hand.get(handIndex).getCardQ();}
 
 	@Override
 	public byte getPoints(byte handIndex){return hand.get(handIndex).getBJvalue();}
@@ -40,45 +41,4 @@ public class BlackJackSeat_Default implements BlackJackSeat{
 
 	@Override
 	public boolean isSoft(byte handIndex){return hand.get(handIndex).isSoft();}
-
-	private class Hand{
-		private ArrayList<BlackJackCard> h_hand;
-		private Hand(){
-			h_hand=new ArrayList<BlackJackCard>();
-		}
-
-		private byte getBJvalue(){
-			byte R=0,
-				 aceCtr=0;
-
-			for(BlackJackCard x : h_hand){
-				R+=x.value;
-				if(x.face=='A') ++aceCtr;
-			}
-			while(R>21 && aceCtr>0){
-				R-=10;
-				--aceCtr;
-			}
-			return R;
-		}
-
-		private boolean isSoft(){
-			byte R=0,
-				 aceCtr=0;
-
-			for(BlackJackCard x : h_hand){
-				R+=x.value;
-				if(x.face=='A') ++aceCtr;
-			}
-			while(R>21 && aceCtr>0){
-				R-=10;
-				--aceCtr;
-			}
-			return aceCtr>0;
-		}
-
-		private boolean isNat(){
-			return (h_hand.size()==2 && (h_hand.get(0).value+h_hand.get(1).value)==21);
-		}
-	}
 }

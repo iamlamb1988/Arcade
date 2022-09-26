@@ -33,8 +33,11 @@ Should there be a "money transfer" class that takes on the currency transfer? Ye
 - [ ] Develop Table Interface and Default Table implementation.
 	- [x] Table instance.
 	- [ ] Seat instance. (Currently calculating hand counts and values.)
+
 	NOTE: Will not be working on currency transactions right now. Filler code is inserted at the moment.
+
 	NOTE: Will not place Player instances in BlackJackSeat yet.
+
 - [x] Packages "game" and "game_items" are in the same directory.
 
 ## High level structure.
