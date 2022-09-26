@@ -55,7 +55,9 @@ public class BlackJackTable_Default implements BlackJackTable{
 	public byte getTableHandValue(){return -1;}
 
 	@Override
-	public byte getSeatHandValue(byte seatIndex, byte handIndex){return -1;}
+	public byte getSeatHandValue(byte seatIndex, byte handIndex){
+		return seat.get(seatIndex).getPoints(handIndex);
+	}
 
 	@Override
 	public boolean isSeatNaturalWin(byte seatIndex){return false;}

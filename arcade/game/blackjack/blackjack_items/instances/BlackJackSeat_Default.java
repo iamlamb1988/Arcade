@@ -36,10 +36,10 @@ public class BlackJackSeat_Default implements BlackJackSeat{
 	public boolean isNatural(byte handIndex){return hand.get(handIndex).isNat();}
 
 	@Override
-	public boolean isBust(byte handIndex){return false;}
+	public boolean isBust(byte handIndex){return hand.get(handIndex).getBJvalue()>21;}
 
 	@Override
-	public boolean isSoft(byte handIndex){return false;}
+	public boolean isSoft(byte handIndex){return hand.get(handIndex).isSoft();}
 
 	private class Hand{
 		private ArrayList<BlackJackCard> h_hand;
@@ -60,6 +60,21 @@ public class BlackJackSeat_Default implements BlackJackSeat{
 				--aceCtr;
 			}
 			return R;
+		}
+
+		private boolean isSoft(){
+			byte R=0,
+				 aceCtr=0;
+
+			for(BlackJackCard x : h_hand){
+				R+=x.value;
+				if(x.face=='A') ++aceCtr;
+			}
+			while(R>21 && aceCtr>0){
+				R-=10;
+				--aceCtr;
+			}
+			return aceCtr>0;
 		}
 
 		private boolean isNat(){
