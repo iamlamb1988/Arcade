@@ -29,6 +29,8 @@ public class TableTest extends JPanel implements IMenu{
 		p.setColor(new Color(255,255,0,255));
 		p.fillRect(0,0,width_px,height_px);
 		bg=new SingleImage(bgg);
+		t=new BlackJackTable_Default();
+		t.shuffleShoe();
 
 		JButton back = new JButton("Main Menu"),
 				chkPlayers = new JButton("How many players?"),
@@ -64,7 +66,13 @@ public class TableTest extends JPanel implements IMenu{
 		dDraw.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				System.out.println("Not yet ready to test.");
+				t.dealDealer();
+				byte tmpI=(byte)(t.getTableCardQty()-1);
+				System.out.println(
+					"Dealer Draws: "+
+					t.getTableCardSuit(tmpI)+" of "+
+					t.getTableCardFace(tmpI)
+				);
 			}
 		});
 		add(dDraw);

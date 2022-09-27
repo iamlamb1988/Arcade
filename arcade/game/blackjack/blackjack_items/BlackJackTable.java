@@ -9,6 +9,10 @@ public interface BlackJackTable extends HonorCode{
 	public boolean isSeatOccupied(byte seatIndex);
 	public double getTableCredits();
 	public double getSeatPocketCredits(byte seatIndex);
+	public byte getTableCardQty();
+	public byte getTableCardValue(byte cardIndex);
+	public char getTableCardFace(byte cardIndex);
+	public char getTableCardSuit(byte cardIndex);
 	public byte getTableHandValue();
 	public byte getSeatHandValue(byte seatIndex, byte handIndex);
 
@@ -20,6 +24,7 @@ public interface BlackJackTable extends HonorCode{
 	public boolean isSeatHandBust(byte seatIndex,byte handIndex);
 
 	//Set methods
+	public void shuffleShoe();
 	public void dealHoleCard();
 	public void dealDealer();
 	public void dealCard(byte seatIndex,byte handIndex);

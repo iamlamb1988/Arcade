@@ -11,6 +11,10 @@ public class BlackJackHand_Default{
 
 	public byte getCardQ(){return (byte)h_hand.size();}
 
+	public byte getCardValue(byte cardIndex){return h_hand.get(cardIndex).value;}
+	public char getCardSuit(byte cardIndex){return h_hand.get(cardIndex).suit;}
+	public char getCardFace(byte cardIndex){return h_hand.get(cardIndex).face;}
+
 	public byte getBJvalue(){
 		byte R=0,
 			 aceCtr=0;

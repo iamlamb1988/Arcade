@@ -54,6 +54,18 @@ public class BlackJackTable_Default implements BlackJackTable{
 	public double getSeatPocketCredits(byte seatIndex){return -1;}
 
 	@Override
+	public byte getTableCardQty(){return hand.getCardQ();}
+
+	@Override
+	public byte getTableCardValue(byte cardIndex){return hand.getCardValue(cardIndex);}
+
+	@Override
+	public char getTableCardFace(byte cardIndex){return hand.getCardFace(cardIndex);}
+
+	@Override
+	public char getTableCardSuit(byte cardIndex){return hand.getCardSuit(cardIndex);}
+
+	@Override
 	public byte getTableHandValue(){return hand.getBJvalue();}
 
 	@Override
@@ -75,6 +87,9 @@ public class BlackJackTable_Default implements BlackJackTable{
 
 	@Override
 	public boolean isSeatHandBust(byte seatIndex,byte handIndex){return false;}
+
+	@Override
+	public void shuffleShoe(){shoe.shuffleShoe();}
 
 	@Override
 	public void dealHoleCard(){hole=(BlackJackCard)shoe.dealTop();}
