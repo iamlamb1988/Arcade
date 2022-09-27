@@ -70,8 +70,8 @@ public class TableTest extends JPanel implements IMenu{
 				byte tmpI=(byte)(t.getTableCardQty()-1);
 				System.out.println(
 					"Dealer Draws: "+
-					t.getTableCardSuit(tmpI)+" of "+
-					t.getTableCardFace(tmpI)
+					t.getTableCardFace(tmpI)+" of "+
+					t.getTableCardSuit(tmpI)
 				);
 			}
 		});
