@@ -20,6 +20,8 @@ public interface BlackJackTable extends HonorCode{
 	public boolean isSeatHandBust(byte seatIndex,byte handIndex);
 
 	//Set methods
+	public void dealHoleCard();
+	public void dealDealer();
 	public void dealCard(byte seatIndex,byte handIndex);
 	public void takeBet(byte seatIndex, byte handIndex);
 	public void awardBet(byte seatIndex, byte handIndex);

@@ -42,5 +42,5 @@ public interface Shoe{
 
 	public void shuffleShoe();
 
-	public Card drawTop();
+	public Card dealTop();
 }

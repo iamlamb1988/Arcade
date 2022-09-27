@@ -47,8 +47,10 @@ public class BlackJackShoe_Default implements BlackJackShoe, HonorCode{
 	//Shoe Overrides:
     @Override
 	public void shuffleShoe(){Collections.shuffle(list);}
-    public Card drawTop(){return list.remove(0);}
 
+	@Override
+    public Card dealTop(){return list.remove(0);}
+	
 	//HonorCode Overrides:
 	public boolean isHonorable(){ //needs to check on list and discard
 		return honest;

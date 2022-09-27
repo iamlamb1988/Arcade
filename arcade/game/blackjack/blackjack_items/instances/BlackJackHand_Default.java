@@ -44,4 +44,7 @@ public class BlackJackHand_Default{
 	public boolean isNat(){
 		return (h_hand.size()==2 && (h_hand.get(0).value+h_hand.get(1).value)==21);
 	}
+
+	public void receiveCard(BlackJackCard card){h_hand.add(card);}
+	public BlackJackCard discardCard(){return h_hand.remove(h_hand.size()-1);}
 }

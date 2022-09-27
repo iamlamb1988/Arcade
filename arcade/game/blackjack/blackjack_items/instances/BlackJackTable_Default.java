@@ -3,6 +3,7 @@ package arcade.game.blackjack.blackjack_items.instances;
 import arcade.game.blackjack.blackjack_items.BlackJackTable;
 import arcade.game.blackjack.blackjack_items.BlackJackShoe;
 import arcade.game.blackjack.blackjack_items.BlackJackSeat;
+import arcade.game.blackjack.blackjack_items.instances.BlackJackHand_Default;
 import arcade.currency.CurrencyDecimal;
 import arcade.currency.currency_items.CarbonCoin;
 import arcade.game.game_items.Seat;
@@ -22,7 +23,8 @@ public class BlackJackTable_Default implements BlackJackTable{
 	private ArrayList<BlackJackSeat> seat;
 
 	private BlackJackCard hole; // will be shifted to hand upon up flip
-	private ArrayList<BlackJackCard> hand; //face up cards only.
+	private BlackJackHand_Default hand; //face up cards only.
+
 	//NEEDS a constructor with generic type that extends CurrencyDecimal
 	public BlackJackTable_Default(){
 		MaxSeats=7;
@@ -38,7 +40,7 @@ public class BlackJackTable_Default implements BlackJackTable{
 		}
 
 		// Initiate a seat
-		hand = new ArrayList<BlackJackCard>();
+		hand = new BlackJackHand_Default();
 	}
 
 	//BlackJackTable Overrides:
@@ -52,7 +54,7 @@ public class BlackJackTable_Default implements BlackJackTable{
 	public double getSeatPocketCredits(byte seatIndex){return -1;}
 
 	@Override
-	public byte getTableHandValue(){return -1;}
+	public byte getTableHandValue(){return hand.getBJvalue();}
 
 	@Override
 	public byte getSeatHandValue(byte seatIndex, byte handIndex){
@@ -73,6 +75,12 @@ public class BlackJackTable_Default implements BlackJackTable{
 
 	@Override
 	public boolean isSeatHandBust(byte seatIndex,byte handIndex){return false;}
+
+	@Override
+	public void dealHoleCard(){hole=(BlackJackCard)shoe.dealTop();}
+
+	@Override
+	public void dealDealer(){hand.receiveCard((BlackJackCard)shoe.dealTop());}
 
 	@Override
 	public void dealCard(byte seatIndex,byte handIndex){}

@@ -56,7 +56,7 @@ public class ShoeTest extends JPanel implements IMenu{
 			@Override
 			public void actionPerformed(ActionEvent e){
 				if(list.size()>0){
-					c = (BlackJackCard2D)sh.drawTop();
+					c = (BlackJackCard2D)sh.dealTop();
 					System.out.println(c.face+" of "+c.suit+" : "+c.value);
 					discard.add(c);
 					repaint();
