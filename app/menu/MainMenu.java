@@ -6,7 +6,6 @@ import app.debug.ShoeTest;
 import app.debug.TableTest;
 import animation.Animation;
 import animation.SingleImage;
-
 import app.DesktopApp;
 import javax.swing.JPanel;
 import javax.swing.JButton;
@@ -38,12 +37,6 @@ public class MainMenu extends JPanel implements IMenu{
 		sbt.setLocation(10,60);
 		sbt.setSize(150,40);
 		sbt.addActionListener(new PanelSwapAction(parent,this,new TableTest(parent,this,width_px,height_px)));
-		sbt.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){
-				System.out.println("Not yet ready for debugging.");
-			}
-		});
 		add(sbt);
 		setVisible(true);
 	}

@@ -1,6 +1,6 @@
 package app.srcfactory.card2d;
 
-import arcade.game_items.Card;
+import arcade.game.game_items.Card;
 import app.srcfactory.AnimationFactory;
 import animation.Animation;
 import animation.SingleImage;
