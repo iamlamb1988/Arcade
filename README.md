@@ -25,15 +25,9 @@ BlackJackTable interface has 2 responsibilities:
 Should there be a "money transfer" class that takes on the currency transfer? Yes.
 
 ## Next Master Push Goals
+- [ ] Design and Implement Game Menu. This will house the "Field" and menu panels.
+- [ ] Plan unit test case structure. The goal is to be able to continually run this on each separate class.
 - [ ] Improve structure diagram. Elaborate more on 2D implementation.
-- [x] Verify Shoe interface has everything needed to implement Table simplicity.
-- [x] Develop Table Interface and Default Table implementation.
-	- [x] Table instance.
-	- [x] Seat instance. (Currently calculating hand counts and values.)
-
-	NOTE: Will not be working on currency transactions right now. Filler code is inserted at the moment.
-
-- [x] Packages "game" and "game_items" are in the same directory.
 
 ## High level structure.
 ![Generic Game Structure](readmesrcs/GameSetup.jpg)
