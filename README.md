@@ -13,9 +13,9 @@ Some systems will be much harder to implement than others.
 As the focus is BlackJack for now, the program will simulate millions of hands and generate Basic Strategy tables using various counting system techniques.
 
 ## Update
-Developing BlackJackSeat functions IOT allow Table to interact completely.
+Preparing to move and destruct the "debug" package and develop more permanent ineraction Menu's. These menus will be usable across future game developments.
 
-Beginning to think BlackJackTables should have a BuilderClass becuase there is a lot of different possiblilities for ShoeSize, Card Types, Currencies that can be generated.
+May need to make a "release" package that represents independant, deployable JPanels.
 
 ### Single Responsibility Principle Violation
 BlackJackTable interface has 2 responsibilities:
