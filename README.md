@@ -15,8 +15,6 @@ As the focus is BlackJack for now, the program will simulate millions of hands a
 ## Update
 Preparing to move and destruct the "debug" package and develop more permanent ineraction Menu's. These menus will be usable across future game developments.
 
-May need to make a "release" package that represents independant, deployable JPanels.
-
 ### Single Responsibility Principle Violation
 BlackJackTable interface has 2 responsibilities:
 * Transfer cards to and from Shoe, Table and Players,
@@ -25,7 +23,7 @@ BlackJackTable interface has 2 responsibilities:
 Should there be a "money transfer" class that takes on the currency transfer? Yes.
 
 ## Next Master Push Goals
-- [ ] Design and Implement Game Menu. This will house the "Field" and menu panels.
+- [ ] Design and Implement GameMenu. This will house the GameField(s) and GamePanel(s).
 - [ ] Plan unit test case structure. The goal is to be able to continually run this on each separate class.
 - [ ] Improve structure diagram. Elaborate more on 2D implementation.
 
