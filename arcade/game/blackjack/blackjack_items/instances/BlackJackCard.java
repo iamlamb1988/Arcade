@@ -1,6 +1,6 @@
 package arcade.game.blackjack.blackjack_items.instances;
 
-import arcade.game_items.*;
+import arcade.game.game_items.*;
 
 public class BlackJackCard extends Card{
 	public final byte value;

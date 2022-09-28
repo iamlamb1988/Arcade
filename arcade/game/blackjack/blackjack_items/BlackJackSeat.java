@@ -1,6 +1,6 @@
 package arcade.game.blackjack.blackjack_items;
 
-import arcade.game_items.Seat;
+import arcade.game.game_items.Seat;
 
 public interface BlackJackSeat extends Seat{
 	public double getCreditsPocket();

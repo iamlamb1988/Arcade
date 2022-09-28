@@ -7,14 +7,13 @@ import app.games2d.blackjack2d.shoe2d.BlackJackCard2D;
 import app.games2d.blackjack2d.shoe2d.instances.BlackJackShoe2D_Default;
 import animation.Animation;
 import animation.SingleImage;
-import arcade.game_items.Shoe;
+import arcade.game.game_items.Shoe;
 import arcade.game.blackjack.blackjack_items.BlackJackShoe;
 import arcade.game.blackjack.blackjack_items.instances.BlackJackShoe_Default;
 import arcade.game.blackjack.blackjack_items.instances.BlackJackCard;
 import arcade.game.blackjack.blackjack_items.CheatAccessCards;
 import javax.swing.JPanel;
 import javax.swing.JButton;
-import java.util.Collections;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -56,7 +55,7 @@ public class ShoeTest extends JPanel implements IMenu{
 			@Override
 			public void actionPerformed(ActionEvent e){
 				if(list.size()>0){
-					c = (BlackJackCard2D)sh.drawTop();
+					c = (BlackJackCard2D)sh.dealTop();
 					System.out.println(c.face+" of "+c.suit+" : "+c.value);
 					discard.add(c);
 					repaint();

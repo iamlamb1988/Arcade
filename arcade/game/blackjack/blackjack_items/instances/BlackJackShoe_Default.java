@@ -1,14 +1,14 @@
 package arcade.game.blackjack.blackjack_items.instances;
 
 import arcade.HonorCode;
-import arcade.game_items.Card;
-import arcade.game_items.Shoe;
+import arcade.game.game_items.Card;
+import arcade.game.game_items.Shoe;
 import arcade.game.blackjack.blackjack_items.BlackJackShoe;
 import arcade.game.blackjack.blackjack_items.CheatAccessCards;
 import java.util.Collections;
 import java.util.ArrayList;
 
-public class BlackJackShoe_Default implements Shoe, HonorCode{
+public class BlackJackShoe_Default implements BlackJackShoe, HonorCode{
 	protected ArrayList<BlackJackCard> list,
 									   discard;
 	private boolean honest;
@@ -47,8 +47,10 @@ public class BlackJackShoe_Default implements Shoe, HonorCode{
 	//Shoe Overrides:
     @Override
 	public void shuffleShoe(){Collections.shuffle(list);}
-    public Card drawTop(){return list.remove(0);}
 
+	@Override
+    public Card dealTop(){return list.remove(0);}
+	
 	//HonorCode Overrides:
 	public boolean isHonorable(){ //needs to check on list and discard
 		return honest;
