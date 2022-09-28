@@ -17,9 +17,6 @@ Developing BlackJackSeat functions IOT allow Table to interact completely.
 
 Beginning to think BlackJackTables should have a BuilderClass becuase there is a lot of different possiblilities for ShoeSize, Card Types, Currencies that can be generated.
 
-The BuilderClass for BlackJackTables can have some hardcoded defaults that will fill all the parameters of a BlackJackTable.
-Right now, the table is not big enough but will not be able to satisfy all conditions without several parameters.
-
 ### Single Responsibility Principle Violation
 BlackJackTable interface has 2 responsibilities:
 * Transfer cards to and from Shoe, Table and Players,
@@ -29,7 +26,7 @@ Should there be a "money transfer" class that takes on the currency transfer? Ye
 
 ## Next Master Push Goals
 - [ ] Improve structure diagram. Elaborate more on 2D implementation.
-- [ ] Verify Shoe interface has everything needed to implement Table simplicity.
+- [x] Verify Shoe interface has everything needed to implement Table simplicity.
 - [x] Develop Table Interface and Default Table implementation.
 	- [x] Table instance.
 	- [x] Seat instance. (Currently calculating hand counts and values.)
