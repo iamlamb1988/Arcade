@@ -15,6 +15,8 @@ As the focus is BlackJack for now, the program will simulate millions of hands a
 ## Update
 Preparing to move and destruct the "debug" package and develop more permanent ineraction Menu's. These menus will be usable across future game developments.
 
+Is IAppItem necessary? Perhaps Drawable2D can replace it?
+
 ### Single Responsibility Principle Violation
 BlackJackTable interface has 2 responsibilities:
 * Transfer cards to and from Shoe, Table and Players,

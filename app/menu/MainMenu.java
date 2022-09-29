@@ -45,6 +45,18 @@ public class MainMenu extends JPanel implements IMenu{
 	@Override
 	public void setBG(Animation Background){bg=Background;}
 
+	//Drawable2D Overrides:
+	@Override
+	public void dwblDrawTL(Graphics brush){
+		bg.drawTopLeft(brush);
+		//draw all attached components
+	}
+
+	@Override
+	public void dwblDraw(Graphics brush, int xPos_px, int yPos_px){
+		
+	}
+
 	//Paint Override
 	@Override
 	public void paintComponent(Graphics p){

@@ -130,6 +130,15 @@ public class ShoeTest extends JPanel implements IMenu{
 	//IAppItem Overrides:
 	public void setBG(Animation background){bg=background;}
 
+	//Drawable2D Overrides:
+	public void dwblDrawTL(Graphics brush){
+		
+	}
+
+	public void dwblDraw(Graphics brush, int xPos_px, int yPos_px){
+		
+	}
+
 	//Paint Override
 	@Override
 	public void paintComponent(Graphics p){
