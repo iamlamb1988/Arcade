@@ -18,11 +18,14 @@ Preparing to move and destruct the "debug" package and develop more permanent in
 Is IAppItem necessary? Perhaps Drawable2D can replace it?
 
 ### Single Responsibility Principle Violation
-BlackJackTable interface has 2 responsibilities:
+1. BlackJackTable interface has 2 responsibilities:
 * Transfer cards to and from Shoe, Table and Players,
 * Transfers currencies to and from Table and Players
 
 Should there be a "money transfer" class that takes on the currency transfer? Yes.
+
+2. Final and SandBox implementations extend the GameMenu.
+This is OK. The JPanels will not become complex so tight coupling is fine regarding Menus.
 
 ## Next Master Push Goals
 - [ ] Design and Implement GameMenu. This will house the GameField(s) and GamePanel(s).

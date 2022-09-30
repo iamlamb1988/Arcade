@@ -9,10 +9,13 @@ import java.awt.Graphics;
 public class GameMenu extends JPanel implements IMenu{
 	public GameMenu(DesktopApp parentApp, int width_px, int height_px){
 		super();
+		setSize(width_px,height_px);
 	}
 
 	public GameMenu(DesktopApp parentApp, IMenu previous, int width_px, int height_px){
 		super();
+		setSize(width_px,height_px);
+		setVisible(true);
 	}
 
 	//IAppItem Overrides:
