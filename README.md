@@ -15,14 +15,19 @@ As the focus is BlackJack for now, the program will simulate millions of hands a
 ## Update
 Preparing to move and destruct the "debug" package and develop more permanent ineraction Menu's. These menus will be usable across future game developments.
 
-Is IAppItem necessary? Perhaps Drawable2D can replace it?
+Should there be a "money transfer" class that takes on the currency transfer? Yes.
+
+Problem.... Each drawable item within a Drawable2D object needs an individual location..
+For menus: Each button, label, textfield/area needs to be added as a drawable object (Not necessarily Drawable2D)
+For Field items: each object (Card, die, seat, chair, etc,) needs drawn IAW
+
+Is IAppItem necessary? It is appearing so as an individual item with location data.
+Should ALL IAppItem implement Drawable2D? Probably..
 
 ### Single Responsibility Principle Violation
 1. BlackJackTable interface has 2 responsibilities:
 * Transfer cards to and from Shoe, Table and Players,
 * Transfers currencies to and from Table and Players
-
-Should there be a "money transfer" class that takes on the currency transfer? Yes.
 
 2. Final and SandBox implementations extend the GameMenu.
 This is OK. The JPanels will not become complex so tight coupling is fine regarding Menus.

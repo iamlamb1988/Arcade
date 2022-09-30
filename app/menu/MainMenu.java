@@ -5,7 +5,7 @@ import app.DesktopApp;
 import app.debug.ShoeTest;
 import app.debug.TableTest;
 import app.menu.gamemenu.GameMenu;
-import app.release.sandbox.ShoeCycle;
+import app.release.sandbox.shoecycle.ShoeCycle;
 import animation.Animation;
 import animation.SingleImage;
 import app.DesktopApp;
