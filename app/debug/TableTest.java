@@ -92,12 +92,16 @@ public class TableTest extends JPanel implements IMenu{
 	public void setBG(Animation background){bg=background;}
 
 	//Drawable2D Overrides:
+	@Override
 	public void dwblDrawTL(Graphics brush){
-		
+		bg.drawTopLeft(brush);
+		//draw all attached components
 	}
 
+	@Override
 	public void dwblDraw(Graphics brush, int xPos_px, int yPos_px){
-		
+		bg.draw(xPos_px,yPos_px,brush);
+		//draw all attached components
 	}
 
 	//Paint Override

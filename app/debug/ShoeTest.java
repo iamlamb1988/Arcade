@@ -132,11 +132,11 @@ public class ShoeTest extends JPanel implements IMenu{
 
 	//Drawable2D Overrides:
 	public void dwblDrawTL(Graphics brush){
-		
+		c.drawFrontTL(brush);
 	}
 
 	public void dwblDraw(Graphics brush, int xPos_px, int yPos_px){
-		
+		c.drawFront(brush,xPos_px,yPos_px);
 	}
 
 	//Paint Override
