@@ -53,7 +53,14 @@ public class MainMenu extends JPanel implements IMenu{
 
 	//IAppItem Overrides:
 	@Override
+	public double getX2D(){return 0;} //This will always return 0 as a main menu
+
+	@Override
+	public double getY2D(){return 0;} //This will always return 0 as a main menu
+
+	@Override
 	public void setBG(Animation Background){bg=Background;}
+
 
 	//Drawable2D Overrides:
 	@Override

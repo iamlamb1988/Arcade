@@ -1,5 +1,6 @@
 package app.release.sandbox.shoecycle;
 
+import animation.Animation;
 import app.DesktopApp;
 import app.menu.IMenu;
 import app.menu.gamemenu.GameMenu;
@@ -12,5 +13,12 @@ public class ShoeCycle extends GameMenu{
 		
 	}
 
-	
+	@Override
+	public double getX2D(){return 0;} //This will always return 0 as a main menu
+
+	@Override
+	public double getY2D(){return 0;} //This will always return 0 as a main menu
+
+	@Override
+	public void setBG(Animation Background){}
 }
