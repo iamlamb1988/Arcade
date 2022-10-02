@@ -87,29 +87,6 @@ public class TableTest extends IMenu{
 		add(addPlr);
 	}
 
-	//IAppItem Overrides:
-	@Override
-	public double getX2D(){return 0;} //This will always return 0 as a main menu
-
-	@Override
-	public double getY2D(){return 0;} //This will always return 0 as a main menu
-
-	@Override
-	public void setBG(Animation background){bg=background;}
-
-	//Drawable2D Overrides:
-	@Override
-	public void dwblDrawTL(Graphics brush){
-		bg.drawTopLeft(brush);
-		//draw all attached components
-	}
-
-	@Override
-	public void dwblDraw(Graphics brush, int xPos_px, int yPos_px){
-		bg.draw(xPos_px,yPos_px,brush);
-		//draw all attached components
-	}
-
 	//Paint Override
 	@Override
 	public void paintComponent(Graphics p){

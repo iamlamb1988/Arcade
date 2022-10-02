@@ -18,15 +18,6 @@ public class ShoeCycle extends GameMenu{
 		add(a);	
 	}
 
-	@Override
-	public double getX2D(){return 0;} //This will always return 0 as a main menu
-
-	@Override
-	public double getY2D(){return 0;} //This will always return 0 as a main menu
-
-	@Override
-	public void setBG(Animation Background){}
-
 	private class ActionPanel extends GamePanel{
 		private ActionPanel(int width_px, int height_px){
 			super(width_px,height_px);

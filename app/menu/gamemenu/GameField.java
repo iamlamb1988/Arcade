@@ -14,10 +14,16 @@ public class GameField extends JPanel implements IAppItem{
 
 	//IAppItem Overrides:
 	@Override
-	public double getX2D(){return xPos;}
+	public double getXdbl(){return getX();}
 
 	@Override
-	public double getY2D(){return yPos;}
+	public double getYdbl(){return getY();}
+
+	@Override
+	public int getXint(){return getX();}
+
+	@Override
+	public int getYint(){return getY();}
 
 	@Override
 	public void setBG(Animation Background){bg=Background.clone();}

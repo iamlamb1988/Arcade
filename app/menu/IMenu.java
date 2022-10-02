@@ -23,10 +23,16 @@ public abstract class IMenu extends JPanel implements IAppItem{
 
 	//IAppItem Overrides:
 	@Override
-	public double getX2D(){return getX();}
+	public double getXdbl(){return getX();}
 
 	@Override
-	public double getY2D(){return getY();}
+	public double getYdbl(){return getY();}
+
+	@Override
+	public int getXint(){return getX();}
+
+	@Override
+	public int getYint(){return getY();}
 
 	@Override
 	public void setBG(Animation Background){bg=Background.clone();}
@@ -36,7 +42,7 @@ public abstract class IMenu extends JPanel implements IAppItem{
 	public void dwblDrawTL(Graphics brush){
 		bg.drawTopLeft(brush);
 		for(IAppItem x : itmL){
-			x.dwblDraw(brush,(int)x.getX2D(),(int)x.getY2D());
+			x.dwblDraw(brush,x.getXint(),x.getYint());
 		}
 	}
 
@@ -44,7 +50,14 @@ public abstract class IMenu extends JPanel implements IAppItem{
 	public void dwblDraw(Graphics brush, int xPos_px, int yPos_px){
 		bg.draw(xPos_px,yPos_px,brush);
 		for(IAppItem x : itmL){
-			x.dwblDraw(brush,(int)(x.getX2D()+xPos_px),(int)(x.getY2D()+yPos_px));
+			x.dwblDraw(brush,x.getXint()+xPos_px,x.getYint()+yPos_px);
 		}
+	}
+
+	//Paint Override:
+	@Override
+	public void paintComponent(Graphics p){
+		super.paintComponent(p);
+		dwblDrawTL(p);
 	}
 }

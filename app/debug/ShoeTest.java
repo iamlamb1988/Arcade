@@ -20,7 +20,6 @@ import java.awt.event.ActionListener;
 import java.awt.Graphics;
 
 public class ShoeTest extends IMenu{
-	private Animation bg;
 	private BlackJackCard2D c;
 
 	private final BlackJackShoe sh;
@@ -125,30 +124,10 @@ public class ShoeTest extends IMenu{
 		setVisible(true);
 	}
 
-	//IAppItem Overrides:
-	@Override
-	public double getX2D(){return 0;} //This will always return 0 as a main menu
-
-	@Override
-	public double getY2D(){return 0;} //This will always return 0 as a main menu
-
-	@Override
-	public void setBG(Animation background){bg=background;}
-
-	//Drawable2D Overrides:
-	public void dwblDrawTL(Graphics brush){
-		c.drawFrontTL(brush);
-	}
-
-	public void dwblDraw(Graphics brush, int xPos_px, int yPos_px){
-		c.drawFront(brush,xPos_px,yPos_px);
-	}
-
 	//Paint Override
 	@Override
 	public void paintComponent(Graphics p){
 		super.paintComponent(p);
-		bg.drawTopLeft(p);
 		if(c!=null)
 			c.drawFront(p,250,150);
 	}
