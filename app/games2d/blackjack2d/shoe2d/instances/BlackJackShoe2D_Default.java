@@ -6,7 +6,7 @@ import arcade.game.blackjack.blackjack_items.BlackJackShoe;
 import arcade.game.blackjack.blackjack_items.CheatAccessCards;
 import app.games2d.blackjack2d.shoe2d.BlackJackCard2D;
 import app.games2d.blackjack2d.shoe2d.BlackJackShoe2D;
-import app.games2d.Drawable2D;
+import app.Drawable2D;
 import app.srcfactory.card2d.Card2DAnimationFactory;
 import java.util.ArrayList;
 import java.awt.Graphics;

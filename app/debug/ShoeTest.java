@@ -128,7 +128,23 @@ public class ShoeTest extends JPanel implements IMenu{
 	}
 
 	//IAppItem Overrides:
+	@Override
+	public double getX2D(){return 0;} //This will always return 0 as a main menu
+
+	@Override
+	public double getY2D(){return 0;} //This will always return 0 as a main menu
+
+	@Override
 	public void setBG(Animation background){bg=background;}
+
+	//Drawable2D Overrides:
+	public void dwblDrawTL(Graphics brush){
+		c.drawFrontTL(brush);
+	}
+
+	public void dwblDraw(Graphics brush, int xPos_px, int yPos_px){
+		c.drawFront(brush,xPos_px,yPos_px);
+	}
 
 	//Paint Override
 	@Override
