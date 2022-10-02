@@ -17,12 +17,7 @@ Preparing to move and destruct the "debug" package and develop more permanent in
 
 Should there be a "money transfer" class that takes on the currency transfer? Yes.
 
-Problem.... Each drawable item within a Drawable2D object needs an individual location..
-For menus: Each button, label, textfield/area needs to be added as a drawable object (Not necessarily Drawable2D)
-For Field items: each object (Card, die, seat, chair, etc,) needs drawn IAW
-
-Is IAppItem necessary? It is appearing so as an individual item with location data.
-Should ALL IAppItem implement Drawable2D? Probably..
+Preparing to tightly couple IMenu to eliminate duplicate code across the Menu Implementations.
 
 ### Single Responsibility Principle Violation
 1. BlackJackTable interface has 2 responsibilities:
