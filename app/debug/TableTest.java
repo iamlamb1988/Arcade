@@ -16,14 +16,13 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
-public class TableTest extends JPanel implements IMenu{
+public class TableTest extends IMenu{
 	private Animation bg;
 	private BlackJackTable_Default t;
 	private JLabel status;
 
 	public TableTest(DesktopApp parentApp, IMenu previous, int width_px, int height_px){
-		super();
-		setSize(width_px,height_px);
+		super(width_px,height_px);
 		BufferedImage bgg=new BufferedImage(width_px,height_px,BufferedImage.TYPE_INT_ARGB);
 		Graphics2D p=bgg.createGraphics();
 		p.setColor(new Color(255,255,0,255));

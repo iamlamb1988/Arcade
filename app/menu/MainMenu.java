@@ -15,16 +15,14 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MainMenu extends JPanel implements IMenu{
+public class MainMenu extends IMenu{
 	private MainMenu self;
 	private DesktopApp parent;
 	private Animation bg;
 	public MainMenu(DesktopApp parentApp, int width_px, int height_px){
-		super();
+		super(width_px,height_px);
 		self=this;
 		parent=parentApp;
-		setSize(width_px,height_px);
-		setLayout(null);
 		setBG(new SingleImage(width_px,height_px,255,0,0,255));
 
 		//Add Test Shoe button (WILL BE DESTROYED SOON)
