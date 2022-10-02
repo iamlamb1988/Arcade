@@ -32,20 +32,16 @@ public class GameMenu extends JPanel implements IMenu{
 	
 	//Drawable2D Overrides:
 	@Override
-	public void dwblDrawTL(Graphics brush){
-		
-	}
+	public void dwblDrawTL(Graphics brush){bg.drawTopLeft(brush);}
 
 	@Override
-	public void dwblDraw(Graphics brush, int xPos_px, int yPos_px){
-		
-	}
+	public void dwblDraw(Graphics brush, int xPos_px, int yPos_px){bg.draw(xPos_px,yPos_px,brush);}
 
 	//Paint Override:
 	@Override
-	public void paint(Graphics p){
-		super.paint(p);
-		bg.drawTopLeft(p);
-		//draw remaining drawable objects
+	public void paintComponent(Graphics p){
+		super.paintComponent(p);
+		dwblDrawTL(p);
+		// draw remaining drawable objects
 	}
 }

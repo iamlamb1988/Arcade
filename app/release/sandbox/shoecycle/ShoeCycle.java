@@ -13,7 +13,7 @@ public class ShoeCycle extends GameMenu{
 		super(parentApp,previous,width_px,height_px);
 		
 		ActionPanel a = new ActionPanel(width_px,(int)(.2*height_px));
-		a.setLocation(0,a.getHeight());
+		a.setLocation(0,height_px-a.getHeight());
 		a.setBG(new SingleImage(a.getWidth(),a.getHeight(),128,128,128,255));
 		add(a);	
 	}

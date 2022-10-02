@@ -57,9 +57,16 @@ public class GamePanel extends JPanel implements IAppItem{
 
 	@Override
 	public void dwblDraw(Graphics brush, int xPos_px, int yPos_px){
-		bg.draw((int)getX2D(),(int)getY2D(),brush);
-		// for(IAppItem x : itmL){
-			// x.dwblDraw(brush,(int)x.getX2D(),(int)x.getY2D());
-		// }
-	}	
+		bg.draw(xPos_px,yPos_px,brush);
+		for(IAppItem x : itmL){
+			x.dwblDraw(brush,(int)(x.getX2D()+xPos_px),(int)(x.getY2D()+yPos_px));
+		}
+	}
+
+	//Paint Override:
+	@Override
+	public void paintComponent(Graphics p){
+		super.paintComponent(p);
+		dwblDrawTL(p);
+	}
 }
