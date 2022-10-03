@@ -2,7 +2,7 @@ package app.games2d.blackjack2d.shoe2d;
 
 import arcade.game.blackjack.blackjack_items.instances.BlackJackCard;
 import animation.Animation;
-import app.games2d.Drawable2D;
+import app.Drawable2D;
 import java.awt.Graphics;
 
 public class BlackJackCard2D extends BlackJackCard implements Drawable2D{

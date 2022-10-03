@@ -1,4 +1,4 @@
-package app.menu;
+package app.menu.gamemenu;
 
 import animation.Animation;
 import animation.SingleImage;
@@ -8,17 +8,22 @@ import java.util.ArrayList;
 import java.awt.Component;
 import java.awt.Graphics;
 
-public abstract class IMenu extends JPanel implements IAppItem{
+public class GamePanel extends JPanel implements IAppItem{
 	private Animation bg;
 	private ArrayList<IAppItem> itmL;
 
-	public IMenu(int width_px, int height_px){
+	public GamePanel(int xPosition, int yPosition, int width_px, int height_px){
 		super();
 		setLayout(null);
 		setSize(width_px,height_px);
+		setLocation(xPosition,yPosition);
 		bg=new SingleImage(width_px,height_px,255,0,255,255);
 		itmL=new ArrayList<IAppItem>();
 		setVisible(true);
+	}
+
+	public GamePanel(int width_px, int height_px){
+		this(0,0,width_px,height_px);
 	}
 
 	//super Overrides:
@@ -28,8 +33,6 @@ public abstract class IMenu extends JPanel implements IAppItem{
 			itmL.add((IAppItem)comp);
 		return super.add(comp);
 	}
-
-	//Need to override the REMOVES to incorporate itmL
 
 	//IAppItem Overrides:
 	@Override

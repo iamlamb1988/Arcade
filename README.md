@@ -13,27 +13,26 @@ Some systems will be much harder to implement than others.
 As the focus is BlackJack for now, the program will simulate millions of hands and generate Basic Strategy tables using various counting system techniques.
 
 ## Update
-Developing BlackJackSeat functions IOT allow Table to interact completely.
+ISSUE:
+JFrame size and inner content do not match. The JFrame inner size is slightly smaller than the actual attached panels and over laps.
+The Height seems to overlap by approximately 40 pixels.
+Research of previous solutions in progress.
 
-Beginning to think BlackJackTables should have a BuilderClass becuase there is a lot of different possiblilities for ShoeSize, Card Types, Currencies that can be generated.
-
-### Single Responsibility Principle Violation
-BlackJackTable interface has 2 responsibilities:
-* Transfer cards to and from Shoe, Table and Players,
-* Transfers currencies to and from Table and Players
+Converted IMenu from an interface to an abstract class in order to reduce duplicate code.
 
 Should there be a "money transfer" class that takes on the currency transfer? Yes.
 
+resources and animation package is tightly coupled but shouldn't be. animation package must be completely separate from the app resources. Card2DAnimation should be in the app class because the images are app specific.
+
+### Single Responsibility Principle Violation
+1. BlackJackTable interface has 2 responsibilities:
+* Transfer cards to and from Shoe, Table and Players,
+* Transfers currencies to and from Table and Players
+
 ## Next Master Push Goals
+- [x] Design and Implement GameMenu. This will house the GameField(s) and GamePanel(s).
+- [ ] Plan unit test case structure. The goal is to be able to continually run this on each separate class.
 - [ ] Improve structure diagram. Elaborate more on 2D implementation.
-- [x] Verify Shoe interface has everything needed to implement Table simplicity.
-- [x] Develop Table Interface and Default Table implementation.
-	- [x] Table instance.
-	- [x] Seat instance. (Currently calculating hand counts and values.)
-
-	NOTE: Will not be working on currency transactions right now. Filler code is inserted at the moment.
-
-- [x] Packages "game" and "game_items" are in the same directory.
 
 ## High level structure.
 ![Generic Game Structure](readmesrcs/GameSetup.jpg)

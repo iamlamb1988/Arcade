@@ -19,16 +19,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Graphics;
 
-public class ShoeTest extends JPanel implements IMenu{
-	private Animation bg;
+public class ShoeTest extends IMenu{
 	private BlackJackCard2D c;
 
 	private final BlackJackShoe sh;
 
 	public ShoeTest(DesktopApp parentApp, IMenu previous, int width_px, int height_px){
-		super();
-		setSize(width_px,height_px);
-		setLayout(null);
+		super(width_px,height_px);
 		setBG(new SingleImage(width_px,height_px,0,255,0,255));
 
 		sh = (BlackJackShoe2D_Default)(new BlackJackShoe2D_Default(100,125).genRogueClone());
@@ -127,14 +124,10 @@ public class ShoeTest extends JPanel implements IMenu{
 		setVisible(true);
 	}
 
-	//IAppItem Overrides:
-	public void setBG(Animation background){bg=background;}
-
 	//Paint Override
 	@Override
 	public void paintComponent(Graphics p){
 		super.paintComponent(p);
-		bg.drawTopLeft(p);
 		if(c!=null)
 			c.drawFront(p,250,150);
 	}
