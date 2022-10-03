@@ -48,11 +48,4 @@ public class MainMenu extends IMenu{
 
 		setVisible(true);
 	}
-
-	//Paint Override
-	@Override
-	public void paintComponent(Graphics p){
-		super.paintComponent(p);
-		dwblDrawTL(p);
-	}
 }

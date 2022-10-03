@@ -13,22 +13,23 @@ Some systems will be much harder to implement than others.
 As the focus is BlackJack for now, the program will simulate millions of hands and generate Basic Strategy tables using various counting system techniques.
 
 ## Update
-Preparing to move and destruct the "debug" package and develop more permanent ineraction Menu's. These menus will be usable across future game developments.
+ISSUE:
+JFrame size and inner content do not match. The JFrame inner size is slightly smaller than the actual attached panels and over laps.
+The Height seems to overlap by approximately 40 pixels.
+
+Converted IMenu from an interface to an abstract class in order to reduce duplicate code.
 
 Should there be a "money transfer" class that takes on the currency transfer? Yes.
 
-Preparing to tightly couple IMenu to eliminate duplicate code across the Menu Implementations.
+resources and animation package is tightly coupled but shouldn't be. animation package must be completely separate from the app resources. Card2DAnimation should be in the app class because the images are app specific.
 
 ### Single Responsibility Principle Violation
 1. BlackJackTable interface has 2 responsibilities:
 * Transfer cards to and from Shoe, Table and Players,
 * Transfers currencies to and from Table and Players
 
-2. Final and SandBox implementations extend the GameMenu.
-This is OK. The JPanels will not become complex so tight coupling is fine regarding Menus.
-
 ## Next Master Push Goals
-- [ ] Design and Implement GameMenu. This will house the GameField(s) and GamePanel(s).
+- [x] Design and Implement GameMenu. This will house the GameField(s) and GamePanel(s).
 - [ ] Plan unit test case structure. The goal is to be able to continually run this on each separate class.
 - [ ] Improve structure diagram. Elaborate more on 2D implementation.
 

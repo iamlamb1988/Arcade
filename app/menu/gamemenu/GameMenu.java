@@ -8,10 +8,9 @@ import javax.swing.JPanel;
 import java.awt.Graphics;
 
 public class GameMenu extends IMenu{
-	private Animation bg;
 	public GameMenu(DesktopApp parentApp, int width_px, int height_px){
 		super(width_px,height_px);
-		bg=new SingleImage(width_px,height_px,255,0,255,255);
+		setBG(new SingleImage(width_px,height_px,255,0,255,255));
 	}
 
 	public GameMenu(DesktopApp parentApp, IMenu previous, int width_px, int height_px){

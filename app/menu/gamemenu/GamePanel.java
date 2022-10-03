@@ -14,6 +14,7 @@ public class GamePanel extends JPanel implements IAppItem{
 
 	public GamePanel(int xPosition, int yPosition, int width_px, int height_px){
 		super();
+		setLayout(null);
 		setSize(width_px,height_px);
 		setLocation(xPosition,yPosition);
 		bg=new SingleImage(width_px,height_px,255,0,255,255);
