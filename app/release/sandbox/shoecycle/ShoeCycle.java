@@ -13,7 +13,7 @@ public class ShoeCycle extends GameMenu{
 	public ShoeCycle(DesktopApp parentApp, IMenu previous, int width_px, int height_px){
 		super(parentApp,previous,width_px,height_px);
 
-		GameField f;
+		
 
 		//Draw Action Menu
 		ActionPanel a = new ActionPanel(width_px,(int)(0.2*height_px));
@@ -40,7 +40,7 @@ public class ShoeCycle extends GameMenu{
 		add(m);
 
 		//Add game field
-		f=new GameField(width_px,height_px-a.getHeight()-m.getHeight());
+		GameField f=new GameField(0,m.getHeight(),width_px,height_px-a.getHeight()-m.getHeight());
 		add(f);
 	}
 

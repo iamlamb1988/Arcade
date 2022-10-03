@@ -14,6 +14,7 @@ public class GameField extends JPanel implements IAppItem{
 	public GameField(int xPos_px, int yPos_px, int width_px, int height_px){
 		super();
 		setLayout(null);
+		setLocation(xPos_px,yPos_px);
 		setSize(width_px,height_px);
 		setBG(new SingleImage(width_px,height_px,0,255,0,255));
 		setVisible(true);
@@ -46,11 +47,24 @@ public class GameField extends JPanel implements IAppItem{
 	//Drawable2D Overrides:
 	@Override
 	public void dwblDrawTL(Graphics brush){
-		
+		bg.drawTopLeft(brush);
+		for(IAppItem x : itmL){
+			x.dwblDraw(brush,x.getXint(),x.getYint());
+		}
 	}
 
 	@Override
 	public void dwblDraw(Graphics brush, int xPos_px, int yPos_px){
-		
+		bg.draw(xPos_px,yPos_px,brush);
+		for(IAppItem x : itmL){
+			x.dwblDraw(brush,x.getXint()+xPos_px,x.getYint()+yPos_px);
+		}
+	}
+
+	//Paint Override:
+	@Override
+	public void paintComponent(Graphics p){
+		super.paintComponent(p);
+		dwblDrawTL(p);
 	}
 }
