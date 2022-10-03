@@ -16,6 +16,7 @@ As the focus is BlackJack for now, the program will simulate millions of hands a
 ISSUE:
 JFrame size and inner content do not match. The JFrame inner size is slightly smaller than the actual attached panels and over laps.
 The Height seems to overlap by approximately 40 pixels.
+Research of previous solutions in progress.
 
 Converted IMenu from an interface to an abstract class in order to reduce duplicate code.
 
