@@ -22,12 +22,14 @@ public abstract class IMenu extends JPanel implements IAppItem{
 	}
 
 	//super Overrides:
-	//Need to Override Component add(Component comp)
-	// Component add(Component comp){
-		// if(comp instanceof IAppItem)
-			// itmL.add((IAppItem)comp);
-		// return super.add(comp);
-	// }
+	@Override
+	public Component add(Component comp){
+		if(comp instanceof IAppItem)
+			itmL.add((IAppItem)comp);
+		return super.add(comp);
+	}
+
+	//Need to override the REMOVES to incorporate itmL
 
 	//IAppItem Overrides:
 	@Override

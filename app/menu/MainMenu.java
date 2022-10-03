@@ -19,6 +19,7 @@ public class MainMenu extends IMenu{
 	private MainMenu self;
 	private DesktopApp parent;
 	private Animation bg;
+
 	public MainMenu(DesktopApp parentApp, int width_px, int height_px){
 		super(width_px,height_px);
 		self=this;

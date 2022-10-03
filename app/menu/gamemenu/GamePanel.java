@@ -26,7 +26,7 @@ public class GamePanel extends JPanel implements IAppItem{
 		this(0,0,width_px,height_px);
 	}
 
-	//JPanel Overrides:
+	//super Overrides:
 	@Override
 	public Component add(Component comp){
 		if(comp instanceof IAppItem)
