@@ -21,6 +21,14 @@ public abstract class IMenu extends JPanel implements IAppItem{
 		setVisible(true);
 	}
 
+	//super Overrides:
+	//Need to Override Component add(Component comp)
+	// Component add(Component comp){
+		// if(comp instanceof IAppItem)
+			// itmL.add((IAppItem)comp);
+		// return super.add(comp);
+	// }
+
 	//IAppItem Overrides:
 	@Override
 	public double getXdbl(){return getX();}

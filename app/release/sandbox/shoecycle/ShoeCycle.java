@@ -15,6 +15,7 @@ public class ShoeCycle extends GameMenu{
 		
 		JButton tmp;
 
+		//Draw Action Menu
 		ActionPanel a = new ActionPanel(width_px,(int)(0.2*height_px));
 		a.setLocation(0,height_px-a.getHeight());
 		a.setBG(new SingleImage(a.getWidth(),a.getHeight(),128,128,128,255));
@@ -24,8 +25,22 @@ public class ShoeCycle extends GameMenu{
 		tmp.setLocation((a.getWidth()-tmp.getWidth())/2,(a.getHeight()-tmp.getHeight())/2);
 		tmp.setVisible(true);
 		a.add(tmp);
+		add(a);
 
-		add(a);	
+		//Menu
+		a = new ActionPanel(width_px,60);
+		a.setLocation(0,0);
+		a.setBG(new SingleImage(a.getWidth(),a.getHeight(),128,128,128,255));
+
+		tmp=new JButton("Main Menu");
+		tmp.setSize(100,40);
+		tmp.setLocation(a.getWidth()-tmp.getWidth()-10,10);
+		tmp.setVisible(true);
+		a.add(tmp);
+		add(a);
+
+		//Add game field
+		
 	}
 
 	private class ActionPanel extends GamePanel{
