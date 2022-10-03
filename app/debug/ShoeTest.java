@@ -19,16 +19,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Graphics;
 
-public class ShoeTest extends JPanel implements IMenu{
-	private Animation bg;
+public class ShoeTest extends IMenu{
 	private BlackJackCard2D c;
 
 	private final BlackJackShoe sh;
 
 	public ShoeTest(DesktopApp parentApp, IMenu previous, int width_px, int height_px){
-		super();
-		setSize(width_px,height_px);
-		setLayout(null);
+		super(width_px,height_px);
 		setBG(new SingleImage(width_px,height_px,0,255,0,255));
 
 		sh = (BlackJackShoe2D_Default)(new BlackJackShoe2D_Default(100,125).genRogueClone());
@@ -127,30 +124,10 @@ public class ShoeTest extends JPanel implements IMenu{
 		setVisible(true);
 	}
 
-	//IAppItem Overrides:
-	@Override
-	public double getX2D(){return 0;} //This will always return 0 as a main menu
-
-	@Override
-	public double getY2D(){return 0;} //This will always return 0 as a main menu
-
-	@Override
-	public void setBG(Animation background){bg=background;}
-
-	//Drawable2D Overrides:
-	public void dwblDrawTL(Graphics brush){
-		c.drawFrontTL(brush);
-	}
-
-	public void dwblDraw(Graphics brush, int xPos_px, int yPos_px){
-		c.drawFront(brush,xPos_px,yPos_px);
-	}
-
 	//Paint Override
 	@Override
 	public void paintComponent(Graphics p){
 		super.paintComponent(p);
-		bg.drawTopLeft(p);
 		if(c!=null)
 			c.drawFront(p,250,150);
 	}

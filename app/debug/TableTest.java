@@ -16,14 +16,13 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
-public class TableTest extends JPanel implements IMenu{
+public class TableTest extends IMenu{
 	private Animation bg;
 	private BlackJackTable_Default t;
 	private JLabel status;
 
 	public TableTest(DesktopApp parentApp, IMenu previous, int width_px, int height_px){
-		super();
-		setSize(width_px,height_px);
+		super(width_px,height_px);
 		BufferedImage bgg=new BufferedImage(width_px,height_px,BufferedImage.TYPE_INT_ARGB);
 		Graphics2D p=bgg.createGraphics();
 		p.setColor(new Color(255,255,0,255));
@@ -86,29 +85,6 @@ public class TableTest extends JPanel implements IMenu{
 			}
 		});
 		add(addPlr);
-	}
-
-	//IAppItem Overrides:
-	@Override
-	public double getX2D(){return 0;} //This will always return 0 as a main menu
-
-	@Override
-	public double getY2D(){return 0;} //This will always return 0 as a main menu
-
-	@Override
-	public void setBG(Animation background){bg=background;}
-
-	//Drawable2D Overrides:
-	@Override
-	public void dwblDrawTL(Graphics brush){
-		bg.drawTopLeft(brush);
-		//draw all attached components
-	}
-
-	@Override
-	public void dwblDraw(Graphics brush, int xPos_px, int yPos_px){
-		bg.draw(xPos_px,yPos_px,brush);
-		//draw all attached components
 	}
 
 	//Paint Override
