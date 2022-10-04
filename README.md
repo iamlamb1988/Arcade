@@ -13,13 +13,6 @@ Some systems will be much harder to implement than others.
 As the focus is BlackJack for now, the program will simulate millions of hands and generate Basic Strategy tables using various counting system techniques.
 
 ## Update
-ISSUE:
-JFrame size and inner content do not match. The JFrame inner size is slightly smaller than the actual attached panels and over laps.
-The Height seems to overlap by approximately 40 pixels.
-Research of previous solutions in progress.
-
-Converted IMenu from an interface to an abstract class in order to reduce duplicate code.
-
 Should there be a "money transfer" class that takes on the currency transfer? Yes.
 
 resources and animation package is tightly coupled but shouldn't be. animation package must be completely separate from the app resources. Card2DAnimation should be in the app class because the images are app specific.
@@ -30,8 +23,9 @@ resources and animation package is tightly coupled but shouldn't be. animation p
 * Transfers currencies to and from Table and Players
 
 ## Next Master Push Goals
-- [x] Design and Implement GameMenu. This will house the GameField(s) and GamePanel(s).
-- [ ] Plan unit test case structure. The goal is to be able to continually run this on each separate class.
+- [ ] Develop the ShoeCycle.
+- [ ] Develop the TableCycle (Except money transactions).
+- [ ] Destroy the debug package.
 - [ ] Improve structure diagram. Elaborate more on 2D implementation.
 
 ## High level structure.
