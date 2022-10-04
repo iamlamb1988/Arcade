@@ -17,6 +17,7 @@ Should there be a "money transfer" class that takes on the currency transfer? Ye
 
 resources and animation package is tightly coupled but shouldn't be. animation package must be completely separate from the app resources. Card2DAnimation should be in the app class because the images are app specific.
 
+Considering moving the project to a Java EE / Jakarta webserver.
 ### Single Responsibility Principle Violation
 1. BlackJackTable interface has 2 responsibilities:
 * Transfer cards to and from Shoe, Table and Players,

@@ -8,16 +8,17 @@ import app.menu.IMenu;
 import app.menu.gamemenu.GameMenu;
 import app.menu.gamemenu.GameField;
 import app.menu.gamemenu.GamePanel;
+import app.games2d.blackjack2d.shoe2d.instances.BlackJackShoe2D_Default;
+import app.games2d.blackjack2d.shoe2d.BlackJackShoe2D;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-
 public class ShoeCycle extends GameMenu{
+	private BlackJackShoe2D sh; //need to test generic interface
 	public ShoeCycle(DesktopApp parentApp, IMenu previous, int width_px, int height_px){
 		super(parentApp,previous,width_px,height_px);
-
-		
+		sh=new BlackJackShoe2D_Default(500/7,100);
 
 		//Draw Action Menu
 		ActionPanel a = new ActionPanel(width_px,(int)(0.2*height_px));
@@ -39,19 +40,18 @@ public class ShoeCycle extends GameMenu{
 		tmp=new JButton("Main Menu");
 		tmp.setSize(100,40);
 		tmp.setLocation(m.getWidth()-tmp.getWidth()-10,10);
-		tmp.addActionListener(new PanelSwapAction(parentApp,this,(JPanel)previous));
+		tmp.addActionListener(new PanelSwapAction(parentApp,this,previous));
 		tmp.setVisible(true);
 		m.add(tmp);
 		add(m);
 
 		//Add game field
 		GameField f=new GameField(0,m.getHeight(),width_px,height_px-a.getHeight()-m.getHeight());
+		
 		add(f);
 	}
 
 	private class ActionPanel extends GamePanel{
-		private ActionPanel(int width_px, int height_px){
-			super(width_px,height_px);
-		}
+		private ActionPanel(int width_px, int height_px){super(width_px,height_px);}
 	}
 }
