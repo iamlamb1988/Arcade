@@ -3,11 +3,15 @@ package app.release.sandbox.shoecycle;
 import animation.Animation;
 import animation.SingleImage;
 import app.DesktopApp;
+import app.PanelSwapAction;
 import app.menu.IMenu;
 import app.menu.gamemenu.GameMenu;
 import app.menu.gamemenu.GameField;
 import app.menu.gamemenu.GamePanel;
-import javax.swing.JButton;
+import javax.swing.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 
 public class ShoeCycle extends GameMenu{
 	public ShoeCycle(DesktopApp parentApp, IMenu previous, int width_px, int height_px){
@@ -35,6 +39,7 @@ public class ShoeCycle extends GameMenu{
 		tmp=new JButton("Main Menu");
 		tmp.setSize(100,40);
 		tmp.setLocation(m.getWidth()-tmp.getWidth()-10,10);
+		tmp.addActionListener(new PanelSwapAction(parentApp,this,(JPanel)previous));
 		tmp.setVisible(true);
 		m.add(tmp);
 		add(m);
