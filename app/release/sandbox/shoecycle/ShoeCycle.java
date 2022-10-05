@@ -10,15 +10,26 @@ import app.menu.gamemenu.GameField;
 import app.menu.gamemenu.GamePanel;
 import app.games2d.blackjack2d.shoe2d.instances.BlackJackShoe2D_Default;
 import app.games2d.blackjack2d.shoe2d.BlackJackShoe2D;
+import app.games2d.blackjack2d.shoe2d.BlackJackCard2D;
+import arcade.game.blackjack.blackjack_items.instances.BlackJackCard;
+import arcade.game.blackjack.blackjack_items.CheatAccessCards;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
+//This SHOULD be using the Shoe methods as much as possible and cheat methods as little as possible.
 public class ShoeCycle extends GameMenu{
 	private BlackJackShoe2D sh; //need to test generic interface
+	private ArrayList<BlackJackCard> shList;
+	private ArrayList<BlackJackCard> disc;
+
 	public ShoeCycle(DesktopApp parentApp, IMenu previous, int width_px, int height_px){
 		super(parentApp,previous,width_px,height_px);
-		sh=new BlackJackShoe2D_Default(500/7,100);
+		sh=(BlackJackShoe2D_Default)(new BlackJackShoe2D_Default(500/7,100)).genRogueClone();
+		CheatAccessCards cheat = (CheatAccessCards)sh;
+		shList = cheat.getCardsRef();
+		disc = cheat.getDiscardsRef();
 
 		//Draw Action Menu
 		ActionPanel a = new ActionPanel(width_px,(int)(0.2*height_px));
@@ -28,6 +39,15 @@ public class ShoeCycle extends GameMenu{
 		JButton tmp=new JButton("Draw");
 		tmp.setSize(100,40);
 		tmp.setLocation((a.getWidth()-tmp.getWidth())/2,(a.getHeight()-tmp.getHeight())/2);
+		tmp.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				System.out.println("Draw button clicked.");
+				//1. Draw a card
+				
+				//2. Paint the card that was selected
+			}
+		});
 		tmp.setVisible(true);
 		a.add(tmp);
 		add(a);
