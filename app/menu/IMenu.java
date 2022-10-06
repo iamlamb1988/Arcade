@@ -21,12 +21,23 @@ public abstract class IMenu extends JPanel implements IAppItem{
 		setVisible(true);
 	}
 
+	public boolean add(IAppItem item){
+		if(itmL.getIndex(item)>-1){return false;}
+		itmL.add(item);
+	}
+
 	//super Overrides:
 	@Override
 	public Component add(Component comp){
 		if(comp instanceof IAppItem)
 			itmL.add((IAppItem)comp);
 		return super.add(comp);
+	}
+
+	@Override
+	public void remove(Component comp){
+		itmL.remove(comp);
+		super.remove(comp);
 	}
 
 	//Need to override the REMOVES to incorporate itmL
@@ -69,5 +80,7 @@ public abstract class IMenu extends JPanel implements IAppItem{
 	public void paintComponent(Graphics p){
 		super.paintComponent(p);
 		dwblDrawTL(p);
+
+		for(IAppItem x : itmL){x.dwblDraw(p,x.getXint(),x.getYint());}
 	}
 }

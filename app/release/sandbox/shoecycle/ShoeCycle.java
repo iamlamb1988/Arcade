@@ -44,7 +44,7 @@ public class ShoeCycle extends GameMenu{
 			public void actionPerformed(ActionEvent e){
 				System.out.println("Draw button clicked.");
 				//1. Draw a card
-				
+
 				//2. Paint the card that was selected
 			}
 		});

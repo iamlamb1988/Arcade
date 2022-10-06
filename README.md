@@ -13,11 +13,15 @@ Some systems will be much harder to implement than others.
 As the focus is BlackJack for now, the program will simulate millions of hands and generate Basic Strategy tables using various counting system techniques.
 
 ## Update
+Setting up TomCat server with OpenJDK 17. In progress. Learning to deploy webapps that will execute the arcade library.
+Digital Ocean: TBA
+
 Should there be a "money transfer" class that takes on the currency transfer? Yes.
 
 resources and animation package is tightly coupled but shouldn't be. animation package must be completely separate from the app resources. Card2DAnimation should be in the app class because the images are app specific.
 
-Considering moving the project to a Java EE / Jakarta webserver.
+IMenu add override handles objects that ARE components that implement IAppItem.
+We need a function (overloaded or new name) that handles IAppItems that are NOT Components.
 ### Single Responsibility Principle Violation
 1. BlackJackTable interface has 2 responsibilities:
 * Transfer cards to and from Shoe, Table and Players,
