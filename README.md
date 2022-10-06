@@ -13,8 +13,8 @@ Some systems will be much harder to implement than others.
 As the focus is BlackJack for now, the program will simulate millions of hands and generate Basic Strategy tables using various counting system techniques.
 
 ## Update
-Setting up TomCat server with OpenJDK 17. In progress. Learning to deploy webapps that will execute the arcade library.
-Digital Ocean: TBA
+Setting up TomCat 10.0.26 server with OpenJDK 17. In progress. Learning to deploy webapps that will execute the arcade library.
+Digital Ocean: 198.199.71.169
 
 Should there be a "money transfer" class that takes on the currency transfer? Yes.
 
