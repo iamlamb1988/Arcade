@@ -2,12 +2,14 @@ package app.games2d.blackjack2d.shoe2d;
 
 import arcade.game.blackjack.blackjack_items.instances.BlackJackCard;
 import animation.Animation;
-import app.Drawable2D;
+import app.IAppItem;
 import java.awt.Graphics;
 
-public class BlackJackCard2D extends BlackJackCard implements Drawable2D{
+public class BlackJackCard2D extends BlackJackCard implements IAppItem{
 	private Animation front;
 	private Animation back;
+	private double xP; //X Position
+	private double yP; //Y Position
 
 	public BlackJackCard2D(BlackJackCard original, Animation frontAnm, Animation backAnm){
 		super(original);
@@ -17,6 +19,7 @@ public class BlackJackCard2D extends BlackJackCard implements Drawable2D{
 		if(backAnm!=null)
 			back=backAnm.clone();
 
+		xP=yP=0;
 	}
 
 	//parent override:
@@ -29,6 +32,13 @@ public class BlackJackCard2D extends BlackJackCard implements Drawable2D{
 	public void drawFront(Graphics brush, int xPos_px, int yPos_px){front.draw(xPos_px,yPos_px,brush);}
 	public void drawBackTL(Graphics brush){back.drawTopLeft(brush);}
 	public void drawBack(Graphics brush, int xPos_px, int yPos_px){back.draw(xPos_px,yPos_px,brush);}
+
+	//IAppItem Overrides
+	public double getXdbl(){return xP;}
+	public double getYdbl(){return yP;}
+	public int getXint(){return (int)xP;}
+	public int getYint(){return (int)yP;}
+	public void setBG(Animation Background){}
 
 	//Drawable2D Overrides:
 	@Override
