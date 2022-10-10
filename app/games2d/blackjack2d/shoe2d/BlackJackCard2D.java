@@ -38,7 +38,12 @@ public class BlackJackCard2D extends BlackJackCard implements IAppItem{
 	public double getYdbl(){return yP;}
 	public int getXint(){return (int)xP;}
 	public int getYint(){return (int)yP;}
-	public void setBG(Animation Background){}
+	public void setBG(Animation Background){ //Back of card only
+		//Will do nothing for now to mantain immutability
+		//1. Resize the image
+		//2. Clone image
+		//3. set the back to the clone
+	}
 
 	//Drawable2D Overrides:
 	@Override

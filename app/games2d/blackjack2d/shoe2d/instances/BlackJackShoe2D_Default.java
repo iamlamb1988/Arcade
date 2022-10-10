@@ -15,6 +15,8 @@ import java.awt.Graphics;
 public class BlackJackShoe2D_Default extends BlackJackShoe_Default implements BlackJackShoe2D{
 	private double xP;
 	private double yP;
+	private Animation bg;
+
 	public BlackJackShoe2D_Default(int width_px, int height_px){
 		super();
 		xP=yP=0;

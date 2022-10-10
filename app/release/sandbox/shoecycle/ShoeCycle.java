@@ -43,9 +43,9 @@ public class ShoeCycle extends GameMenu{
 			@Override
 			public void actionPerformed(ActionEvent e){
 				System.out.println("Draw button clicked.");
-				//1. Draw a card
+				//1. Remove current Card from the field (if any).
 
-				//2. Paint the card that was selected
+				//2. Add Drawn Card to the Field
 			}
 		});
 		tmp.setVisible(true);
