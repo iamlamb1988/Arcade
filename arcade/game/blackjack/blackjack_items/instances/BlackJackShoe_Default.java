@@ -50,7 +50,12 @@ public class BlackJackShoe_Default implements BlackJackShoe, HonorCode{
 
 	@Override
     public Card dealTop(){return list.remove(0);}
-	
+
+	@Override
+	public void discard(Card dis){
+		discard.add((BlackJackCard)dis);
+	}
+
 	//HonorCode Overrides:
 	public boolean isHonorable(){ //needs to check on list and discard
 		return honest;

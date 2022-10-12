@@ -20,6 +20,7 @@ public class BlackJackShoe2D_Default extends BlackJackShoe_Default implements Bl
 	public BlackJackShoe2D_Default(int width_px, int height_px){
 		super();
 		xP=yP=0;
+
 		//1. Establish a temporary animation factory.
 		Card2DAnimationFactory aF = new Card2DAnimationFactory();
 		aF.setActualSize(width_px,height_px);
