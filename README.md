@@ -18,6 +18,7 @@ Learning to deploy webapps that will execute the arcade library.
 Less commits have been made due to learning curve of Jakarta EE.
 Digital Ocean: 198.199.71.169
 
+Currently REFACTORING Shoe to take a generic Card Parameter to allow different cards such as "BlackJack", "BlackJack2D" etc.
 Should there be a "money transfer" class that takes on the currency transfer? Yes.
 
 resources and animation package is tightly coupled but shouldn't be. animation package must be completely separate from the app resources. Card2DAnimation should be in the app class because the images are app specific.
@@ -33,6 +34,8 @@ We need a function (overloaded or new name) that handles IAppItems that are NOT 
 - [ ] Develop the ShoeCycle.
 - [ ] Develop the TableCycle (Except money transactions).
 - [ ] Destroy the debug package.
+	- [x] Destroy the ShoeTest
+	- [ ] Destroy the TableTest
 - [ ] Improve structure diagram. Elaborate more on 2D implementation.
 
 ## High level structure.
