@@ -1,8 +1,9 @@
 package app.games2d.blackjack2d.shoe2d.instances;
 
-import arcade.game.blackjack.blackjack_items.instances.BlackJackShoe_Default;
-import arcade.game.blackjack.blackjack_items.instances.BlackJackCard;
+import animation.Animation;
 import arcade.game.blackjack.blackjack_items.BlackJackShoe;
+import arcade.game.blackjack.blackjack_items.instances.BlackJackCard;
+import arcade.game.blackjack.blackjack_items.instances.BlackJackShoe_Default;
 import arcade.game.blackjack.blackjack_items.CheatAccessCards;
 import app.games2d.blackjack2d.shoe2d.BlackJackCard2D;
 import app.games2d.blackjack2d.shoe2d.BlackJackShoe2D;
@@ -12,9 +13,14 @@ import java.util.ArrayList;
 import java.awt.Graphics;
 
 public class BlackJackShoe2D_Default extends BlackJackShoe_Default implements BlackJackShoe2D{
+	private double xP;
+	private double yP;
+	private Animation bg;
+
 	public BlackJackShoe2D_Default(int width_px, int height_px){
 		super();
-		//Next: Type cast list to hold BlackJackShoe2D:
+		xP=yP=0;
+
 		//1. Establish a temporary animation factory.
 		Card2DAnimationFactory aF = new Card2DAnimationFactory();
 		aF.setActualSize(width_px,height_px);
@@ -56,6 +62,13 @@ public class BlackJackShoe2D_Default extends BlackJackShoe_Default implements Bl
 	//BlackJackShoe Overrides:
 	public void drawShoeTL(Graphics brush){}
 	public void drawShoe(Graphics brush, int xPos_px, int yPos_px){}
+
+	//IAppItem Overrides:
+	public double getXdbl(){return xP;}
+	public double getYdbl(){return yP;}
+	public int getXint(){return (int)xP;}
+	public int getYint(){return (int)yP;}
+	public void setBG(Animation Background){} //NEED TO IMPLEMENT
 
 	//Drawable2D Overrides:
 	public void dwblDrawTL(Graphics brush){}

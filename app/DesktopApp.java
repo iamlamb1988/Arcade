@@ -11,7 +11,7 @@ public class DesktopApp extends JFrame{
 		// getContentPane().setSize(width_px,height_px);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		MainMenu tmpM = new MainMenu(this,width_px,height_px);
+		MainMenu tmpM = new MainMenu(this,width_px-16,height_px-39);
 		add(tmpM);
 		setVisible(true);
 	}

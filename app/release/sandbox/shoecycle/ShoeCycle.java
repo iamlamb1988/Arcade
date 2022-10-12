@@ -3,17 +3,33 @@ package app.release.sandbox.shoecycle;
 import animation.Animation;
 import animation.SingleImage;
 import app.DesktopApp;
+import app.PanelSwapAction;
 import app.menu.IMenu;
 import app.menu.gamemenu.GameMenu;
 import app.menu.gamemenu.GameField;
 import app.menu.gamemenu.GamePanel;
-import javax.swing.JButton;
+import app.games2d.blackjack2d.shoe2d.instances.BlackJackShoe2D_Default;
+import app.games2d.blackjack2d.shoe2d.BlackJackShoe2D;
+import app.games2d.blackjack2d.shoe2d.BlackJackCard2D;
+import arcade.game.blackjack.blackjack_items.instances.BlackJackCard;
+import arcade.game.blackjack.blackjack_items.CheatAccessCards;
+import javax.swing.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
+//This SHOULD be using the Shoe methods as much as possible and cheat methods as little as possible.
 public class ShoeCycle extends GameMenu{
+	private BlackJackShoe2D sh; //need to test generic interface
+	private ArrayList<BlackJackCard> shList;
+	private ArrayList<BlackJackCard> disc;
+
 	public ShoeCycle(DesktopApp parentApp, IMenu previous, int width_px, int height_px){
 		super(parentApp,previous,width_px,height_px);
-
-		GameField f;
+		sh=(BlackJackShoe2D_Default)(new BlackJackShoe2D_Default(500/7,100)).genRogueClone();
+		CheatAccessCards cheat = (CheatAccessCards)sh;
+		shList = cheat.getCardsRef();
+		disc = cheat.getDiscardsRef();
 
 		//Draw Action Menu
 		ActionPanel a = new ActionPanel(width_px,(int)(0.2*height_px));
@@ -23,6 +39,15 @@ public class ShoeCycle extends GameMenu{
 		JButton tmp=new JButton("Draw");
 		tmp.setSize(100,40);
 		tmp.setLocation((a.getWidth()-tmp.getWidth())/2,(a.getHeight()-tmp.getHeight())/2);
+		tmp.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				System.out.println("Draw button clicked.");
+				//1. Remove current Card from the field (if any).
+
+				//2. Add Drawn Card to the Field
+			}
+		});
 		tmp.setVisible(true);
 		a.add(tmp);
 		add(a);
@@ -35,18 +60,18 @@ public class ShoeCycle extends GameMenu{
 		tmp=new JButton("Main Menu");
 		tmp.setSize(100,40);
 		tmp.setLocation(m.getWidth()-tmp.getWidth()-10,10);
+		tmp.addActionListener(new PanelSwapAction(parentApp,this,previous));
 		tmp.setVisible(true);
 		m.add(tmp);
 		add(m);
 
 		//Add game field
-		f=new GameField(width_px,height_px-a.getHeight()-m.getHeight());
+		GameField f=new GameField(0,m.getHeight(),width_px,height_px-a.getHeight()-m.getHeight());
+		
 		add(f);
 	}
 
 	private class ActionPanel extends GamePanel{
-		private ActionPanel(int width_px, int height_px){
-			super(width_px,height_px);
-		}
+		private ActionPanel(int width_px, int height_px){super(width_px,height_px);}
 	}
 }
