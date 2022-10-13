@@ -8,31 +8,31 @@ import arcade.game.blackjack.blackjack_items.CheatAccessCards;
 import java.util.Collections;
 import java.util.ArrayList;
 
-public class BlackJackShoe_Default implements BlackJackShoe, HonorCode{
-	protected ArrayList<BlackJackCard> list,
-									   discard;
+public class BlackJackShoe_Default<C extends BlackJackCard> implements BlackJackShoe, HonorCode{
+	protected ArrayList<C> list,
+						   discard;
 	private boolean honest;
 
 	public BlackJackShoe_Default(){ //single deck implementation
-		list = new ArrayList<BlackJackCard>(52);
-		discard = new ArrayList<BlackJackCard>(52);
+		list = new ArrayList<C>(52);
+		discard = new ArrayList<C>(52);
 		ArrayList<Card> tmp=Shoe.genStandardDeck();
 
-		BlackJackCard upgrade;
+		C upgrade;
 		while(tmp.size()>0){
-			upgrade = new BlackJackCard(tmp.remove(0));
+			upgrade = (C)(new BlackJackCard(tmp.remove(0)));
 			list.add(upgrade);
 		}
 		honest=true;
 	}
 
 	protected BlackJackShoe_Default(BlackJackShoe_Default originalShoe){
-		list = new ArrayList<BlackJackCard>(52);
-		discard = new ArrayList<BlackJackCard>(52);
-		for(BlackJackCard x : originalShoe.list){
+		list = new ArrayList<C>(52);
+		discard = new ArrayList<C>(52);
+		for(C x : originalShoe.list){
 			list.add(x.clone());
 		}
-		for(BlackJackCard x : originalShoe.discard){
+		for(C x : originalShoe.discard){
 			discard.add(x.clone());
 		}
 
