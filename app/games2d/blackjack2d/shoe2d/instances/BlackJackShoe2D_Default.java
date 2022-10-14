@@ -12,7 +12,7 @@ import app.srcfactory.card2d.Card2DAnimationFactory;
 import java.util.ArrayList;
 import java.awt.Graphics;
 
-public class BlackJackShoe2D_Default extends BlackJackShoe_Default implements BlackJackShoe2D{
+public class BlackJackShoe2D_Default<C2D extends BlackJackCard2D> extends BlackJackShoe_Default implements BlackJackShoe2D{
 	private double xP;
 	private double yP;
 	private Animation bg;

@@ -36,20 +36,11 @@ public class ShoeCycle extends GameMenu{
 		a.setLocation(0,height_px-a.getHeight());
 		a.setBG(new SingleImage(a.getWidth(),a.getHeight(),128,128,128,255));
 
-		JButton tmp=new JButton("Draw");
-		tmp.setSize(100,40);
-		tmp.setLocation((a.getWidth()-tmp.getWidth())/2,(a.getHeight()-tmp.getHeight())/2);
-		tmp.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){
-				System.out.println("Draw button clicked.");
-				//1. Remove current Card from the field (if any).
-
-				//2. Add Drawn Card to the Field
-			}
-		});
-		tmp.setVisible(true);
-		a.add(tmp);
+		JButton drw=new JButton("Draw");
+		drw.setSize(100,40);
+		drw.setLocation((a.getWidth()-drw.getWidth())/2,(a.getHeight()-drw.getHeight())/2);
+		drw.setVisible(true);
+		a.add(drw);
 		add(a);
 
 		//Menu
@@ -57,7 +48,7 @@ public class ShoeCycle extends GameMenu{
 		m.setLocation(0,0);
 		m.setBG(new SingleImage(m.getWidth(),m.getHeight(),128,128,128,255));
 
-		tmp=new JButton("Main Menu");
+		JButton tmp=new JButton("Main Menu");
 		tmp.setSize(100,40);
 		tmp.setLocation(m.getWidth()-tmp.getWidth()-10,10);
 		tmp.addActionListener(new PanelSwapAction(parentApp,this,previous));
@@ -67,11 +58,21 @@ public class ShoeCycle extends GameMenu{
 
 		//Add game field
 		GameField f=new GameField(0,m.getHeight(),width_px,height_px-a.getHeight()-m.getHeight());
-		
 		add(f);
+
+		//Add dependant methods
+		drw.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				System.out.println("Draw button clicked.");
+				//1. Remove current Card from the field (if any).
+				
+				//2. Add Drawn Card to the Field
+			}
+		});
 	}
 
-	private class ActionPanel extends GamePanel{
+	private class ActionPanel extends GamePanel{//Singleton class that deploys
 		private ActionPanel(int width_px, int height_px){super(width_px,height_px);}
 	}
 }

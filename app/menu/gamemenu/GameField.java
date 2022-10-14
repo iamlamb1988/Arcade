@@ -5,6 +5,7 @@ import animation.SingleImage;
 import app.IAppItem;
 import javax.swing.JPanel;
 import java.util.ArrayList;
+import java.awt.Component;
 import java.awt.Graphics;
 
 public class GameField extends JPanel implements IAppItem{
@@ -25,8 +26,25 @@ public class GameField extends JPanel implements IAppItem{
 		this(0,0,width_px,height_px);
 	}
 
+	public boolean addIAppItem(IAppItem item){
+		if(itmL.indexOf(item)>-1){return false;}
+		itmL.add(item);
+		return true;
+	}
+
 	//super Overrides:
-	
+	@Override
+	public Component add(Component comp){//Duplicate issue?
+		if(comp instanceof IAppItem)
+			addIAppItem((IAppItem)comp);
+		return super.add(comp);
+	}
+
+	@Override
+	public void remove(Component comp){
+		itmL.remove(comp);
+		super.remove(comp);
+	}
 
 	//IAppItem Overrides:
 	@Override
