@@ -17,7 +17,7 @@ public class BlackJackShoe2D_Default extends BlackJackShoe_Default implements Bl
 	private double yP;
 	private Animation bg;
 
-	public BlackJackShoe2D_Default(int width_px, int height_px){
+	public BlackJackShoe2D_Default(int width_px, int height_px){//Single deck instance
 		super();
 		xP=yP=0;
 
@@ -37,10 +37,10 @@ public class BlackJackShoe2D_Default extends BlackJackShoe_Default implements Bl
 		aF.setBG(aF.genShoeImage(width_px,height_px));
 
 		//3. Assign images to 2D Cards.
-		ArrayList<BlackJackCard2D> upgradeList = new ArrayList<BlackJackCard2D>();
+		ArrayList<BlackJackCard2D> upgradeList = new ArrayList<BlackJackCard2D>(52);
 		BlackJackCard original;
 		while(list.size()>0){
-			original = list.remove(0);
+			original = (BlackJackCard)list.remove(0);
 			upgradeList.add(new BlackJackCard2D(original,aF.genCard2D(original.face,original.suit),aF.genCardBG()));
 		}
 

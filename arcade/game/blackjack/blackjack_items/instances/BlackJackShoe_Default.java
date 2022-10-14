@@ -26,14 +26,14 @@ public class BlackJackShoe_Default<C extends BlackJackCard> implements BlackJack
 		honest=true;
 	}
 
-	protected BlackJackShoe_Default(BlackJackShoe_Default originalShoe){
+	protected BlackJackShoe_Default(BlackJackShoe_Default<C> originalShoe){
 		list = new ArrayList<C>(52);
 		discard = new ArrayList<C>(52);
-		for(C x : originalShoe.list){
-			list.add(x.clone());
+		for(BlackJackCard x : originalShoe.list){
+			list.add((C)x.clone());
 		}
-		for(C x : originalShoe.discard){
-			discard.add(x.clone());
+		for(BlackJackCard x : originalShoe.discard){
+			discard.add((C)x.clone());
 		}
 
 		if(this instanceof RogueBJShoe) honest=false;
@@ -53,7 +53,7 @@ public class BlackJackShoe_Default<C extends BlackJackCard> implements BlackJack
 
 	@Override
 	public void discard(Card dis){
-		discard.add((BlackJackCard)dis);
+		discard.add((C)dis);
 	}
 
 	//HonorCode Overrides:
@@ -61,8 +61,8 @@ public class BlackJackShoe_Default<C extends BlackJackCard> implements BlackJack
 		return honest;
 	}
 
-	private class RogueBJShoe extends BlackJackShoe_Default implements BlackJackShoe, CheatAccessCards{
-		private RogueBJShoe(BlackJackShoe_Default org){
+	private class RogueBJShoe<CR extends C> extends BlackJackShoe_Default implements BlackJackShoe, CheatAccessCards{
+		private RogueBJShoe(BlackJackShoe_Default<CR> org){
 			super(org);
 		}
 
