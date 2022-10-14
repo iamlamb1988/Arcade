@@ -5,6 +5,7 @@ import animation.SingleImage;
 import app.DesktopApp;
 import app.PanelSwapAction;
 import app.menu.IMenu;
+import app.games2d.GameItem;
 import app.menu.gamemenu.GameMenu;
 import app.menu.gamemenu.GameField;
 import app.menu.gamemenu.GamePanel;
@@ -61,18 +62,31 @@ public class ShoeCycle extends GameMenu{
 		add(f);
 
 		//Add dependant methods
-		drw.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){
-				System.out.println("Draw button clicked.");
-				//1. Remove current Card from the field (if any).
-				
-				//2. Add Drawn Card to the Field
-			}
-		});
+		drw.addActionListener(new CardDrawingAction(f));
 	}
 
 	private class ActionPanel extends GamePanel{//Singleton class that deploys
 		private ActionPanel(int width_px, int height_px){super(width_px,height_px);}
+	}
+
+	
+	private class CardDrawingAction implements ActionListener{
+		private GameField gf;
+
+		private CardDrawingAction(GameField gamefield){
+			gf=gamefield;
+		}
+
+		private void add(GameItem itm){
+			
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e){
+			System.out.println("Action Button clicked!!");
+			//add action item here upon click
+			
+			
+		}
 	}
 }
