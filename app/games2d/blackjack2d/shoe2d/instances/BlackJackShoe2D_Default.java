@@ -27,8 +27,8 @@ public class BlackJackShoe2D_Default<C2D extends BlackJackCard2D> extends BlackJ
 		aF.setSpacing((int)(0.07*width_px),((int)(0.07*width_px)));
 		aF.setSuitSize((int)(0.2*width_px),(int)(0.2*height_px));
 		aF.setFaceSize((int)(0.2*width_px),(int)(0.2*height_px));
-		aF.setBG(aF.genCardBorder(100, 125, 10)); //ARBITRARY NEEDS FIXED UPON 2D REFACTOR
-		aF.setBackBG(aF.genCardBorder(100, 125, 10)); //ARBITRARY NEEDS FIXED UPON 2D REFACTOR
+		aF.setBG(aF.genCardBorder(width_px, height_px, (int)(0.1*width_px))); //ARBITRARY NEEDS FIXED UPON 2D REFACTOR
+		aF.setBackBG(aF.genCardBorder(width_px, height_px, (int)(0.1*width_px))); //ARBITRARY NEEDS FIXED UPON 2D REFACTOR
 		aF.setFaces();
 		aF.setSuits();
 		aF.setCards();
