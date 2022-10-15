@@ -24,6 +24,7 @@ public class ShoeCycle extends GameMenu{
 	private BlackJackShoe2D sh; //need to test generic interface
 	private ArrayList<BlackJackCard> shList;
 	private ArrayList<BlackJackCard> disc;
+	private BlackJackCard2D c;
 
 	public ShoeCycle(DesktopApp parentApp, IMenu previous, int width_px, int height_px){
 		super(parentApp,previous,width_px,height_px);
@@ -31,6 +32,7 @@ public class ShoeCycle extends GameMenu{
 		CheatAccessCards cheat = (CheatAccessCards)sh;
 		shList = cheat.getCardsRef();
 		disc = cheat.getDiscardsRef();
+		c=null;
 
 		//Draw Action Menu
 		ActionPanel a = new ActionPanel(width_px,(int)(0.2*height_px));
@@ -73,20 +75,14 @@ public class ShoeCycle extends GameMenu{
 	private class CardDrawingAction implements ActionListener{
 		private GameField gf;
 
-		private CardDrawingAction(GameField gamefield){
-			gf=gamefield;
-		}
-
-		private void add(GameItem itm){
-			
-		}
+		private CardDrawingAction(GameField gamefield){gf=gamefield;}
 
 		@Override
 		public void actionPerformed(ActionEvent e){
 			System.out.println("Action Button clicked!!");
-			//add action item here upon click
-			
-			
+			c=(BlackJackCard2D)sh.dealTop();
+			gf.addGameItem(c);
+			repaint();
 		}
 	}
 }

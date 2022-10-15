@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class BlackJackShoe_Default<C extends BlackJackCard> implements BlackJackShoe, HonorCode{
 	protected ArrayList<C> list,
 						   discard;
+
 	private boolean honest;
 
 	public BlackJackShoe_Default(){ //single deck implementation

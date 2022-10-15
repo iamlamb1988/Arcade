@@ -2,10 +2,10 @@ package app.games2d.blackjack2d.shoe2d;
 
 import arcade.game.blackjack.blackjack_items.instances.BlackJackCard;
 import animation.Animation;
-import app.IAppItem;
+import app.games2d.GameItem;
 import java.awt.Graphics;
 
-public class BlackJackCard2D extends BlackJackCard implements IAppItem{
+public class BlackJackCard2D extends BlackJackCard implements GameItem{
 	private Animation front;
 	private Animation back;
 	private double xP; //X Position
@@ -22,7 +22,7 @@ public class BlackJackCard2D extends BlackJackCard implements IAppItem{
 		xP=yP=0;
 	}
 
-	//parent override:
+	//Object overrides:
 	@Override
 	public BlackJackCard clone(){
 		return new BlackJackCard2D(this,front,back);
@@ -44,6 +44,12 @@ public class BlackJackCard2D extends BlackJackCard implements IAppItem{
 		//2. Clone image
 		//3. set the back to the clone
 	}
+	
+	//GameItem Overrides:
+	public void setX(double xP){this.xP=xP;}
+	public void setY(double yP){this.yP=yP;}
+	public void d_x(double xChange){xP+=xChange;}
+	public void d_y(double yChange){yP+=yChange;}
 
 	//Drawable2D Overrides:
 	@Override
