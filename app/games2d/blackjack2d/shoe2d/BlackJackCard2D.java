@@ -11,7 +11,11 @@ public class BlackJackCard2D extends BlackJackCard implements GameItem{
 	private double xP; //X Position
 	private double yP; //Y Position
 
-	public BlackJackCard2D(BlackJackCard original, Animation frontAnm, Animation backAnm){
+	public BlackJackCard2D(
+		BlackJackCard original,
+		Animation frontAnm, Animation backAnm,
+		double xPos, double yPos
+	){
 		super(original);
 		if(frontAnm!=null)
 			front=frontAnm.clone();
@@ -19,8 +23,14 @@ public class BlackJackCard2D extends BlackJackCard implements GameItem{
 		if(backAnm!=null)
 			back=backAnm.clone();
 
-		xP=yP=0;
+		xP=xPos;
+		yP=yPos;
 	}
+
+	public BlackJackCard2D(
+		BlackJackCard original,
+		Animation frontAnm, Animation backAnm
+	){this(original,frontAnm,backAnm,0,0);}
 
 	//Object overrides:
 	@Override

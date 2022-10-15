@@ -25,8 +25,8 @@ public class BlackJackShoe2D_Default<C2D extends BlackJackCard2D> extends BlackJ
 		Card2DAnimationFactory aF = new Card2DAnimationFactory();
 		aF.setActualSize(width_px,height_px);
 		aF.setSpacing((int)(0.07*width_px),((int)(0.07*width_px)));
-		aF.setSuitSize(20,30);
-		aF.setFaceSize(20,30);
+		aF.setSuitSize((int)(0.2*width_px),(int)(0.2*height_px));
+		aF.setFaceSize((int)(0.2*width_px),(int)(0.2*height_px));
 		aF.setBG(aF.genCardBorder(100, 125, 10)); //ARBITRARY NEEDS FIXED UPON 2D REFACTOR
 		aF.setBackBG(aF.genCardBorder(100, 125, 10)); //ARBITRARY NEEDS FIXED UPON 2D REFACTOR
 		aF.setFaces();
@@ -60,14 +60,26 @@ public class BlackJackShoe2D_Default<C2D extends BlackJackCard2D> extends BlackJ
 	}
 
 	//BlackJackShoe Overrides:
+	@Override
 	public void drawShoeTL(Graphics brush){}
+
+	@Override
 	public void drawShoe(Graphics brush, int xPos_px, int yPos_px){}
 
 	//IAppItem Overrides:
+	@Override
 	public double getXdbl(){return xP;}
+
+	@Override
 	public double getYdbl(){return yP;}
+
+	@Override
 	public int getXint(){return (int)xP;}
+
+	@Override
 	public int getYint(){return (int)yP;}
+
+	@Override
 	public void setBG(Animation Background){} //NEED TO IMPLEMENT
 
 	//Drawable2D Overrides:

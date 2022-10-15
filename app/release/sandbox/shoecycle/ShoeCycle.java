@@ -28,7 +28,7 @@ public class ShoeCycle extends GameMenu{
 
 	public ShoeCycle(DesktopApp parentApp, IMenu previous, int width_px, int height_px){
 		super(parentApp,previous,width_px,height_px);
-		sh=(BlackJackShoe2D_Default)(new BlackJackShoe2D_Default(500/7,100)).genRogueClone();
+		sh=(BlackJackShoe2D_Default)(new BlackJackShoe2D_Default<BlackJackCard2D>(500/7,100)).genRogueClone();
 		CheatAccessCards cheat = (CheatAccessCards)sh;
 		shList = cheat.getCardsRef();
 		disc = cheat.getDiscardsRef();
