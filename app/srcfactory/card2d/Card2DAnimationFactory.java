@@ -110,17 +110,7 @@ public class Card2DAnimationFactory extends AnimationFactory{
 	}
 
 	public Card2DAnimationFactory(int height_px){
-		super();
-		LEN_RATIO=(byte)7;
-		WDT_RATIO=(byte)5;
-		LEN_TO_WDT_FACTOR=(double)LEN_RATIO/WDT_RATIO;
-		WDT_TO_LEN_FACTOR=(double)WDT_RATIO/LEN_RATIO;
-
-		constructorHelp();
-		cif = new CardImgFetcher();
-		actualWidth_px=(int)(height_px*WDT_TO_LEN_FACTOR);
-		actualHeight_px=height_px;
-		cif.fetchAll(actualWidth_px,actualHeight_px);
+		this((int)(5.0*height_px/7),height_px);
 	}
 
 	private byte getFaceIndex(char face){
@@ -143,6 +133,9 @@ public class Card2DAnimationFactory extends AnimationFactory{
 
 		return -1;
 	}
+
+	public int getCardWidth(){return actualWidth_px;}
+	public int getCardHeight(){return actualHeight_px;}
 
 	public boolean isBG_Set(){return bg!=null;}
 	public boolean isBackGB_Set(){return BackBG!=null;}
