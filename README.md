@@ -18,7 +18,9 @@ Learning to deploy webapps that will execute the arcade library.
 Less commits have been made due to learning curve of Jakarta EE.
 Digital Ocean: 198.199.71.169
 
-Refactor of BlackJackShoe instance for Generic Card types (untested).
+BlackJackShoe is now refactored for Generic BlackJackCard types.
+Successfully modified Card2D to bo "face up" or "face down". The generic Drawable2D will draw IAW with face up or face down.
+
 Should there be a "money transfer" class that takes on the currency transfer? Yes.
 
 resources and animation package is tightly coupled but shouldn't be. animation package must be completely separate from the app resources. Card2DAnimation should be in the app class because the images are app specific.
