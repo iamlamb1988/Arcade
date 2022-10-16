@@ -3,13 +3,15 @@ package app.menu.gamemenu;
 import animation.Animation;
 import animation.SingleImage;
 import app.IAppItem;
+import app.games2d.GameItem;
 import javax.swing.JPanel;
 import java.util.ArrayList;
+import java.awt.Component;
 import java.awt.Graphics;
 
 public class GameField extends JPanel implements IAppItem{
 	private Animation bg;
-	private ArrayList<IAppItem> itmL;
+	private ArrayList<GameItem> itmL;
 
 	public GameField(int xPos_px, int yPos_px, int width_px, int height_px){
 		super();
@@ -18,15 +20,32 @@ public class GameField extends JPanel implements IAppItem{
 		setSize(width_px,height_px);
 		setBG(new SingleImage(width_px,height_px,0,255,0,255));
 		setVisible(true);
-		itmL = new ArrayList<IAppItem>();
+		itmL = new ArrayList<GameItem>();
 	}
 
 	public GameField(int width_px,int height_px){
 		this(0,0,width_px,height_px);
 	}
 
+	public boolean addGameItem(GameItem item){
+		if(itmL.indexOf(item)>-1){return false;}
+		itmL.add(item);
+		return true;
+	}
+
 	//super Overrides:
-	
+	@Override
+	public Component add(Component comp){//Duplicate issue?
+		if(comp instanceof GameItem)
+			addGameItem((GameItem)comp);
+		return super.add(comp);
+	}
+
+	@Override
+	public void remove(Component comp){
+		itmL.remove(comp);
+		super.remove(comp);
+	}
 
 	//IAppItem Overrides:
 	@Override

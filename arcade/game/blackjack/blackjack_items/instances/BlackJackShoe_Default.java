@@ -8,32 +8,33 @@ import arcade.game.blackjack.blackjack_items.CheatAccessCards;
 import java.util.Collections;
 import java.util.ArrayList;
 
-public class BlackJackShoe_Default implements BlackJackShoe, HonorCode{
-	protected ArrayList<BlackJackCard> list,
-									   discard;
+public class BlackJackShoe_Default<C extends BlackJackCard> implements BlackJackShoe, HonorCode{
+	protected ArrayList<C> list,
+						   discard;
+
 	private boolean honest;
 
 	public BlackJackShoe_Default(){ //single deck implementation
-		list = new ArrayList<BlackJackCard>(52);
-		discard = new ArrayList<BlackJackCard>(52);
+		list = new ArrayList<C>(52);
+		discard = new ArrayList<C>(52);
 		ArrayList<Card> tmp=Shoe.genStandardDeck();
 
-		BlackJackCard upgrade;
+		C upgrade;
 		while(tmp.size()>0){
-			upgrade = new BlackJackCard(tmp.remove(0));
+			upgrade = (C)(new BlackJackCard(tmp.remove(0)));
 			list.add(upgrade);
 		}
 		honest=true;
 	}
 
-	protected BlackJackShoe_Default(BlackJackShoe_Default originalShoe){
-		list = new ArrayList<BlackJackCard>(52);
-		discard = new ArrayList<BlackJackCard>(52);
+	protected BlackJackShoe_Default(BlackJackShoe_Default<C> originalShoe){
+		list = new ArrayList<C>(52);
+		discard = new ArrayList<C>(52);
 		for(BlackJackCard x : originalShoe.list){
-			list.add(x.clone());
+			list.add((C)x.clone());
 		}
 		for(BlackJackCard x : originalShoe.discard){
-			discard.add(x.clone());
+			discard.add((C)x.clone());
 		}
 
 		if(this instanceof RogueBJShoe) honest=false;
@@ -53,7 +54,7 @@ public class BlackJackShoe_Default implements BlackJackShoe, HonorCode{
 
 	@Override
 	public void discard(Card dis){
-		discard.add((BlackJackCard)dis);
+		discard.add((C)dis);
 	}
 
 	//HonorCode Overrides:
@@ -61,8 +62,8 @@ public class BlackJackShoe_Default implements BlackJackShoe, HonorCode{
 		return honest;
 	}
 
-	private class RogueBJShoe extends BlackJackShoe_Default implements BlackJackShoe, CheatAccessCards{
-		private RogueBJShoe(BlackJackShoe_Default org){
+	private class RogueBJShoe<CR extends C> extends BlackJackShoe_Default implements BlackJackShoe, CheatAccessCards{
+		private RogueBJShoe(BlackJackShoe_Default<CR> org){
 			super(org);
 		}
 
