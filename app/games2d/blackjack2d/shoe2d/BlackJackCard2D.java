@@ -8,6 +8,7 @@ import java.awt.Graphics;
 public class BlackJackCard2D extends BlackJackCard implements GameItem{
 	private Animation front;
 	private Animation back;
+	private Animation upside; //This will ONLY reference "front" XOR "back";
 	private double xP; //X Position
 	private double yP; //Y Position
 
@@ -23,6 +24,7 @@ public class BlackJackCard2D extends BlackJackCard implements GameItem{
 		if(backAnm!=null)
 			back=backAnm.clone();
 
+		upside=back;
 		xP=xPos;
 		yP=yPos;
 	}
@@ -38,16 +40,27 @@ public class BlackJackCard2D extends BlackJackCard implements GameItem{
 		return new BlackJackCard2D(this,front,back);
 	}
 	
+	public void setFrontUpside(){upside=front;}
+	public void setBackUpside(){upside=back;}
 	public void drawFrontTL(Graphics brush){front.drawTopLeft(brush);}
 	public void drawFront(Graphics brush, int xPos_px, int yPos_px){front.draw(xPos_px,yPos_px,brush);}
 	public void drawBackTL(Graphics brush){back.drawTopLeft(brush);}
 	public void drawBack(Graphics brush, int xPos_px, int yPos_px){back.draw(xPos_px,yPos_px,brush);}
 
 	//IAppItem Overrides
+	@Override
 	public double getXdbl(){return xP;}
+
+	@Override
 	public double getYdbl(){return yP;}
+
+	@Override
 	public int getXint(){return (int)xP;}
+
+	@Override
 	public int getYint(){return (int)yP;}
+
+	@Override
 	public void setBG(Animation Background){ //Back of card only
 		//Will do nothing for now to mantain immutability
 		//1. Resize the image
@@ -63,8 +76,8 @@ public class BlackJackCard2D extends BlackJackCard implements GameItem{
 
 	//Drawable2D Overrides:
 	@Override
-	public void dwblDrawTL(Graphics brush){drawBackTL(brush);}
+	public void dwblDrawTL(Graphics brush){upside.drawTopLeft(brush);}
 
 	@Override
-	public void dwblDraw(Graphics brush, int xPos_px, int yPos_px){drawBack(brush,xPos_px,yPos_px);}
+	public void dwblDraw(Graphics brush, int xPos_px, int yPos_px){upside.drawTopLeft(brush);}
 }

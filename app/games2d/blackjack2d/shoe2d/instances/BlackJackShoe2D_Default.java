@@ -45,10 +45,7 @@ public class BlackJackShoe2D_Default<C2D extends BlackJackCard2D> extends BlackJ
 		}
 
 		//4. Add 2D Cards back to original List..
-		while(upgradeList.size()>0){
-			System.out.println("DEBUG: BlackJackShoe2D_Default Card2D add upgraded cards");
-			list.add(upgradeList.remove(0));
-		}
+		while(upgradeList.size()>0){list.add(upgradeList.remove(0));}
 	}
 
 	private BlackJackShoe2D_Default(BlackJackShoe2D_Default original){

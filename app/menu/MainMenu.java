@@ -7,7 +7,6 @@ import app.release.sandbox.shoecycle.ShoeCycle;
 import animation.Animation;
 import animation.SingleImage;
 import app.DesktopApp;
-import app.debug.*;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.Graphics;
@@ -32,12 +31,6 @@ public class MainMenu extends IMenu{
 		shoeCyc.addActionListener(new PanelSwapAction(parent,this,new ShoeCycle(parent,this,width_px,height_px)));
 		add(shoeCyc);
 
-		//Add DEBUG for debug branch
-		JButton dbgDraw = new JButton("draw debug");
-		dbgDraw.setLocation(10,60);
-		dbgDraw.setSize(150,40);
-		dbgDraw.addActionListener(new PanelSwapAction(parent,this,new FaceDrawDebug(width_px,height_px)));
-		add(dbgDraw);
 		setVisible(true);
 	}
 }
