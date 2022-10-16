@@ -22,13 +22,13 @@ public class BlackJackShoe2D_Default<C2D extends BlackJackCard2D> extends BlackJ
 		xP=yP=0;
 
 		//1. Establish a temporary animation factory.
-		Card2DAnimationFactory aF = new Card2DAnimationFactory();
-		aF.setActualSize(width_px,height_px);
+		Card2DAnimationFactory aF = new Card2DAnimationFactory(width_px,height_px);
+		// aF.setActualSize(width_px,height_px);
 		aF.setSpacing((int)(0.07*width_px),((int)(0.07*width_px)));
 		aF.setSuitSize((int)(0.2*width_px),(int)(0.2*height_px));
 		aF.setFaceSize((int)(0.2*width_px),(int)(0.2*height_px));
 		aF.setBG(aF.genCardBorder(width_px, height_px, (int)(0.1*width_px))); //ARBITRARY NEEDS FIXED UPON 2D REFACTOR
-		aF.setBackBG(aF.genCardBorder(width_px, height_px, (int)(0.1*width_px))); //ARBITRARY NEEDS FIXED UPON 2D REFACTOR
+		aF.setBackBG(aF.genCardBorder(width_px, height_px, (int)(0.2*width_px))); //ARBITRARY NEEDS FIXED UPON 2D REFACTOR
 		aF.setFaces();
 		aF.setSuits();
 		aF.setCards();
@@ -46,6 +46,7 @@ public class BlackJackShoe2D_Default<C2D extends BlackJackCard2D> extends BlackJ
 
 		//4. Add 2D Cards back to original List..
 		while(upgradeList.size()>0){
+			System.out.println("DEBUG: BlackJackShoe2D_Default Card2D add upgraded cards");
 			list.add(upgradeList.remove(0));
 		}
 	}
