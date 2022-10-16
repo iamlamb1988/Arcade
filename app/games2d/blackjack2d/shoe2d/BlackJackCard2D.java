@@ -39,9 +39,14 @@ public class BlackJackCard2D extends BlackJackCard implements GameItem{
 	public BlackJackCard clone(){
 		return new BlackJackCard2D(this,front,back);
 	}
-	
+
+	//Custom functions
 	public void setFrontUpside(){upside=front;}
 	public void setBackUpside(){upside=back;}
+	public void flipCard(){
+		if(upside==back) upside=front;
+		else upside=back;
+	}
 	public void drawFrontTL(Graphics brush){front.drawTopLeft(brush);}
 	public void drawFront(Graphics brush, int xPos_px, int yPos_px){front.draw(xPos_px,yPos_px,brush);}
 	public void drawBackTL(Graphics brush){back.drawTopLeft(brush);}
@@ -69,9 +74,16 @@ public class BlackJackCard2D extends BlackJackCard implements GameItem{
 	}
 	
 	//GameItem Overrides:
+	@Override
 	public void setX(double xP){this.xP=xP;}
+
+	@Override
 	public void setY(double yP){this.yP=yP;}
+
+	@Override
 	public void d_x(double xChange){xP+=xChange;}
+
+	@Override
 	public void d_y(double yChange){yP+=yChange;}
 
 	//Drawable2D Overrides:
