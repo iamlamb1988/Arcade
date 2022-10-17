@@ -99,6 +99,14 @@ public class ShoeCycle extends GameMenu{
 		JButton rst=new JButton("Reset");
 		rst.setSize(100,40);
 		rst.setLocation(disStat.getX(),disStat.getY()+rst.getHeight()+10);
+		rst.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				sh.reset();
+				sh.shuffleShoe();
+				System.out.println("Shoe Reset and Shuffled.");
+			}
+		});
 		rst.setVisible(true);
 		a.add(rst);
 
