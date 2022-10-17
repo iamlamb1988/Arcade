@@ -71,12 +71,28 @@ public class ShoeCycle extends GameMenu{
 		JButton shStat=new JButton("Remaining");
 		shStat.setSize(100,40);
 		shStat.setLocation(width_px-shStat.getWidth()-10,10);
+		shStat.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				System.out.println("DEBUG: Generate table for "+shList.size()+" remaining Card(s).");
+				for(BlackJackCard x : shList){System.out.println(x.face+" of "+x.suit);}
+				System.out.println(shList.size()+" remaining Card(s).");
+			}
+		});
 		shStat.setVisible(true);
 		a.add(shStat);
 
 		JButton disStat=new JButton("Discarded");
 		disStat.setSize(100,40);
 		disStat.setLocation(shStat.getX(),shStat.getY()+disStat.getHeight()+10);
+		disStat.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				System.out.println("DEBUG: Generate table for "+disc.size()+" discarded Card(s).");
+				for(BlackJackCard x : disc){System.out.println(x.face+" of "+x.suit);}
+				System.out.println(disc.size()+" discarded Card(s).");
+			}
+		});
 		disStat.setVisible(true);
 		a.add(disStat);
 
@@ -121,7 +137,6 @@ public class ShoeCycle extends GameMenu{
 
 		@Override
 		public void actionPerformed(ActionEvent e){
-			System.out.println("Action Button clicked!!");
 			c=(BlackJackCard2D)sh.dealTop();
 			gf.addGameItem(c);
 			repaint();
