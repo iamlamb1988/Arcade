@@ -9,8 +9,8 @@ import java.util.Collections;
 import java.util.ArrayList;
 
 public class BlackJackShoe_Default<C extends BlackJackCard> implements BlackJackShoe, HonorCode{
-	protected ArrayList<C> list,
-						   discard;
+	protected ArrayList<C> list;
+	protected ArrayList<C> discard;
 
 	private boolean honest;
 
@@ -51,6 +51,12 @@ public class BlackJackShoe_Default<C extends BlackJackCard> implements BlackJack
 
 	@Override
     public Card dealTop(){return list.remove(0);}
+
+	@Override
+	public void reset(){
+		for(C x: discard){list.add(x);}
+		discard.clear();
+	}
 
 	@Override
 	public void discard(Card dis){

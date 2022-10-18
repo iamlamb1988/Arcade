@@ -41,6 +41,7 @@ public interface Shoe{
 	}
 
 	public void shuffleShoe();
+	public void reset();
 	public Card dealTop();
 	public void discard(Card dis);
 }
