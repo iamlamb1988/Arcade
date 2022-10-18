@@ -20,6 +20,9 @@ Digital Ocean: 198.199.71.169
 
 BlackJackShoe is now refactored for Generic BlackJackCard types.
 Successfully modified Card2D to bo "face up" or "face down". The generic Drawable2D will draw IAW with face up or face down.
+ShoeCycle relatively functional. Working on cleanup and good programming practices.
+
+ShoeCycle brings up an issue of adding and removing IAppItems and GameItems. Need to modify some add and remove commands to handle IAppItem components and Non-IAppItem components safely. Right now there is not an easy way to add and remove these items.
 
 Should there be a "money transfer" class that takes on the currency transfer? Yes.
 
