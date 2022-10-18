@@ -48,14 +48,14 @@ public class ShoeCycle extends GameMenu{
 		a.setBG(new SingleImage(a.getWidth(),a.getHeight(),128,128,128,255));
 
 		JButton drw=new JButton("Draw");
-		drw.setSize(100,80);
+		drw.setSize(100,90);
 		drw.setLocation((a.getWidth()-drw.getWidth())/2,(a.getHeight()-drw.getHeight())/2);
 		drw.setVisible(true);
 		a.add(drw);
 
 		JButton flp=new JButton("Flip");
 		flp.setSize(100,40);
-		flp.setLocation(drw.getX()-flp.getWidth()-10,(a.getHeight()-flp.getHeight())/2);
+		flp.setLocation(drw.getX()-flp.getWidth()-10,drw.getY());
 		flp.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
@@ -67,6 +67,12 @@ public class ShoeCycle extends GameMenu{
 		});
 		flp.setVisible(true);
 		a.add(flp);
+
+		JButton dis=new JButton("Discard");
+		dis.setSize(100,40);
+		dis.setLocation(flp.getX(),flp.getY()+flp.getHeight()+10);
+		dis.setVisible(true);
+		a.add(dis);
 
 		JButton shStat=new JButton("Remaining");
 		shStat.setSize(100,40);
@@ -131,13 +137,24 @@ public class ShoeCycle extends GameMenu{
 
 		//Add dependant methods
 		drw.addActionListener(new CardDrawingAction(f));
+		dis.addActionListener(new CardDrawingAction(f){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				System.out.println("Attempting to remove card");
+				if(c!=null){
+					sh.discard(c);
+					//gf.removeGameItem(c);
+					c=null;
+				}
+				repaint();
+			}
+		});
 	}
 
 	private class ActionPanel extends GamePanel{//Singleton class that deploys
 		private ActionPanel(int width_px, int height_px){super(width_px,height_px);}
 	}
 
-	
 	private class CardDrawingAction implements ActionListener{
 		private GameField gf;
 
@@ -145,6 +162,10 @@ public class ShoeCycle extends GameMenu{
 
 		@Override
 		public void actionPerformed(ActionEvent e){
+			if(c!=null){
+				gf.removeGameItem(c);
+				sh.discard(c);
+			}
 			c=(BlackJackCard2D)sh.dealTop();
 			gf.addGameItem(c);
 			repaint();

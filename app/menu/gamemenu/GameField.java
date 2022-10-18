@@ -27,10 +27,18 @@ public class GameField extends JPanel implements IAppItem{
 		this(0,0,width_px,height_px);
 	}
 
+	//Should these be private for simplicity?
 	public boolean addGameItem(GameItem item){
 		if(itmL.indexOf(item)>-1){return false;}
-		itmL.add(item);
+			itmL.add(item);
 		return true;
+	}
+
+	public boolean removeGameItem(GameItem item){
+		boolean r=itmL.remove(item);
+		if(item instanceof Component)
+			remove((Component)item);
+		return r;
 	}
 
 	//super Overrides:
@@ -43,7 +51,8 @@ public class GameField extends JPanel implements IAppItem{
 
 	@Override
 	public void remove(Component comp){
-		itmL.remove(comp);
+		if(comp instanceof GameItem)
+			itmL.remove(comp);
 		super.remove(comp);
 	}
 
