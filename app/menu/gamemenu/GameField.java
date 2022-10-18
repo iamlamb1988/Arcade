@@ -27,10 +27,23 @@ public class GameField extends JPanel implements IAppItem{
 		this(0,0,width_px,height_px);
 	}
 
-	//Should these be private for simplicity?
+	//The purpose of these "Final" helper functions is to avoid an infinite recursive call.
+	private void addFinalGameItem(GameItem item){itmL.add(item);}
+
+	private void addFinalComponent(Component item){super.add(item);}
+
+	private void removeFinalGameItem(GameItem item){itmL.remove(item);}
+
+	private void removeFinalComponent(Component item){
+		
+	}
+
 	public boolean addGameItem(GameItem item){
 		if(itmL.indexOf(item)>-1){return false;}
-			itmL.add(item);
+		itmL.add(item);
+		if(item instanceof Component){
+			addFinalComponent((Component)item);
+		}
 		return true;
 	}
 
@@ -45,7 +58,7 @@ public class GameField extends JPanel implements IAppItem{
 	@Override
 	public Component add(Component comp){//Duplicate issue?
 		if(comp instanceof GameItem)
-			addGameItem((GameItem)comp);
+			addFinalGameItem((GameItem)comp);
 		return super.add(comp);
 	}
 

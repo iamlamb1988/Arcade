@@ -105,14 +105,6 @@ public class ShoeCycle extends GameMenu{
 		JButton rst=new JButton("Reset");
 		rst.setSize(100,40);
 		rst.setLocation(disStat.getX(),disStat.getY()+rst.getHeight()+10);
-		rst.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){
-				sh.reset();
-				sh.shuffleShoe();
-				System.out.println("Shoe Reset and Shuffled.");
-			}
-		});
 		rst.setVisible(true);
 		a.add(rst);
 
@@ -143,9 +135,23 @@ public class ShoeCycle extends GameMenu{
 				System.out.println("Attempting to remove card");
 				if(c!=null){
 					sh.discard(c);
-					//gf.removeGameItem(c);
+					gf.removeGameItem(c);
 					c=null;
 				}
+				repaint();
+			}
+		});
+		rst.addActionListener(new CardDrawingAction(f){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				if(c!=null){
+					sh.discard(c);
+					gf.removeGameItem(c);
+					c=null;
+				}
+				sh.reset();
+				sh.shuffleShoe();
+				System.out.println("Shoe Reset and Shuffled.");
 				repaint();
 			}
 		});
@@ -156,7 +162,7 @@ public class ShoeCycle extends GameMenu{
 	}
 
 	private class CardDrawingAction implements ActionListener{
-		private GameField gf;
+		GameField gf;
 
 		private CardDrawingAction(GameField gamefield){gf=gamefield;}
 
