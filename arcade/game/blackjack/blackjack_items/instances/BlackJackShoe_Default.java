@@ -30,12 +30,9 @@ public class BlackJackShoe_Default<C extends BlackJackCard> implements BlackJack
 	protected BlackJackShoe_Default(BlackJackShoe_Default<C> originalShoe){
 		list = new ArrayList<C>(52);
 		discard = new ArrayList<C>(52);
-		for(BlackJackCard x : originalShoe.list){
-			list.add((C)x.clone());
-		}
-		for(BlackJackCard x : originalShoe.discard){
-			discard.add((C)x.clone());
-		}
+		for(BlackJackCard x : originalShoe.list){list.add((C)x.clone());}
+
+		for(BlackJackCard x : originalShoe.discard){discard.add((C)x.clone());}
 
 		if(this instanceof RogueBJShoe) honest=false;
 		else honest=true;
@@ -46,6 +43,9 @@ public class BlackJackShoe_Default<C extends BlackJackCard> implements BlackJack
 	}
 
 	//Shoe Overrides:
+	@Override
+	public boolean isEmpty(){return list.size()==0;}
+
     @Override
 	public void shuffleShoe(){Collections.shuffle(list);}
 

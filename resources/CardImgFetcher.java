@@ -3,6 +3,7 @@ package resources;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.awt.geom.AffineTransform;
+import java.awt.Color;
 import java.awt.Graphics2D;
 
 public class CardImgFetcher extends ImgFetcher{
@@ -14,7 +15,7 @@ public class CardImgFetcher extends ImgFetcher{
 		fileName = new String[19];
 		base = new Image[19];
 
-		fileName[0]="Zero.png";
+		// fileName[0]="Zero.png";
 		fileName[1]="One.png";
 		fileName[2]="Two.png";
 		fileName[3]="Three.png";
@@ -26,7 +27,7 @@ public class CardImgFetcher extends ImgFetcher{
 		fileName[9]="Nine.png";
 		// fileName[10]=""; //NOTE: Watch this one!!
 		fileName[11]="Jack.png";
-		fileName[12]="Queen.png";
+		//fileName[12]="Queen.png";
 		fileName[13]="King.png";
 		fileName[14]="Ace.png";
 		fileName[15]="Club.png";
@@ -36,11 +37,16 @@ public class CardImgFetcher extends ImgFetcher{
 	}
 
 	public void fetchAll(){
-		for(short i=0;i<10;++i){
+		
+		genZero();
+		genOne();
+		for(short i=2;i<10;++i){
 			base[i]=genFileImage(fileName[i]);
 		}
 		genTen(base[1].getWidth(null),base[1].getHeight(null));
-		for(short i=11;i<fileName.length;++i){
+		base[11]=genFileImage(fileName[11]);
+		genQueen();
+		for(short i=13;i<fileName.length;++i){
 			base[i]=genFileImage(fileName[i]);
 		}
 	}
@@ -55,6 +61,55 @@ public class CardImgFetcher extends ImgFetcher{
 			while(!P.drawImage(base[i],T,null)){}
 			base[i]=B;
 		}
+	}
+
+	public void genZero(){
+		BufferedImage Z = new BufferedImage(500,500,BufferedImage.TYPE_INT_ARGB);
+
+		Graphics2D p = Z.createGraphics();
+		p.setColor(new Color(0,0,0,255));
+		p.fillArc(0,0,500,500,0,360);
+		p.setColor(new Color(255,0,255,255));
+		p.fillArc(90,90,320,320,0,360);
+
+		for(int x=0;x<Z.getWidth();++x){
+			for(int y=0;y<Z.getHeight();++y){
+				if(Z.getRGB(x,y)==0xffff00ff){
+					Z.setRGB(x,y,0);
+				}
+			}
+		}
+
+		base[0]=Z;
+	}
+
+	public void genOne(){
+		BufferedImage I = new BufferedImage(500,500,BufferedImage.TYPE_INT_ARGB);
+		Graphics2D p = I.createGraphics();
+		p.setColor(new Color(0,0,0,255));
+		p.fillRect(45,410,410,90);
+		p.fillArc(0,410,90,90,0,360);
+		p.fillArc(410,410,90,90,0,360);
+		p.fillRect(205,45,90,445);
+		p.fillArc(205,0,90,90,0,360);
+		p.fillRect(125,0,125,90);
+		p.fillArc(80,0,90,90,0,360);
+		base[1]=I;
+	}
+
+	public void genQueen(){
+		if(base[0]==null)
+			genZero();
+		BufferedImage Q = new BufferedImage(base[0].getWidth(null),base[0].getHeight(null),BufferedImage.TYPE_INT_ARGB);
+		Graphics2D p=Q.createGraphics();
+		p.setColor(new Color(0,0,0,255));
+		while(!p.drawImage(base[0],0,0,null)){}
+		p.fillArc(205,205,90,90,0,360);
+		p.fillArc(410,410,90,90,0,360);
+		int[] x=new int[]{282,482,423,218};
+		int[] y=new int[]{218,423,482,282};
+		p.fillPolygon(x,y,4);
+		base[12]=Q;
 	}
 
 	//require 0 and 1 to be generated
