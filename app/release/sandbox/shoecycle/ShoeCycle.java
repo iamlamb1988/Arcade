@@ -132,7 +132,6 @@ public class ShoeCycle extends GameMenu{
 		dis.addActionListener(new CardDrawingAction(f){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				System.out.println("Attempting to remove card");
 				if(c!=null){
 					sh.discard(c);
 					gf.removeGameItem(c);
