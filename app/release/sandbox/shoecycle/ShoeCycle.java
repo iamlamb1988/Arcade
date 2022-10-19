@@ -108,6 +108,15 @@ public class ShoeCycle extends GameMenu{
 		rst.setVisible(true);
 		a.add(rst);
 
+		JButton shfl=new JButton("Shuffle");
+		shfl.setSize(100,40);
+		shfl.setLocation(rst.getX()-shfl.getWidth()-10,rst.getY());
+		shfl.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){sh.shuffleShoe();}
+		});
+		shfl.setVisible(true);
+		a.add(shfl);
 		add(a);
 
 		//Menu
@@ -167,6 +176,7 @@ public class ShoeCycle extends GameMenu{
 
 		@Override
 		public void actionPerformed(ActionEvent e){
+			if(sh.isEmpty()){return;}
 			if(c!=null){
 				gf.removeGameItem(c);
 				sh.discard(c);

@@ -15,6 +15,5 @@ public class GameMenu extends IMenu{
 
 	public GameMenu(DesktopApp parentApp, IMenu previous, int width_px, int height_px){
 		this(parentApp,width_px,height_px);
-		//use the previous IMenu argument.
 	}
 }

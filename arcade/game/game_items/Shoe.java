@@ -40,6 +40,7 @@ public interface Shoe{
 		Collections.shuffle(unshuffledShoe);
 	}
 
+	public boolean isEmpty();
 	public void shuffleShoe();
 	public void reset();
 	public Card dealTop();

@@ -22,7 +22,7 @@ BlackJackShoe is now refactored for Generic BlackJackCard types.
 Successfully modified Card2D to bo "face up" or "face down". The generic Drawable2D will draw IAW with face up or face down.
 ShoeCycle relatively functional. Working on cleanup and good programming practices.
 
-ShoeCycle brings up an issue of adding and removing IAppItems and GameItems. Need to modify some add and remove commands to handle IAppItem components and Non-IAppItem components safely. Right now there is not an easy way to add and remove these items.
+ShoeCycle brings up a concern of adding and removing IAppItems and GameItems. Need to modify some add and remove commands to handle IAppItem components and Non-IAppItem components safely. Right now there is not an easy way to add and remove these items.
 
 Should there be a "money transfer" class that takes on the currency transfer? Yes.
 
@@ -36,7 +36,8 @@ We need a function (GameItem) that handles IAppItems that are NOT Components.
 * Transfers currencies to and from Table and Players
 
 ## Next Master Push Goals
-- [ ] Develop the ShoeCycle.
+- [x] Develop the ShoeCycle.
+	NOTE: Not the most polished production. Enough to move forward and begin the TableCycle implementation.
 - [ ] Develop the TableCycle (Except money transactions).
 - [x] Destroy the debug package.
 	- [x] Destroy the ShoeTest
