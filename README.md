@@ -36,11 +36,14 @@ resources and animation package is tightly coupled but shouldn't be. animation p
 - [x] Develop the ShoeCycle.
 	NOTE: Not the most polished production. Enough to move forward and begin the TableCycle implementation.
 - [ ] Develop the TableCycle (Except money transactions).
-	- [ ] Refactor table constructor for Generic Shoe Type.
+	- [ ] Refactor table constructor for Generic Shoe Type (Shoes have Generic Card Types).
+	- [ ] The TableCycle will allow you to Create a Player by Swapping out field and allowing a create user with an add or user.
 - [x] Destroy the debug package.
 	- [x] Destroy the ShoeTest
 	- [x] Destroy the TableTest
+- [ ] Need to figure out a good way to properly package and structure players. (Players need to "sit" in seats and also need to be able to "leave/get up" from seats.
 - [ ] Improve structure diagram. Elaborate more on 2D implementation.
+	NOTE: This may need to be disregarded until the TableCycle is more complete. A full structural refactor needs to happen once the first instance of the BlackJack is complete.
 
 ## High level structure.
 ![Generic Game Structure](readmesrcs/GameSetup.jpg)
