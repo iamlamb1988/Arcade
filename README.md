@@ -36,6 +36,8 @@ resources and animation package is tightly coupled but shouldn't be. animation p
 - [x] Develop the ShoeCycle.
 	NOTE: Not the most polished production. Enough to move forward and begin the TableCycle implementation.
 - [ ] Develop the TableCycle (Except money transactions).
+	- [ ] Create a "Builder class" for BlackJackTables.
+		NOTE: Too many parameters for the combination of tables.
 	- [ ] Refactor table constructor for Generic Shoe Type (Shoes have Generic Card Types).
 	- [ ] The TableCycle will allow you to Create a Player by Swapping out field and allowing a create user with an add or user.
 - [x] Destroy the debug package.
@@ -50,4 +52,4 @@ resources and animation package is tightly coupled but shouldn't be. animation p
 The "arcade" package will be treated as a library (will be reusable in different projects).
 The "animation" package will be treated as a library (will be reusable in different projects).
 The "app" package will utilize the arcade and animation libraries as necessary.
-The "debug" package will be destoryed in the future so good practices will not be focused. This will only exist until Test Case library OR separate implementation exists.
+The "debug" package will be destoryed in the future so good practices will not be focused. This will only exist until Test Case library OR separate implementation exists.;
