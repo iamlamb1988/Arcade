@@ -38,7 +38,9 @@ resources and animation package is tightly coupled but shouldn't be. animation p
 - [ ] Develop the TableCycle (Except money transactions).
 	- [ ] Create a "Builder class" for BlackJackTables.
 		NOTE: Too many parameters for the combination of tables.
-	- [ ] Refactor table constructor for Generic Shoe Type (Shoes have Generic Card Types).
+	- [ ] Generic Type Parameters
+		- [ ] Currency Type ("This" table will only take one type of currency)
+		- [ ] BlackJackCard Type.
 	- [ ] The TableCycle will allow you to Create a Player by Swapping out field and allowing a create user with an add or user.
 - [x] Destroy the debug package.
 	- [x] Destroy the ShoeTest
