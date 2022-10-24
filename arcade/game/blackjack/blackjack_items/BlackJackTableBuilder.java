@@ -7,11 +7,15 @@ public class BlackJackTableBuilder{
 	private byte MAX_SEAT_NUMBER;
 
 	//DEFAULT Rules
-	private byte MAX_NUMBER_OF_HANDS;
-	private byte MAX_NUMBER_OF_ACE_SPLITS;
-	private boolean AUTO_STAND_ON_ACE;
+	private boolean isMaxBet;
+	private double maxBet;
+	private boolean isMinBet;
+	private double minBet;
+	private byte maxNumOfHands;
+	private byte maxNumOfAceSplits;
+	private boolean autoStandOnSplitAce;
 
 	public BlackJackTableBuilder(){
 		
-	}	
+	}
 }

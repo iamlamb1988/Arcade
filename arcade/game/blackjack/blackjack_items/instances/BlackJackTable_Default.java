@@ -10,7 +10,10 @@ import arcade.game.game_items.Seat;
 import java.util.ArrayList;
 
 //Designed for a single Currency only
-public class BlackJackTable_Default <C extends BlackJackCard> implements BlackJackTable{
+public class BlackJackTable_Default
+	<Cur extends CurrencyDecimal,C extends BlackJackCard>
+	implements BlackJackTable
+{
 	private byte MaxSeats;
 	private byte MaxHands;
 

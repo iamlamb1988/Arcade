@@ -13,7 +13,7 @@ Some systems will be much harder to implement than others.
 As the focus is BlackJack for now, the program will simulate millions of hands and generate Basic Strategy tables using various counting system techniques.
 
 ## Update
-Setting up Eclipse GlassFish7 server with OpenJDK 11 and Maven setup. In progress.
+Will be using Apache Tomcat 10.1.1 Web Container. Slightly easier than GlassFish server. Issues launching test servlets.
 Learning to deploy webapps that will execute the arcade library.
 Less commits have been made due to learning curve of Jakarta EE.
 Digital Ocean: 198.199.71.169
