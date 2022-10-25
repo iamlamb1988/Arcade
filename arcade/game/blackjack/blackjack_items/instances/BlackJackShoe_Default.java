@@ -8,33 +8,31 @@ import arcade.game.blackjack.blackjack_items.CheatAccessCards;
 import java.util.Collections;
 import java.util.ArrayList;
 
-public class BlackJackShoe_Default implements BlackJackShoe, HonorCode{
-	protected ArrayList<BlackJackCard> list,
-									   discard;
+public class BlackJackShoe_Default<C extends BlackJackCard> implements BlackJackShoe, HonorCode{
+	protected ArrayList<C> list;
+	protected ArrayList<C> discard;
+
 	private boolean honest;
 
 	public BlackJackShoe_Default(){ //single deck implementation
-		list = new ArrayList<BlackJackCard>(52);
-		discard = new ArrayList<BlackJackCard>(52);
+		list = new ArrayList<C>(52);
+		discard = new ArrayList<C>(52);
 		ArrayList<Card> tmp=Shoe.genStandardDeck();
 
-		BlackJackCard upgrade;
+		C upgrade;
 		while(tmp.size()>0){
-			upgrade = new BlackJackCard(tmp.remove(0));
+			upgrade = (C)(new BlackJackCard(tmp.remove(0)));
 			list.add(upgrade);
 		}
 		honest=true;
 	}
 
-	protected BlackJackShoe_Default(BlackJackShoe_Default originalShoe){
-		list = new ArrayList<BlackJackCard>(52);
-		discard = new ArrayList<BlackJackCard>(52);
-		for(BlackJackCard x : originalShoe.list){
-			list.add(x.clone());
-		}
-		for(BlackJackCard x : originalShoe.discard){
-			discard.add(x.clone());
-		}
+	protected BlackJackShoe_Default(BlackJackShoe_Default<C> originalShoe){
+		list = new ArrayList<C>(52);
+		discard = new ArrayList<C>(52);
+		for(BlackJackCard x : originalShoe.list){list.add((C)x.clone());}
+
+		for(BlackJackCard x : originalShoe.discard){discard.add((C)x.clone());}
 
 		if(this instanceof RogueBJShoe) honest=false;
 		else honest=true;
@@ -45,19 +43,33 @@ public class BlackJackShoe_Default implements BlackJackShoe, HonorCode{
 	}
 
 	//Shoe Overrides:
+	@Override
+	public boolean isEmpty(){return list.size()==0;}
+
     @Override
 	public void shuffleShoe(){Collections.shuffle(list);}
 
 	@Override
     public Card dealTop(){return list.remove(0);}
-	
+
+	@Override
+	public void reset(){
+		for(C x: discard){list.add(x);}
+		discard.clear();
+	}
+
+	@Override
+	public void discard(Card dis){
+		discard.add((C)dis);
+	}
+
 	//HonorCode Overrides:
 	public boolean isHonorable(){ //needs to check on list and discard
 		return honest;
 	}
 
-	private class RogueBJShoe extends BlackJackShoe_Default implements BlackJackShoe, CheatAccessCards{
-		private RogueBJShoe(BlackJackShoe_Default org){
+	private class RogueBJShoe<CR extends C> extends BlackJackShoe_Default implements BlackJackShoe, CheatAccessCards{
+		private RogueBJShoe(BlackJackShoe_Default<CR> org){
 			super(org);
 		}
 

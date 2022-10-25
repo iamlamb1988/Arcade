@@ -21,12 +21,24 @@ public abstract class IMenu extends JPanel implements IAppItem{
 		setVisible(true);
 	}
 
+	public boolean addIAppItem(IAppItem item){
+		if(itmL.indexOf(item)>-1){return false;}
+		itmL.add(item);
+		return true;
+	}
+
 	//super Overrides:
 	@Override
-	public Component add(Component comp){
+	public Component add(Component comp){//Duplicate issue?
 		if(comp instanceof IAppItem)
-			itmL.add((IAppItem)comp);
+			addIAppItem((IAppItem)comp);
 		return super.add(comp);
+	}
+
+	@Override
+	public void remove(Component comp){
+		itmL.remove(comp);
+		super.remove(comp);
 	}
 
 	//Need to override the REMOVES to incorporate itmL
@@ -59,9 +71,7 @@ public abstract class IMenu extends JPanel implements IAppItem{
 	@Override
 	public void dwblDraw(Graphics brush, int xPos_px, int yPos_px){
 		bg.draw(xPos_px,yPos_px,brush);
-		for(IAppItem x : itmL){
-			x.dwblDraw(brush,x.getXint()+xPos_px,x.getYint()+yPos_px);
-		}
+		for(IAppItem x : itmL){x.dwblDraw(brush,x.getXint()+xPos_px,x.getYint()+yPos_px);}
 	}
 
 	//Paint Override:
@@ -69,5 +79,7 @@ public abstract class IMenu extends JPanel implements IAppItem{
 	public void paintComponent(Graphics p){
 		super.paintComponent(p);
 		dwblDrawTL(p);
+
+		for(IAppItem x : itmL){x.dwblDraw(p,x.getXint(),x.getYint());}
 	}
 }
