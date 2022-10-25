@@ -13,19 +13,15 @@ Some systems will be much harder to implement than others.
 As the focus is BlackJack for now, the program will simulate millions of hands and generate Basic Strategy tables using various counting system techniques.
 
 ## Update
+This next update will focus on the completion of TableCycle. The purpose of TableCycle is to ensure all mechanical functionality will work before BlackJack is released.
+
 Will be using Apache Tomcat 10.1.1 Web Container. Slightly easier than GlassFish server. Issues launching test servlets.
 Learning to deploy webapps that will execute the arcade library.
 Less commits have been made due to learning curve of Jakarta EE.
 Digital Ocean: 198.199.71.169
 
-BlackJackShoe is now refactored for Generic BlackJackCard types.
-Successfully modified Card2D to bo "face up" or "face down". The generic Drawable2D will draw IAW with face up or face down.
-
+ShoeCycle works
 ShoeCycle brings up a concern of adding and removing IAppItems and GameItems. Need to modify some add and remove commands to handle IAppItem components and Non-IAppItem components safely. Right now there is not an easy way to add and remove these items.
-
-Should there be a "money transfer" class that takes on the currency transfer? Yes.
-
-resources and animation package is tightly coupled but shouldn't be. animation package must be completely separate from the app resources. Card2DAnimation should be in the app class because the images are app specific.
 
 ### Single Responsibility Principle Violation
 1. BlackJackTable interface has 2 responsibilities:
