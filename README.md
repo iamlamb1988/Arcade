@@ -13,7 +13,7 @@ Some systems will be much harder to implement than others.
 As the focus is BlackJack for now, the program will simulate millions of hands and generate Basic Strategy tables using various counting system techniques.
 
 ## Update
-Setting up Eclipse GlassFish7 server with OpenJDK 11 and Maven setup. In progress.
+Will be using Apache Tomcat 10.1.1 Web Container. Slightly easier than GlassFish server. Issues launching test servlets.
 Learning to deploy webapps that will execute the arcade library.
 Less commits have been made due to learning curve of Jakarta EE.
 Digital Ocean: 198.199.71.169
@@ -36,15 +36,22 @@ resources and animation package is tightly coupled but shouldn't be. animation p
 - [x] Develop the ShoeCycle.
 	NOTE: Not the most polished production. Enough to move forward and begin the TableCycle implementation.
 - [ ] Develop the TableCycle (Except money transactions).
-	- [ ] Refactor table constructor for Generic Shoe Type.
+	- [ ] Create a "Builder class" for BlackJackTables.
+		NOTE: Too many parameters for the combination of tables.
+	- [ ] Generic Type Parameters
+		- [ ] Currency Type ("This" table will only take one type of currency)
+		- [ ] BlackJackCard Type.
+	- [ ] The TableCycle will allow you to Create a Player by Swapping out field and allowing a create user with an add or user.
 - [x] Destroy the debug package.
 	- [x] Destroy the ShoeTest
 	- [x] Destroy the TableTest
+- [ ] Need to figure out a good way to properly package and structure players. (Players need to "sit" in seats and also need to be able to "leave/get up" from seats.
 - [ ] Improve structure diagram. Elaborate more on 2D implementation.
+	NOTE: This may need to be disregarded until the TableCycle is more complete. A full structural refactor needs to happen once the first instance of the BlackJack is complete.
 
 ## High level structure.
 ![Generic Game Structure](readmesrcs/GameSetup.jpg)
 The "arcade" package will be treated as a library (will be reusable in different projects).
 The "animation" package will be treated as a library (will be reusable in different projects).
 The "app" package will utilize the arcade and animation libraries as necessary.
-The "debug" package will be destoryed in the future so good practices will not be focused. This will only exist until Test Case library OR separate implementation exists.
+The "debug" package will be destoryed in the future so good practices will not be focused. This will only exist until Test Case library OR separate implementation exists.;
