@@ -14,12 +14,9 @@ As the focus is BlackJack for now, the program will simulate millions of hands a
 
 ## Update
 Will be using Apache Tomcat 10.1.1 Web Container. Slightly easier than GlassFish server. Issues launching test servlets.
-Learning to deploy webapps that will execute the arcade library.
-Less commits have been made due to learning curve of Jakarta EE.
+Learning to deploy webapps that will execute the arcade library. sample.war does servlet does not launch but launches on Tomcat 9.
+Preparing to launch first barebones scratch servlet.
 Digital Ocean: 198.199.71.169
-
-BlackJackShoe is now refactored for Generic BlackJackCard types.
-Successfully modified Card2D to bo "face up" or "face down". The generic Drawable2D will draw IAW with face up or face down.
 
 ShoeCycle brings up a concern of adding and removing IAppItems and GameItems. Need to modify some add and remove commands to handle IAppItem components and Non-IAppItem components safely. Right now there is not an easy way to add and remove these items.
 
@@ -33,8 +30,6 @@ resources and animation package is tightly coupled but shouldn't be. animation p
 * Transfers currencies to and from Table and Players
 
 ## Next Master Push Goals
-- [x] Develop the ShoeCycle.
-	NOTE: Not the most polished production. Enough to move forward and begin the TableCycle implementation.
 - [ ] Develop the TableCycle (Except money transactions).
 	- [ ] Create a "Builder class" for BlackJackTables.
 		NOTE: Too many parameters for the combination of tables.
@@ -42,12 +37,7 @@ resources and animation package is tightly coupled but shouldn't be. animation p
 		- [ ] Currency Type ("This" table will only take one type of currency)
 		- [ ] BlackJackCard Type.
 	- [ ] The TableCycle will allow you to Create a Player by Swapping out field and allowing a create user with an add or user.
-- [x] Destroy the debug package.
-	- [x] Destroy the ShoeTest
-	- [x] Destroy the TableTest
 - [ ] Need to figure out a good way to properly package and structure players. (Players need to "sit" in seats and also need to be able to "leave/get up" from seats.
-- [ ] Improve structure diagram. Elaborate more on 2D implementation.
-	NOTE: This may need to be disregarded until the TableCycle is more complete. A full structural refactor needs to happen once the first instance of the BlackJack is complete.
 
 ## High level structure.
 ![Generic Game Structure](readmesrcs/GameSetup.jpg)
