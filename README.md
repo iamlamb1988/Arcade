@@ -15,9 +15,9 @@ As the focus is BlackJack for now, the program will simulate millions of hands a
 ## Update
 This next update will focus on the completion of TableCycle. The purpose of TableCycle is to ensure all mechanical functionality will work before BlackJack is released.
 
-Will be using Apache Tomcat 10.1.1 Web Container. Slightly easier than GlassFish server. Issues launching test servlets.
-Learning to deploy webapps that will execute the arcade library. sample.war does servlet does not launch but launches on Tomcat 9.
-Preparing to launch first barebones scratch servlet.
+The BlackJack Swing will be completed first before implementing the servlets.
+
+Will be using Apache Tomcat 10.1.1 Web Container. Not yet deployed.
 Digital Ocean: 198.199.71.169
 
 ShoeCycle works.
@@ -35,7 +35,7 @@ ShoeCycle brings up a concern of adding and removing IAppItems and GameItems. Ne
 		NOTE: Too many parameters for the combination of tables.
 	- [ ] Generic Type Parameters
 		- [ ] Currency Type ("This" table will only take one type of currency)
-		- [ ] BlackJackCard Type.
+		- [ ] BlackJackCard Type
 	- [ ] The TableCycle will allow you to Create a Player by Swapping out field and allowing a create user with an add or user.
 - [ ] Need to figure out a good way to properly package and structure players. (Players need to "sit" in seats and also need to be able to "leave/get up" from seats.
 
