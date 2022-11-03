@@ -34,12 +34,6 @@ public class ShoeCycle extends GameMenu{
 		shList = cheat.getCardsRef();
 		disc = cheat.getDiscardsRef();
 
-		BlackJackCard2D tmp2d;
-		for(BlackJackCard x : shList){
-			tmp2d=(BlackJackCard2D)x;
-			tmp2d.setFrontUpside();
-			// tmp2d.setX(width_px-tmp2d.){}
-		}
 		c=null;
 
 		//Draw Action Menu
@@ -135,6 +129,14 @@ public class ShoeCycle extends GameMenu{
 		//Add game field
 		GameField f=new GameField(0,m.getHeight(),width_px,height_px-a.getHeight()-m.getHeight());
 		add(f);
+
+		BlackJackCard2D tmp2d;
+		for(BlackJackCard x : shList){
+			tmp2d=(BlackJackCard2D)x;
+			tmp2d.setFrontUpside();
+			tmp2d.setX(100);
+			tmp2d.setY(100);
+		}
 
 		//Add dependant methods
 		drw.addActionListener(new CardDrawingAction(f));
