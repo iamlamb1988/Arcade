@@ -30,6 +30,7 @@ ShoeCycle brings up a concern of adding and removing IAppItems and GameItems. Ne
 * Transfers currencies to and from Table and Players
 
 ## Next Master Push Goals
+- [ ] Draw the Shoe Image itself onto the ShoeCycle.
 - [ ] Develop the TableCycle (Except money transactions).
 	- [ ] Create a "Builder class" for BlackJackTables.
 		NOTE: Too many parameters for the combination of tables.

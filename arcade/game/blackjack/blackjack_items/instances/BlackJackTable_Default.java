@@ -36,7 +36,7 @@ public class BlackJackTable_Default
 
 		shoe=new BlackJackShoe_Default();
 		balance=new CarbonCoin();
-		seat=new ArrayList<BlackJackSeat>();
+		seat=new ArrayList<BlackJackSeat>(MaxSeats);
 
 		for(byte i=0;i<MaxSeats;++i){
 			seat.add(new BlackJackSeat_Default());
