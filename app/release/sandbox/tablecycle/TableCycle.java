@@ -9,6 +9,7 @@ import app.menu.gamemenu.GamePanel;
 import app.menu.gamemenu.GameField;
 import arcade.currency.currency_items.CarbonCoin;
 import app.games2d.blackjack2d.shoe2d.BlackJackCard2D;
+import app.games2d.blackjack2d.table2d.instances.BlackJackTable2D_Default;
 import arcade.game.blackjack.blackjack_items.BlackJackTable;
 import arcade.game.blackjack.blackjack_items.instances.BlackJackTable_Default;
 import javax.swing.JButton;
@@ -18,7 +19,7 @@ public class TableCycle extends GameMenu{
 
 	public TableCycle(DesktopApp parentApp, IMenu previous, int width_px, int height_px){
 		super(parentApp,previous,width_px,height_px);
-		t=new BlackJackTable_Default<CarbonCoin,BlackJackCard2D>();
+		t=new BlackJackTable2D_Default<CarbonCoin,BlackJackCard2D>();
 
 		//Add Main Menu Bar (with back button)
 		GamePanel m = new GamePanel(width_px,60);
