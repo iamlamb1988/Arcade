@@ -30,6 +30,7 @@ public class ShoeCycle extends GameMenu{
 		super(parentApp,previous,width_px,height_px);
 		sh=(BlackJackShoe2D_Default)(new BlackJackShoe2D_Default<BlackJackCard2D>(1000/7,200)).genRogueClone();
 		sh.shuffleShoe();
+		
 		CheatAccessCards cheat = (CheatAccessCards)sh;
 		shList = cheat.getCardsRef();
 		disc = cheat.getDiscardsRef();
@@ -137,6 +138,7 @@ public class ShoeCycle extends GameMenu{
 			tmp2d.setX(100);
 			tmp2d.setY(100);
 		}
+		
 
 		//Add dependant methods
 		drw.addActionListener(new CardDrawingAction(f));

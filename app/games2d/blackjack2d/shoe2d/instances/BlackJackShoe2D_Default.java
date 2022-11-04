@@ -80,6 +80,19 @@ public class BlackJackShoe2D_Default<C2D extends BlackJackCard2D> extends BlackJ
 	@Override
 	public void setBG(Animation Background){} //NEED TO IMPLEMENT
 
+	//GameItem Overrides:
+	@Override
+	public void setX(double xP){this.xP=xP;}
+
+	@Override
+	public void setY(double yP){this.yP=yP;}
+
+	@Override
+	public void d_x(double xChange){xP+=xChange;}
+
+	@Override
+	public void d_y(double yChange){yP+=yChange;}
+
 	//Drawable2D Overrides:
 	public void dwblDrawTL(Graphics brush){}
 	public void dwblDraw(Graphics brush, int xPos_px, int yPos_px){}

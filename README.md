@@ -15,13 +15,6 @@ As the focus is BlackJack for now, the program will simulate millions of hands a
 ## Update
 This next update will focus on the completion of TableCycle. The purpose of TableCycle is to ensure all mechanical functionality will work before BlackJack is released.
 
-The BlackJack Swing will be completed first before implementing the servlets.
-
-Will be using Apache Tomcat 10.1.1 Web Container. Not yet deployed.
-Digital Ocean: 198.199.71.169
-
-ShoeCycle works.
-
 ShoeCycle brings up a concern of adding and removing IAppItems and GameItems. Need to modify some add and remove commands to handle IAppItem components and Non-IAppItem components safely. Right now there is not an easy way to add and remove these items.
 
 ### Single Responsibility Principle Violation
@@ -31,14 +24,25 @@ ShoeCycle brings up a concern of adding and removing IAppItems and GameItems. Ne
 
 ## Next Master Push Goals
 - [ ] Draw the Shoe Image itself onto the ShoeCycle.
+	- [x] Need to refactor the Shoe2D to implement GameItem instead of IAppItem (Reminder: GameItem extends IAppItem).
 - [ ] Develop the TableCycle (Except money transactions).
 	- [ ] Create a "Builder class" for BlackJackTables.
-		NOTE: Too many parameters for the combination of tables.
+		NOTE: Too many parameters for the combination of tables so a Builder is needed for simplicity.
 	- [ ] Generic Type Parameters
 		- [ ] Currency Type ("This" table will only take one type of currency)
 		- [ ] BlackJackCard Type
 	- [ ] The TableCycle will allow you to Create a Player by Swapping out field and allowing a create user with an add or user.
 - [ ] Need to figure out a good way to properly package and structure players. (Players need to "sit" in seats and also need to be able to "leave/get up" from seats.
+
+## Future improvements
+Upon Successful completion of arcade library:
+will convert project into a maven build to prepare CI testing.
+
+The Swing application will remain public and effectively an example of how to utilize.
+Servlets will be a secure private repository utilizing public "arcade" library.
+
+Will be using Apache Tomcat 10.1.1 Web Container. Not yet deployed.
+Digital Ocean: 198.199.71.169
 
 ## High level structure.
 ![Generic Game Structure](readmesrcs/GameSetup.jpg)
