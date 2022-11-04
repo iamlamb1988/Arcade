@@ -1,6 +1,7 @@
 package app.games2d.blackjack2d.shoe2d.instances;
 
 import animation.Animation;
+import animation.SingleImage;
 import arcade.game.blackjack.blackjack_items.BlackJackShoe;
 import arcade.game.blackjack.blackjack_items.instances.BlackJackCard;
 import arcade.game.blackjack.blackjack_items.instances.BlackJackShoe_Default;
@@ -15,7 +16,8 @@ import java.awt.Graphics;
 public class BlackJackShoe2D_Default<C2D extends BlackJackCard2D> extends BlackJackShoe_Default implements BlackJackShoe2D{
 	private double xP;
 	private double yP;
-	private Animation bg;
+	Animation bg;
+	Animation cse; //the shoe casing (could potentially draw back of card(s))
 
 	public BlackJackShoe2D_Default(int width_px, int height_px){//Single deck instance
 		super();
@@ -23,7 +25,6 @@ public class BlackJackShoe2D_Default<C2D extends BlackJackCard2D> extends BlackJ
 
 		//1. Establish a temporary animation factory.
 		Card2DAnimationFactory aF = new Card2DAnimationFactory(width_px,height_px);
-		// aF.setActualSize(width_px,height_px);
 		aF.setSpacing((int)(0.07*width_px),((int)(0.07*width_px)));
 		aF.setSuitSize((int)(0.2*width_px),(int)(0.2*height_px));
 		aF.setFaceSize((int)(0.2*width_px),(int)(0.2*height_px));
@@ -35,6 +36,8 @@ public class BlackJackShoe2D_Default<C2D extends BlackJackCard2D> extends BlackJ
 
 		//2. Set Background.
 		aF.setBG(aF.genShoeImage(width_px,height_px));
+		bg=new SingleImage(width_px,height_px,255,0,255,255);
+		cse=new SingleImage(width_px,height_px,0,0,255,255);
 
 		//3. Assign images to 2D Cards.
 		ArrayList<BlackJackCard2D> upgradeList = new ArrayList<BlackJackCard2D>(52);
@@ -48,8 +51,12 @@ public class BlackJackShoe2D_Default<C2D extends BlackJackCard2D> extends BlackJ
 		while(upgradeList.size()>0){list.add(upgradeList.remove(0));}
 	}
 
-	private BlackJackShoe2D_Default(BlackJackShoe2D_Default original){
+	private BlackJackShoe2D_Default(BlackJackShoe2D_Default<C2D> original){
 		super(original);
+		xP=original.getXdbl();
+		yP=original.getYdbl();
+		bg=original.bg.clone();
+		cse=original.cse.clone();
 	}
 
 	@Override
@@ -57,12 +64,12 @@ public class BlackJackShoe2D_Default<C2D extends BlackJackCard2D> extends BlackJ
 		return new RogueBJShoe2D(this);
 	}
 
-	//BlackJackShoe Overrides:
+	//BlackJackShoe2D Overrides:
 	@Override
-	public void drawShoeTL(Graphics brush){}
+	public void drawShoeTL(Graphics brush){dwblDrawTL(brush);}
 
 	@Override
-	public void drawShoe(Graphics brush, int xPos_px, int yPos_px){}
+	public void drawShoe(Graphics brush, int xPos_px, int yPos_px){dwblDraw(brush,xPos_px,yPos_px);}
 
 	//IAppItem Overrides:
 	@Override
@@ -78,7 +85,7 @@ public class BlackJackShoe2D_Default<C2D extends BlackJackCard2D> extends BlackJ
 	public int getYint(){return (int)yP;}
 
 	@Override
-	public void setBG(Animation Background){} //NEED TO IMPLEMENT
+	public void setBG(Animation Background){bg=Background;}
 
 	//GameItem Overrides:
 	@Override
@@ -94,8 +101,14 @@ public class BlackJackShoe2D_Default<C2D extends BlackJackCard2D> extends BlackJ
 	public void d_y(double yChange){yP+=yChange;}
 
 	//Drawable2D Overrides:
-	public void dwblDrawTL(Graphics brush){}
-	public void dwblDraw(Graphics brush, int xPos_px, int yPos_px){}
+	public void dwblDrawTL(Graphics brush){
+		bg.drawTopLeft(brush);
+		cse.drawTopLeft(brush);
+	}
+	public void dwblDraw(Graphics brush, int xPos_px, int yPos_px){
+		bg.draw(xPos_px,yPos_px,brush);
+		cse.draw(xPos_px,yPos_px,brush);
+	}
 
 	private class RogueBJShoe2D extends BlackJackShoe2D_Default implements BlackJackShoe, CheatAccessCards{
 		private RogueBJShoe2D(BlackJackShoe2D_Default org){
