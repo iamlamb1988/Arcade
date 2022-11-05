@@ -49,4 +49,4 @@ Digital Ocean: 198.199.71.169
 The "arcade" package will be treated as a library (will be reusable in different projects).
 The "animation" package will be treated as a library (will be reusable in different projects).
 The "app" package will utilize the arcade and animation libraries as necessary.
-The "debug" package will be destoryed in the future so good practices will not be focused. This will only exist until Test Case library OR separate implementation exists.;
+The "debug" package will be destoryed in the future so good practices will not be focused. This will only exist until Test Case library OR separate implementation exists.
