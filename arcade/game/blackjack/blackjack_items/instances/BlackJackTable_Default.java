@@ -3,10 +3,8 @@ package arcade.game.blackjack.blackjack_items.instances;
 import arcade.game.blackjack.blackjack_items.BlackJackTable;
 import arcade.game.blackjack.blackjack_items.BlackJackShoe;
 import arcade.game.blackjack.blackjack_items.BlackJackSeat;
-import arcade.game.blackjack.blackjack_items.instances.BlackJackHand_Default;
 import arcade.currency.CurrencyDecimal;
 import arcade.currency.currency_items.CarbonCoin;
-import arcade.game.game_items.Seat;
 import java.util.ArrayList;
 
 //Designed for a single Currency only

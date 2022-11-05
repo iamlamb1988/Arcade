@@ -7,8 +7,7 @@ import arcade.game.game_items.Shoe;
 import java.util.List;
 
 public class BlackJack implements Game{
-	private Shoe S,		//Primary Shoe
-				 DS;	//Discard Pile
+	private Shoe s;
 
 	//Need a Currency List... somehow
 	//public BlackJack(){
