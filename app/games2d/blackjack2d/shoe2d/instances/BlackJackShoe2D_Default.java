@@ -8,12 +8,11 @@ import arcade.game.blackjack.blackjack_items.instances.BlackJackShoe_Default;
 import arcade.game.blackjack.blackjack_items.CheatAccessCards;
 import app.games2d.blackjack2d.shoe2d.BlackJackCard2D;
 import app.games2d.blackjack2d.shoe2d.BlackJackShoe2D;
-import app.Drawable2D;
 import app.srcfactory.card2d.Card2DAnimationFactory;
 import java.util.ArrayList;
 import java.awt.Graphics;
 
-public class BlackJackShoe2D_Default<C2D extends BlackJackCard2D> extends BlackJackShoe_Default implements BlackJackShoe2D{
+public class BlackJackShoe2D_Default<C2D extends BlackJackCard2D> extends BlackJackShoe_Default<BlackJackCard> implements BlackJackShoe2D{
 	private double xP;
 	private double yP;
 	Animation bg;
@@ -51,6 +50,7 @@ public class BlackJackShoe2D_Default<C2D extends BlackJackCard2D> extends BlackJ
 		while(upgradeList.size()>0){list.add(upgradeList.remove(0));}
 	}
 
+	//Cloning Constructor
 	private BlackJackShoe2D_Default(BlackJackShoe2D_Default<C2D> original){
 		super(original);
 		xP=original.getXdbl();
@@ -110,8 +110,8 @@ public class BlackJackShoe2D_Default<C2D extends BlackJackCard2D> extends BlackJ
 		cse.draw(xPos_px,yPos_px,brush);
 	}
 
-	private class RogueBJShoe2D extends BlackJackShoe2D_Default implements BlackJackShoe, CheatAccessCards{
-		private RogueBJShoe2D(BlackJackShoe2D_Default org){
+	private class RogueBJShoe2D extends BlackJackShoe2D_Default<C2D> implements BlackJackShoe, CheatAccessCards{
+		private RogueBJShoe2D(BlackJackShoe2D_Default<C2D> org){
 			super(org);
 		}
 

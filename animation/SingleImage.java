@@ -1,6 +1,6 @@
 package animation;
 
-import resources.ImgFetcher;
+//import resources.ImgFetcher;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Color;
@@ -10,7 +10,7 @@ import java.awt.geom.AffineTransform;
 
 public class SingleImage extends BufferedImage implements Animation{
 	private Graphics2D p;
-	private ImgFetcher iF;
+//	private ImgFetcher iF;
 
 	public SingleImage(
 		int width_px, int height_px,
@@ -18,7 +18,7 @@ public class SingleImage extends BufferedImage implements Animation{
 	){
 		super(width_px,height_px,BufferedImage.TYPE_INT_ARGB);
 		p=(Graphics2D)this.createGraphics();
-		iF=new ImgFetcher();
+//		iF=new ImgFetcher();
 
 		int tmpC = new Color(R,G,B,A).getRGB();
 
@@ -32,7 +32,7 @@ public class SingleImage extends BufferedImage implements Animation{
 	public SingleImage(Image img){
 		super(img.getWidth(null),img.getHeight(null),BufferedImage.TYPE_INT_ARGB);
 		p=(Graphics2D)this.createGraphics();
-		iF=new ImgFetcher();
+//		iF=new ImgFetcher();
 
 		while(!p.drawImage(img,0,0,null)){}
 	}
@@ -40,7 +40,7 @@ public class SingleImage extends BufferedImage implements Animation{
 	public SingleImage(Image img, int width_px, int height_px){
 		super(img.getWidth(null),img.getHeight(null),BufferedImage.TYPE_INT_ARGB);
 		p=(Graphics2D)this.createGraphics();
-		iF=new ImgFetcher();
+//		iF=new ImgFetcher();
 
 		AffineTransform T = new AffineTransform();
 		T.scale((double)width_px/img.getWidth(null),(double)height_px/img.getHeight(null));
