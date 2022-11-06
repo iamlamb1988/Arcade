@@ -2,28 +2,19 @@ package app.menu;
 
 import app.PanelSwapAction;
 import app.DesktopApp;
-import app.menu.gamemenu.GameMenu;
 import app.release.sandbox.shoecycle.ShoeCycle;
 import app.release.sandbox.tablecycle.TableCycle;
-import animation.Animation;
+import resources.ImgFetcher;
 import animation.SingleImage;
-import app.DesktopApp;
-import javax.swing.JPanel;
 import javax.swing.JButton;
-import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class MainMenu extends IMenu{
-	private MainMenu self;
 	private DesktopApp parent;
-	private Animation bg;
 
 	public MainMenu(DesktopApp parentApp, int width_px, int height_px){
 		super(width_px,height_px);
-		self=this;
 		parent=parentApp;
-		setBG(new SingleImage(width_px,height_px,255,0,0,255));
+		setBG(new SingleImage(new ImgFetcher().genAPaintImage(width_px,height_px)));
 
 		//Add ShoeCycle instance
 		JButton shoeCyc = new JButton("Shoe Cycle");
