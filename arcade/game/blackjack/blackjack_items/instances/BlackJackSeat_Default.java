@@ -1,8 +1,6 @@
 package arcade.game.blackjack.blackjack_items.instances;
 
 import arcade.customer.Player;
-import arcade.game.blackjack.blackjack_items.instances.BlackJackCard;
-import arcade.game.blackjack.blackjack_items.instances.BlackJackHand_Default;
 import arcade.game.blackjack.blackjack_items.BlackJackSeat;
 import java.util.ArrayList;
 

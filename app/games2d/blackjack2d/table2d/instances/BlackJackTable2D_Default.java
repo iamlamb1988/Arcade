@@ -7,7 +7,7 @@ import app.games2d.blackjack2d.shoe2d.BlackJackCard2D;
 //Note: Need to prepare anonymous inner 'Cheat' tables that implement the Cheat interface
 public class BlackJackTable2D_Default
 	<Cur extends CurrencyDecimal,C extends BlackJackCard2D>
-	extends BlackJackTable_Default
+	extends BlackJackTable_Default<Cur,C>
 {
 	public BlackJackTable2D_Default(){
 		//Default shoes MUST be called in an upgrade similar to Card -> Card2D within Shoe and Shoe2D

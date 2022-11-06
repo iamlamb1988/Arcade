@@ -68,8 +68,8 @@ public class BlackJackShoe_Default<C extends BlackJackCard> implements BlackJack
 		return honest;
 	}
 
-	private class RogueBJShoe<CR extends C> extends BlackJackShoe_Default implements BlackJackShoe, CheatAccessCards{
-		private RogueBJShoe(BlackJackShoe_Default<CR> org){
+	private class RogueBJShoe<C> extends BlackJackShoe_Default<BlackJackCard> implements BlackJackShoe, CheatAccessCards{
+		private RogueBJShoe(BlackJackShoe_Default<BlackJackCard> org){
 			super(org);
 		}
 

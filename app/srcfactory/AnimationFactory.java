@@ -1,7 +1,6 @@
 package app.srcfactory;
 
 import resources.ImgFetcher;
-import animation.Animation;
 import animation.SingleImage;
 
 //Should this be an interface instead of a class? (Probably..)
