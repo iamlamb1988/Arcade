@@ -11,13 +11,13 @@ import arcade.currency.currency_items.CarbonCoin;
 import app.games2d.blackjack2d.shoe2d.BlackJackCard2D;
 import app.games2d.blackjack2d.table2d.instances.BlackJackTable2D_Default;
 import arcade.game.blackjack.blackjack_items.BlackJackTable;
-import arcade.game.blackjack.blackjack_items.instances.BlackJackTable_Default;
-
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TableCycle extends GameMenu{
 	private BlackJackTable t;
@@ -65,8 +65,23 @@ public class TableCycle extends GameMenu{
 			}
 		}
 		//end checkeredFlag drawing
-
 		f.setBG(new SingleImage(tmpB));
+
+		JLabel p2 = new JLabel("Player 2");
+		p2.setSize(90,30);
+		p2.setLocation((f.getWidth()-p2.getWidth())/2,(int)(0.8*f.getHeight()));
+		f.add(p2);
+
+		JLabel p1 = new JLabel("Player 1");
+		p1.setSize(p2.getSize());
+		p1.setLocation(f.getWidth()/6-p1.getWidth()/2,p2.getY());
+		f.add(p1);
+
+		JLabel p3 = new JLabel("Player 3");
+		p3.setSize(p2.getSize());
+		p3.setLocation(5*f.getWidth()/6-p3.getWidth()/2,p2.getY());
+		f.add(p3);
+
 		tmpB=null;
 		chkFlg=null;
 		p=null;
@@ -76,31 +91,67 @@ public class TableCycle extends GameMenu{
 		JButton stand2 = new JButton("P2 Stand");
 		stand2.setSize(90,30);
 		stand2.setLocation((width_px-stand2.getWidth())/2,10);
+		stand2.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				System.out.println("P2 stand button. Most likely not do much here.");
+			}
+		});
 		a.add(stand2);
 
 		JButton stand1 = new JButton("P1 Stand");
 		stand1.setSize(stand2.getSize());
 		stand1.setLocation(stand2.getX()-stand1.getWidth()-10,stand2.getY());
+		stand1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				System.out.println("P1 stand button. Most likely not do much here.");
+			}
+		});
 		a.add(stand1);
 
 		JButton stand3 = new JButton("P3 Stand");
 		stand3.setSize(stand2.getSize());
 		stand3.setLocation(stand2.getX()+stand3.getWidth()+10,stand2.getY());
+		stand3.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				System.out.println("P3 stand button. Most likely not do much here.");
+			}
+		});
 		a.add(stand3);
 
 		JButton hit1 = new JButton("P1 Hit");
 		hit1.setSize(stand1.getSize());
 		hit1.setLocation(stand1.getX(),stand1.getY()+stand1.getHeight()+10);
+		hit1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				System.out.println("P1 hit button. Will soon draw a card...");
+			}
+		});
 		a.add(hit1);
 
 		JButton hit2 = new JButton("P2 Hit");
 		hit2.setSize(stand2.getSize());
 		hit2.setLocation(stand2.getX(),hit1.getY());
+		hit2.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				System.out.println("P2 hit button. Will soon draw a card...");
+			}
+		});
 		a.add(hit2);
 
 		JButton hit3 = new JButton("P3 Hit");
 		hit3.setSize(stand3.getSize());
 		hit3.setLocation(stand3.getX(),hit2.getY());
+		hit3.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				System.out.println("P3 hit button. Will soon draw a card...");
+			}
+		});
 		a.add(hit3);
 	}
 }
