@@ -27,15 +27,14 @@ ShoeCycle brings up a concern of adding and removing IAppItems and GameItems. Ne
 * Transfers currencies to and from Table and Players
 
 ## Next Master Push Goals
-- [x] Draw the Shoe Image itself onto the ShoeCycle.
-	- [x] Need to refactor the Shoe2D to implement GameItem instead of IAppItem (Reminder: GameItem extends IAppItem).
 - [ ] Develop the TableCycle (Except money transactions).
 	- [ ] Create a "Builder class" for BlackJackTables.
 		NOTE: Too many parameters for the combination of tables so a Builder is needed for simplicity.
-	- [x] Generic Type Parameters
-		- [x] Currency Type ("This" table will only take one type of currency)
-		- [x] BlackJackCard Type
 	- [ ] The TableCycle will allow you to Create a Player by Swapping out field and allowing a create user with an add or user.
+	- [ ] Create a status GameMenu Bar that displays stats.
+	- [ ] Create a reset button that resets table.
+	- [ ] Create shoe and table constructors to handle multiple shoe counts.
+	- [ ] Create a shoe function that verifies shoe is standard.
 - [ ] Need to figure out a good way to properly package and structure players. (Players need to "sit" in seats and also need to be able to "leave/get up" from seats.
 
 ## Future improvements
