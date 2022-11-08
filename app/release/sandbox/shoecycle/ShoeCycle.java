@@ -1,11 +1,9 @@
 package app.release.sandbox.shoecycle;
 
-import animation.Animation;
 import animation.SingleImage;
 import app.DesktopApp;
 import app.PanelSwapAction;
 import app.menu.IMenu;
-import app.games2d.GameItem;
 import app.menu.gamemenu.GameMenu;
 import app.menu.gamemenu.GameField;
 import app.menu.gamemenu.GamePanel;
@@ -30,16 +28,11 @@ public class ShoeCycle extends GameMenu{
 		super(parentApp,previous,width_px,height_px);
 		sh=(BlackJackShoe2D_Default)(new BlackJackShoe2D_Default<BlackJackCard2D>(1000/7,200)).genRogueClone();
 		sh.shuffleShoe();
+
 		CheatAccessCards cheat = (CheatAccessCards)sh;
 		shList = cheat.getCardsRef();
 		disc = cheat.getDiscardsRef();
 
-		BlackJackCard2D tmp2d;
-		for(BlackJackCard x : shList){
-			tmp2d=(BlackJackCard2D)x;
-			tmp2d.setFrontUpside();
-			// tmp2d.setX(width_px-tmp2d.){}
-		}
 		c=null;
 
 		//Draw Action Menu
@@ -136,8 +129,31 @@ public class ShoeCycle extends GameMenu{
 		GameField f=new GameField(0,m.getHeight(),width_px,height_px-a.getHeight()-m.getHeight());
 		add(f);
 
+		sh.setX(15);
+		sh.setY(15);
+		f.addGameItem(sh);
+		BlackJackCard2D tmp2d;
+		for(BlackJackCard x : shList){
+			tmp2d=(BlackJackCard2D)x;
+			tmp2d.setFrontUpside();
+			tmp2d.setX(100);
+			tmp2d.setY(100);
+		}
+
 		//Add dependant methods
-		drw.addActionListener(new CardDrawingAction(f));
+		drw.addActionListener(new CardDrawingAction(f){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				if(sh.isEmpty()){return;}
+				if(c!=null){
+					gf.removeGameItem(c);
+					sh.discard(c);
+				}
+				c=(BlackJackCard2D)sh.dealTop();
+				gf.addGameItem(c);
+				repaint();
+			}
+		});
 		dis.addActionListener(new CardDrawingAction(f){
 			@Override
 			public void actionPerformed(ActionEvent e){
@@ -169,21 +185,13 @@ public class ShoeCycle extends GameMenu{
 		private ActionPanel(int width_px, int height_px){super(width_px,height_px);}
 	}
 
+	//The purpose of this class is to provide a constructor because Anonymous classes cannot have a constructor.
 	private class CardDrawingAction implements ActionListener{
 		GameField gf;
 
 		private CardDrawingAction(GameField gamefield){gf=gamefield;}
 
 		@Override
-		public void actionPerformed(ActionEvent e){
-			if(sh.isEmpty()){return;}
-			if(c!=null){
-				gf.removeGameItem(c);
-				sh.discard(c);
-			}
-			c=(BlackJackCard2D)sh.dealTop();
-			gf.addGameItem(c);
-			repaint();
-		}
+		public void actionPerformed(ActionEvent e){}
 	}
 }

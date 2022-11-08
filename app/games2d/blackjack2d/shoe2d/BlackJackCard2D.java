@@ -91,5 +91,5 @@ public class BlackJackCard2D extends BlackJackCard implements GameItem{
 	public void dwblDrawTL(Graphics brush){upside.drawTopLeft(brush);}
 
 	@Override
-	public void dwblDraw(Graphics brush, int xPos_px, int yPos_px){upside.drawTopLeft(brush);}
+	public void dwblDraw(Graphics brush, int xPos_px, int yPos_px){upside.draw((int)xP,(int)yP,brush);}
 }
