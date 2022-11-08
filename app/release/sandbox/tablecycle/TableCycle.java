@@ -25,6 +25,7 @@ public class TableCycle extends GameMenu{
 	public TableCycle(DesktopApp parentApp, IMenu previous, int width_px, int height_px){
 		super(parentApp,previous,width_px,height_px);
 		t=new BlackJackTable2D_Default<CarbonCoin,BlackJackCard2D>();
+		t.shuffleShoe();
 
 		//Add Main Menu Bar (with back button)
 		GamePanel m = new GamePanel(width_px,60);
@@ -86,44 +87,60 @@ public class TableCycle extends GameMenu{
 		chkFlg=null;
 		p=null;
 		add(f);
-		
+
 		//add Action Menu Buttons
-		JButton stand2 = new JButton("P2 Stand");
-		stand2.setSize(90,30);
-		stand2.setLocation((width_px-stand2.getWidth())/2,10);
-		stand2.addActionListener(new ActionListener(){
+		JButton stT = new JButton("Dealer Stat");
+		stT.setSize(100,30);
+		stT.setLocation(10,10);
+		stT.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				System.out.println("P2 stand button. Most likely not do much here.");
+				System.out.println("Dealer Stats:");
+				System.out.println("Dealer Card Count: "+t.getTableCardQty());
+				System.out.println("Dealer Up Value: "+t.getTableHandValue());
+				System.out.println("Dealer Up Cards:");
+				byte qi=t.getTableCardQty();
+				for(byte i=0;i<qi;++i){
+					System.out.println(t.getTableCardFace(i)+" of "+t.getTableCardSuit(i));
+				}
 			}
 		});
-		a.add(stand2);
+		a.add(stT);
 
-		JButton stand1 = new JButton("P1 Stand");
-		stand1.setSize(stand2.getSize());
-		stand1.setLocation(stand2.getX()-stand1.getWidth()-10,stand2.getY());
-		stand1.addActionListener(new ActionListener(){
+		JButton hitT = new JButton("Dealer hit");
+		hitT.setSize(stT.getSize());
+		hitT.setLocation(stT.getX(),stT.getY()+stT.getHeight()+10);
+		hitT.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
-				System.out.println("P1 stand button. Most likely not do much here.");
+				t.dealDealer();
+				byte i=(byte)(t.getTableCardQty()-1);
+				System.out.println("Dealer new Card: "+t.getTableCardFace(i)+" of "+t.getTableCardSuit(i));
 			}
 		});
-		a.add(stand1);
+		a.add(hitT);
 
-		JButton stand3 = new JButton("P3 Stand");
-		stand3.setSize(stand2.getSize());
-		stand3.setLocation(stand2.getX()+stand3.getWidth()+10,stand2.getY());
-		stand3.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){
-				System.out.println("P3 stand button. Most likely not do much here.");
-			}
-		});
-		a.add(stand3);
+		JButton st2 = new JButton("P2 Stand");
+		st2.setSize(90,30);
+		st2.setLocation((width_px-st2.getWidth())/2,10);
+		st2.addActionListener(new SeatStatAction((byte)1));
+		a.add(st2);
+
+		JButton st1 = new JButton("P1 Stand");
+		st1.setSize(st2.getSize());
+		st1.setLocation(st2.getX()-st1.getWidth()-10,st2.getY());
+		st1.addActionListener(new SeatStatAction((byte)0));
+		a.add(st1);
+
+		JButton st3 = new JButton("P3 Stand");
+		st3.setSize(st2.getSize());
+		st3.setLocation(st2.getX()+st3.getWidth()+10,st2.getY());
+		st3.addActionListener(new SeatStatAction((byte)2));
+		a.add(st3);
 
 		JButton hit1 = new JButton("P1 Hit");
-		hit1.setSize(stand1.getSize());
-		hit1.setLocation(stand1.getX(),stand1.getY()+stand1.getHeight()+10);
+		hit1.setSize(st1.getSize());
+		hit1.setLocation(st1.getX(),st1.getY()+st1.getHeight()+10);
 		hit1.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
@@ -133,8 +150,8 @@ public class TableCycle extends GameMenu{
 		a.add(hit1);
 
 		JButton hit2 = new JButton("P2 Hit");
-		hit2.setSize(stand2.getSize());
-		hit2.setLocation(stand2.getX(),hit1.getY());
+		hit2.setSize(st2.getSize());
+		hit2.setLocation(st2.getX(),hit1.getY());
 		hit2.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
@@ -144,8 +161,8 @@ public class TableCycle extends GameMenu{
 		a.add(hit2);
 
 		JButton hit3 = new JButton("P3 Hit");
-		hit3.setSize(stand3.getSize());
-		hit3.setLocation(stand3.getX(),hit2.getY());
+		hit3.setSize(st3.getSize());
+		hit3.setLocation(st3.getX(),hit2.getY());
 		hit3.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e){
@@ -153,5 +170,17 @@ public class TableCycle extends GameMenu{
 			}
 		});
 		a.add(hit3);
+	}
+
+	private class SeatStatAction implements ActionListener{
+		private byte si; //seat index
+
+		private SeatStatAction(byte seatIndex){si=seatIndex;}
+
+		@Override
+		public void actionPerformed(ActionEvent e){
+			System.out.println("Seat Index: "+si);
+			System.out.println("Number of cards: "+t.getTableCardQty());
+		}
 	}
 }

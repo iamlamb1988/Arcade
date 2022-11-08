@@ -96,7 +96,7 @@ public class BlackJackTable_Default
 	public void dealHoleCard(){hole=(BlackJackCard)shoe.dealTop();}
 
 	@Override
-	public void dealDealer(){hand.receiveCard((BlackJackCard)shoe.dealTop());}
+	public void dealDealer(){hand.receiveCard((C)shoe.dealTop());}
 
 	@Override
 	public void dealCard(byte seatIndex,byte handIndex){}
@@ -109,10 +109,14 @@ public class BlackJackTable_Default
 
 	@Override
 	public void clearTable(){
+		//0. remove the hole card to shoe
 		//1. move all cards from all hands.
 		//2. delete all but 1 hand from all seats (Or seats with a person)
 		//3. move all discards to shoe.
+		shoe.reset();
+
 		//4. shuffle shoe.
+		shuffleShoe();
 	}
 
 	//HonorCode Overrides
