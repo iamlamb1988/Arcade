@@ -10,10 +10,8 @@ public class BlackJackTable2D_Default
 	extends BlackJackTable_Default<Cur,C>
 {
 	public BlackJackTable2D_Default(){
-		//Default shoes MUST be called in an upgrade similar to Card -> Card2D within Shoe and Shoe2D
 		super();
 		//Several pieces need to be considered. Will need a base constructor with MANY parameters
-		//The BlackJackTable Builder will simplifiy construction of Table(s)
 		//1. Upgrade all cards to a 2D;
 		//2. Upgrade the Shoe itself to 2D;
 		//3. Upgrade 'this' table itself to 2D;

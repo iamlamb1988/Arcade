@@ -1,11 +1,9 @@
 package app.release.sandbox.shoecycle;
 
-import animation.Animation;
 import animation.SingleImage;
 import app.DesktopApp;
 import app.PanelSwapAction;
 import app.menu.IMenu;
-import app.games2d.GameItem;
 import app.menu.gamemenu.GameMenu;
 import app.menu.gamemenu.GameField;
 import app.menu.gamemenu.GamePanel;

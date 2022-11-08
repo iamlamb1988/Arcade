@@ -3,6 +3,7 @@ package arcade.game.blackjack.blackjack_items.instances;
 import arcade.game.blackjack.blackjack_items.BlackJackTable;
 import arcade.game.blackjack.blackjack_items.BlackJackShoe;
 import arcade.game.blackjack.blackjack_items.BlackJackSeat;
+import app.games2d.blackjack2d.shoe2d.BlackJackCard2D;
 import arcade.currency.CurrencyDecimal;
 import arcade.currency.currency_items.CarbonCoin;
 import java.util.ArrayList;
@@ -27,18 +28,17 @@ public class BlackJackTable_Default
 	private BlackJackHand_Default hand; //face up cards only.
 
 	//NEEDS a constructor with generic type that extends CurrencyDecimal
+	//These constructor settings will most likely move to the "Builder Class"
 	public BlackJackTable_Default(){
 		MaxSeats=7;
 		MaxHands=4;
 		SplitAceHit=SplitAceDD=false;
 
-		shoe=new BlackJackShoe_Default();
+		shoe=new BlackJackShoe_Default<BlackJackCard2D>();
 		balance=new CarbonCoin();
 		seat=new ArrayList<BlackJackSeat>(MaxSeats);
 
-		for(byte i=0;i<MaxSeats;++i){
-			seat.add(new BlackJackSeat_Default());
-		}
+		for(byte i=0;i<MaxSeats;++i){seat.add(new BlackJackSeat_Default());}
 
 		// Initiate a seat
 		hand = new BlackJackHand_Default();
@@ -96,7 +96,7 @@ public class BlackJackTable_Default
 	public void dealHoleCard(){hole=(BlackJackCard)shoe.dealTop();}
 
 	@Override
-	public void dealDealer(){hand.receiveCard((BlackJackCard)shoe.dealTop());}
+	public void dealDealer(){hand.receiveCard((C)shoe.dealTop());}
 
 	@Override
 	public void dealCard(byte seatIndex,byte handIndex){}
@@ -109,10 +109,14 @@ public class BlackJackTable_Default
 
 	@Override
 	public void clearTable(){
+		//0. remove the hole card to shoe
 		//1. move all cards from all hands.
 		//2. delete all but 1 hand from all seats (Or seats with a person)
 		//3. move all discards to shoe.
+		shoe.reset();
+
 		//4. shuffle shoe.
+		shuffleShoe();
 	}
 
 	//HonorCode Overrides
