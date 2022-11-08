@@ -15,6 +15,8 @@ As the focus is BlackJack for now, the program will simulate millions of hands a
 ## Update
 Made some GUI updates and clean up. Need to stay on task and finish goals.
 
+Cards are able to move to and from Dealer. Preparing to add more goals to clarify table actions.
+
 This next update will focus on the completion of TableCycle. The purpose of TableCycle is to ensure all mechanical functionality will work before BlackJack is released.
 
 ShoeCycle brings up a concern of adding and removing IAppItems and GameItems. Need to modify some add and remove commands to handle IAppItem components and Non-IAppItem components safely. Right now there is not an easy way to add and remove these items.
