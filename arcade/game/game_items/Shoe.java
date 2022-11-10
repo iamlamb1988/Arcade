@@ -4,17 +4,6 @@ import java.util.Collections;
 import java.util.ArrayList;
 
 public interface Shoe{
-	public static ArrayList<Card> genStandardDeck(){
-		ArrayList<Card> R = new ArrayList<Card>(52);
-
-		char[] suits = new char[]{'C','D','H','S'};
-		char[] faces = new char[]{'2','3','4','5','6','7','8','9','T','J','Q','K','A'};
-
-		for(char x : suits){for(char y : faces){R.add(new Card(y,x));}}
-
-		return R;
-	}
-
 	public static ArrayList<Card> genStandardDecks(byte num_of_decks){
 		ArrayList<Card> R = new ArrayList<Card>(52*num_of_decks);
 		num_of_decks--;
@@ -35,6 +24,8 @@ public interface Shoe{
 
 		return R;
 	}
+
+	public static ArrayList<Card> genStandardDeck(){return genStandardDecks((byte)1);}
 
 	public static void shuffleShoe(ArrayList<Card> unshuffledShoe){
 		Collections.shuffle(unshuffledShoe);
