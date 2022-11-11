@@ -34,7 +34,7 @@ public class BlackJackTable_Default
 		MaxHands=4;
 		SplitAceHit=SplitAceDD=false;
 
-		shoe=new BlackJackShoe_Default<BlackJackCard2D>();
+		shoe=new BlackJackShoe_Default();
 		balance=new CarbonCoin();
 		seat=new ArrayList<BlackJackSeat>(MaxSeats);
 
@@ -68,6 +68,11 @@ public class BlackJackTable_Default
 
 	@Override
 	public byte getTableHandValue(){return hand.getBJvalue();}
+
+	@Override
+	public byte getSeatHandQty(byte seatIndex, byte handIndex){
+		return seat.get(seatIndex).getNumberOfCardsInHand(handIndex);
+	}
 
 	@Override
 	public byte getSeatHandValue(byte seatIndex, byte handIndex){
