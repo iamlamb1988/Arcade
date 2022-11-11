@@ -17,6 +17,7 @@ public class BlackJackCard extends Card{
 		this(originalCard.face,originalCard.suit);
 	}
 
+	//cloning constructor
 	private BlackJackCard(char faceValue, char suitValue, byte pointValue){
 		super(faceValue,suitValue);
 		value=pointValue;

@@ -34,7 +34,7 @@ public class BlackJackTable_Default
 		MaxHands=4;
 		SplitAceHit=SplitAceDD=false;
 
-		shoe=new BlackJackShoe_Default<BlackJackCard2D>();
+		shoe=new BlackJackShoe_Default();
 		balance=new CarbonCoin();
 		seat=new ArrayList<BlackJackSeat>(MaxSeats);
 
