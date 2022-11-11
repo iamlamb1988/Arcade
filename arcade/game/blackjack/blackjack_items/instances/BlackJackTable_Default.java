@@ -70,6 +70,11 @@ public class BlackJackTable_Default
 	public byte getTableHandValue(){return hand.getBJvalue();}
 
 	@Override
+	public byte getSeatHandQty(byte seatIndex, byte handIndex){
+		return seat.get(seatIndex).getNumberOfCardsInHand(handIndex);
+	}
+
+	@Override
 	public byte getSeatHandValue(byte seatIndex, byte handIndex){
 		return seat.get(seatIndex).getPoints(handIndex);
 	}
