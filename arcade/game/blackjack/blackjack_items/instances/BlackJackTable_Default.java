@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 //Designed for a single Currency only
 public class BlackJackTable_Default
-	<Cur extends CurrencyDecimal,C extends BlackJackCard>
+	<Cur extends CurrencyDecimal>
 	implements BlackJackTable
 {
 	private byte MaxSeats;
@@ -75,6 +75,21 @@ public class BlackJackTable_Default
 	}
 
 	@Override
+	public byte getSeatHandCardValue(byte seatIndex, byte handIndex, byte cardIndex){
+		return seat.get(seatIndex).getCardValue(handIndex, cardIndex);
+	}
+
+	@Override
+	public char getSeatHandCardFace(byte seatIndex, byte handIndex, byte cardIndex){
+		return seat.get(seatIndex).getCardFace(handIndex, cardIndex);
+	}
+
+	@Override
+	public char getSeatHandCardSuit(byte seatIndex, byte handIndex, byte cardIndex){
+		return seat.get(seatIndex).getCardSuit(handIndex, cardIndex);
+	}
+
+	@Override
 	public byte getSeatHandValue(byte seatIndex, byte handIndex){
 		return seat.get(seatIndex).getPoints(handIndex);
 	}
@@ -101,10 +116,12 @@ public class BlackJackTable_Default
 	public void dealHoleCard(){hole=(BlackJackCard)shoe.dealTop();}
 
 	@Override
-	public void dealDealer(){hand.receiveCard((C)shoe.dealTop());}
+	public void dealDealer(){hand.receiveCard((BlackJackCard)shoe.dealTop());}
 
 	@Override
-	public void dealCard(byte seatIndex,byte handIndex){}
+	public void dealCard(byte seatIndex,byte handIndex){
+		seat.get(seatIndex).receiveCard(handIndex,(BlackJackCard)shoe.dealTop());
+	}
 
 	@Override
 	public void takeBet(byte seatIndex, byte handIndex){}

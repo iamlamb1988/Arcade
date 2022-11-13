@@ -50,5 +50,5 @@ public class BlackJackHand_Default{
 	}
 
 	public void receiveCard(BlackJackCard card){h_hand.add(card);}
-	public BlackJackCard discardCard(){return h_hand.remove(h_hand.size()-1);}
+	public BlackJackCard discardCard(byte cardIndex){return h_hand.remove(cardIndex);}
 }

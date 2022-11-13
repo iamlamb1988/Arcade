@@ -24,7 +24,7 @@ public class TableCycle extends GameMenu{
 
 	public TableCycle(DesktopApp parentApp, IMenu previous, int width_px, int height_px){
 		super(parentApp,previous,width_px,height_px);
-		t=new BlackJackTable2D_Default<CarbonCoin,BlackJackCard2D>();
+		t=new BlackJackTable2D_Default<CarbonCoin>();
 		t.shuffleShoe();
 
 		//Add Main Menu Bar (with back button)
@@ -154,12 +154,7 @@ public class TableCycle extends GameMenu{
 		JButton hit1 = new JButton("P1 Hit");
 		hit1.setSize(st1.getSize());
 		hit1.setLocation(st1.getX(),st1.getY()+st1.getHeight()+10);
-		hit1.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){
-				statUpdate.setText("<html><p>P1 hit button.</p><p>Will soon draw a card...</p></html>");
-			}
-		});
+		hit1.addActionListener(new SeatHitAction((byte)0,statUpdate));
 		a.add(hit1);
 
 		JButton hit2 = new JButton("P2 Hit");
@@ -187,20 +182,58 @@ public class TableCycle extends GameMenu{
 
 	private class SeatStatAction implements ActionListener{
 		private byte si; //seat index
+		private byte h;
 		private JLabel l;//Label pointer
 
 		private SeatStatAction(byte seatIndex, JLabel newL){
 			si=seatIndex;
+			h=(byte)0;
 			l=newL;
 		}
 
 		@Override
 		public void actionPerformed(ActionEvent e){
-			l.setText(
+			String R="<html><body>"; //opening tags
+			byte qty=t.getSeatHandQty(si,h);
+			R=
 				"<html><body><p>Seat Index: "+
 				si+"</p><p>Number of Cards: "+
-				t.getSeatHandQty(si,(byte)0)+"</p></body></html>"
+				qty+"</p><p>Value: "+
+				t.getSeatHandValue(si,h)+"</p><p>Cards:</p>";
+			for(byte i=0;i<qty;++i){
+				R+=
+					"<p>"+t.getSeatHandCardFace(si,h,i)+
+					" of "+t.getSeatHandCardSuit(si,h,i)+
+					"</p>";
+			}
+			l.setText(R+"</body></html>");
+		}
+	}
+
+	private class SeatHitAction implements ActionListener{
+		private byte si;
+		private byte b;
+		private final byte h;
+		private JLabel l;
+
+		private SeatHitAction(byte seatIndex, JLabel newL){
+			si=seatIndex;
+			b=(byte)(si+1);
+			h=(byte)0;
+			l=newL;
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e){
+			t.dealCard(si,h);
+			byte lastI=(byte)(t.getSeatHandQty(si,h)-1);
+			l.setText(
+				"<html><body><p>Player "+b+"Draws: </p><p>"+
+				t.getSeatHandCardFace(si,h,lastI)+" of "+
+				t.getSeatHandCardSuit(si,h,lastI)+
+				"</p></body></html>"
 			);
 		}
 	}
+
 }
