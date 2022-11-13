@@ -32,6 +32,8 @@ public interface Shoe{
 	}
 
 	public boolean isEmpty();
+	public int getRemainingQty();
+	public int getDiscardQty();
 	public void shuffleShoe();
 	public void reset();
 	public Card dealTop();

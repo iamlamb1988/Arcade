@@ -26,10 +26,30 @@ public class BlackJackSeat_Default implements BlackJackSeat{
 	public double getCreditsBet(byte handIndex){return -1;}
 
 	@Override
+	public byte getNumberOfHands(){return (byte)hand.size();}
+
+	@Override
 	public byte getNumberOfCardsInHand(byte handIndex){return hand.get(handIndex).getCardQ();}
 
 	@Override
 	public byte getPoints(byte handIndex){return hand.get(handIndex).getBJvalue();}
+
+	@Override
+	public byte getCardValue(byte handIndex, byte cardIndex){return hand.get(handIndex).getCardValue(cardIndex);}
+
+	@Override
+	public char getCardFace(byte handIndex, byte cardIndex){return hand.get(handIndex).getCardFace(cardIndex);}
+
+	@Override
+	public char getCardSuit(byte handIndex, byte cardIndex){return hand.get(handIndex).getCardSuit(cardIndex);}
+
+	@Override
+	public void receiveCard(byte handIndex, BlackJackCard card){hand.get(handIndex).receiveCard(card);}
+
+	@Override
+	public BlackJackCard discardCard(byte handIndex, byte cardIndex){
+		return hand.get(handIndex).discardCard(cardIndex);
+	}
 
 	@Override
 	public boolean isNatural(byte handIndex){return hand.get(handIndex).isNat();}

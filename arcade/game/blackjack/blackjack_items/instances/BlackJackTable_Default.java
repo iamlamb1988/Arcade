@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 //Designed for a single Currency only
 public class BlackJackTable_Default
-	<Cur extends CurrencyDecimal,C extends BlackJackCard>
+	<Cur extends CurrencyDecimal>
 	implements BlackJackTable
 {
 	private byte MaxSeats;
@@ -55,6 +55,9 @@ public class BlackJackTable_Default
 	public double getSeatPocketCredits(byte seatIndex){return -1;}
 
 	@Override
+	public int getShoeRemining(){return shoe.getRemainingQty();}
+
+	@Override
 	public byte getTableCardQty(){return hand.getCardQ();}
 
 	@Override
@@ -72,6 +75,21 @@ public class BlackJackTable_Default
 	@Override
 	public byte getSeatHandQty(byte seatIndex, byte handIndex){
 		return seat.get(seatIndex).getNumberOfCardsInHand(handIndex);
+	}
+
+	@Override
+	public byte getSeatHandCardValue(byte seatIndex, byte handIndex, byte cardIndex){
+		return seat.get(seatIndex).getCardValue(handIndex, cardIndex);
+	}
+
+	@Override
+	public char getSeatHandCardFace(byte seatIndex, byte handIndex, byte cardIndex){
+		return seat.get(seatIndex).getCardFace(handIndex, cardIndex);
+	}
+
+	@Override
+	public char getSeatHandCardSuit(byte seatIndex, byte handIndex, byte cardIndex){
+		return seat.get(seatIndex).getCardSuit(handIndex, cardIndex);
 	}
 
 	@Override
@@ -101,10 +119,12 @@ public class BlackJackTable_Default
 	public void dealHoleCard(){hole=(BlackJackCard)shoe.dealTop();}
 
 	@Override
-	public void dealDealer(){hand.receiveCard((C)shoe.dealTop());}
+	public void dealDealer(){hand.receiveCard((BlackJackCard)shoe.dealTop());}
 
 	@Override
-	public void dealCard(byte seatIndex,byte handIndex){}
+	public void dealCard(byte seatIndex,byte handIndex){
+		seat.get(seatIndex).receiveCard(handIndex,(BlackJackCard)shoe.dealTop());
+	}
 
 	@Override
 	public void takeBet(byte seatIndex, byte handIndex){}
@@ -115,8 +135,36 @@ public class BlackJackTable_Default
 	@Override
 	public void clearTable(){
 		//0. remove the hole card to shoe
-		//1. move all cards from all hands.
-		//2. delete all but 1 hand from all seats (Or seats with a person)
+		if(hole!=null){
+			shoe.discard(hole);
+			hole=null;
+		}
+
+		//1. move all cards from dealer hand
+		final byte CI=(byte)0; //always 0
+		byte hndQty=hand.getCardQ();
+		while(hndQty>0){
+			shoe.discard(hand.discardCard(CI));
+			--hndQty;
+		}
+		//2. move all cards from all hands.
+		for(BlackJackSeat s : seat){
+			hndQty=s.getNumberOfHands();
+			for(byte i=0;i<hndQty;++i){
+				byte crdQty=s.getNumberOfCardsInHand(i);
+				for(byte j=0;j<crdQty;++j){
+					shoe.discard(s.discardCard(i,CI));
+				}
+				
+				//3. delete all but 1 hand from all seats
+				hndQty--; //preparing to remove all but one hand
+				while(hndQty>0){
+					//remove a hand from index;
+					--hndQty;
+				}
+			}
+		}
+
 		//3. move all discards to shoe.
 		shoe.reset();
 
