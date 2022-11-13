@@ -26,6 +26,9 @@ public class BlackJackSeat_Default implements BlackJackSeat{
 	public double getCreditsBet(byte handIndex){return -1;}
 
 	@Override
+	public byte getNumberOfHands(){return (byte)hand.size();}
+
+	@Override
 	public byte getNumberOfCardsInHand(byte handIndex){return hand.get(handIndex).getCardQ();}
 
 	@Override

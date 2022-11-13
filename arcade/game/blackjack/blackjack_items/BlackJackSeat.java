@@ -7,6 +7,7 @@ public interface BlackJackSeat extends Seat{
 	public double getCreditsPocket();
 	public double getCreditsBet(byte handIndex);
 
+	public byte getNumberOfHands();
 	public byte getNumberOfCardsInHand(byte handIndex);
 	public byte getPoints(byte handIndex);
 	public byte getCardValue(byte handIndex, byte cardIndex);

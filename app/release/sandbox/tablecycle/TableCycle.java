@@ -120,6 +120,26 @@ public class TableCycle extends GameMenu{
 		});
 		a.add(stT);
 
+		JButton clr = new JButton("Reset");
+		clr.setSize(stT.getSize());
+		clr.setLocation(
+			a.getWidth()-clr.getWidth()-10,
+			a.getHeight()-clr.getHeight()-10
+		);
+		clr.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e){
+				t.clearTable();
+				String R="<html><body><p>Table Reset</p>";
+				R+=
+					"<p>Checks: </p><p>Cards Remaining: "+
+					t.getShoeRemining()+"</p>";
+				statUpdate.setText(R+"</body></html>");
+				
+			}
+		});
+		a.add(clr);
+
 		JButton hitT = new JButton("Dealer hit");
 		hitT.setSize(stT.getSize());
 		hitT.setLocation(stT.getX(),stT.getY()+stT.getHeight()+10);

@@ -34,6 +34,12 @@ public class BlackJackShoe_Default implements BlackJackShoe, HonorCode{
 	@Override
 	public boolean isEmpty(){return list.size()==0;}
 
+	@Override
+	public int getRemainingQty(){return list.size();}
+
+	@Override
+	public int getDiscardQty(){return discard.size();}
+
     @Override
 	public void shuffleShoe(){Collections.shuffle(list);}
 

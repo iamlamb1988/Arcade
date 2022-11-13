@@ -55,6 +55,9 @@ public class BlackJackTable_Default
 	public double getSeatPocketCredits(byte seatIndex){return -1;}
 
 	@Override
+	public int getShoeRemining(){return shoe.getRemainingQty();}
+
+	@Override
 	public byte getTableCardQty(){return hand.getCardQ();}
 
 	@Override
@@ -132,8 +135,36 @@ public class BlackJackTable_Default
 	@Override
 	public void clearTable(){
 		//0. remove the hole card to shoe
-		//1. move all cards from all hands.
-		//2. delete all but 1 hand from all seats (Or seats with a person)
+		if(hole!=null){
+			shoe.discard(hole);
+			hole=null;
+		}
+
+		//1. move all cards from dealer hand
+		final byte CI=(byte)0; //always 0
+		byte hndQty=hand.getCardQ();
+		while(hndQty>0){
+			shoe.discard(hand.discardCard(CI));
+			--hndQty;
+		}
+		//2. move all cards from all hands.
+		for(BlackJackSeat s : seat){
+			hndQty=s.getNumberOfHands();
+			for(byte i=0;i<hndQty;++i){
+				byte crdQty=s.getNumberOfCardsInHand(i);
+				for(byte j=0;j<crdQty;++j){
+					shoe.discard(s.discardCard(i,CI));
+				}
+				
+				//3. delete all but 1 hand from all seats
+				hndQty--; //preparing to remove all but one hand
+				while(hndQty>0){
+					//remove a hand from index;
+					--hndQty;
+				}
+			}
+		}
+
 		//3. move all discards to shoe.
 		shoe.reset();
 
