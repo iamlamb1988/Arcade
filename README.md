@@ -13,6 +13,8 @@ Some systems will be much harder to implement than others.
 As the focus is BlackJack for now, the program will simulate millions of hands and generate Basic Strategy tables using various counting system techniques.
 
 ## Update
+Table successfully reset. Preparing for Card drawings to table.
+
 Unfortunately, needed to refactor the shoe to remove the Generic Type. There are issues with initializing a Generic Type. Even with reflective techniques there seems to be an error of some type.
 
 Made some GUI updates and clean up. Need to stay on task and finish goals.
@@ -22,11 +24,6 @@ Cards are able to move to and from Dealer. Preparing to add more goals to clarif
 This next update will focus on the completion of TableCycle. The purpose of TableCycle is to ensure all mechanical functionality will work before BlackJack is released.
 
 ShoeCycle brings up a concern of adding and removing IAppItems and GameItems. Need to modify some add and remove commands to handle IAppItem components and Non-IAppItem components safely. Right now there is not an easy way to add and remove these items.
-
-### Single Responsibility Principle Violation
-1. BlackJackTable interface has 2 responsibilities:
-* Transfer cards to and from Shoe, Table and Players,
-* Transfers currencies to and from Table and Players
 
 ## Next Master Push Goals
 - [ ] Develop the TableCycle (Except money transactions).
