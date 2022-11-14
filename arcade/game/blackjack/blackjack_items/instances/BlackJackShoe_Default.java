@@ -2,49 +2,43 @@ package arcade.game.blackjack.blackjack_items.instances;
 
 import arcade.HonorCode;
 import arcade.game.game_items.Card;
-import arcade.game.game_items.Shoe;
 import arcade.game.blackjack.blackjack_items.BlackJackShoe;
 import arcade.game.blackjack.blackjack_items.CheatAccessCards;
 import java.util.Collections;
 import java.util.ArrayList;
 
-public class BlackJackShoe_Default<C extends BlackJackCard> implements BlackJackShoe, HonorCode{
-	protected ArrayList<C> list;
-	protected ArrayList<C> discard;
+public class BlackJackShoe_Default implements BlackJackShoe, HonorCode{
+	protected ArrayList<BlackJackCard> list;
+	protected ArrayList<BlackJackCard> discard;
 
 	private boolean honest;
-
-	public BlackJackShoe_Default(){ //single deck implementation
-		list = new ArrayList<C>(52);
-		discard = new ArrayList<C>(52);
-		ArrayList<Card> tmp=Shoe.genStandardDeck();
-
-		C upgrade;
-		while(tmp.size()>0){
-			upgrade = (C)(new BlackJackCard(tmp.remove(0)));
-			list.add(upgrade);
-		}
+	public BlackJackShoe_Default(byte num_of_decks){
+		list = BlackJackShoe.genStandardBlackJackDecks(num_of_decks);
+		discard = new ArrayList<BlackJackCard>(list.size());
 		honest=true;
 	}
 
-	protected BlackJackShoe_Default(BlackJackShoe_Default<C> originalShoe){
-		list = new ArrayList<C>(52);
-		discard = new ArrayList<C>(52);
-		for(BlackJackCard x : originalShoe.list){list.add((C)x.clone());}
+	public BlackJackShoe_Default(){this((byte)1);}
 
-		for(BlackJackCard x : originalShoe.discard){discard.add((C)x.clone());}
-
-		if(this instanceof RogueBJShoe) honest=false;
-		else honest=true;
+	protected BlackJackShoe_Default(BlackJackShoe_Default originalShoe){
+		list=new ArrayList<BlackJackCard>(originalShoe.list.size()+originalShoe.discard.size());
+		discard=new ArrayList<BlackJackCard>(list.size());
+		for(BlackJackCard x : originalShoe.list){list.add(x.clone());}
+		for(BlackJackCard x : originalShoe.discard){discard.add(x.clone());}
+		honest=false;
 	}
 
-	public CheatAccessCards genRogueClone(){
-		return new RogueBJShoe(this);
-	}
+	public CheatAccessCards genRogueClone(){return new RogueBJShoe(this);}
 
 	//Shoe Overrides:
 	@Override
 	public boolean isEmpty(){return list.size()==0;}
+
+	@Override
+	public int getRemainingQty(){return list.size();}
+
+	@Override
+	public int getDiscardQty(){return discard.size();}
 
     @Override
 	public void shuffleShoe(){Collections.shuffle(list);}
@@ -54,13 +48,13 @@ public class BlackJackShoe_Default<C extends BlackJackCard> implements BlackJack
 
 	@Override
 	public void reset(){
-		for(C x: discard){list.add(x);}
+		for(BlackJackCard x: discard){list.add(x);}
 		discard.clear();
 	}
 
 	@Override
 	public void discard(Card dis){
-		discard.add((C)dis);
+		discard.add((BlackJackCard)dis);
 	}
 
 	//HonorCode Overrides:
@@ -68,10 +62,8 @@ public class BlackJackShoe_Default<C extends BlackJackCard> implements BlackJack
 		return honest;
 	}
 
-	private class RogueBJShoe<C> extends BlackJackShoe_Default<BlackJackCard> implements BlackJackShoe, CheatAccessCards{
-		private RogueBJShoe(BlackJackShoe_Default<BlackJackCard> org){
-			super(org);
-		}
+	private class RogueBJShoe extends BlackJackShoe_Default implements BlackJackShoe, CheatAccessCards{
+		private RogueBJShoe(BlackJackShoe_Default org){super(org);}
 
 		//CheatAccessCards Overrides:
 		@Override

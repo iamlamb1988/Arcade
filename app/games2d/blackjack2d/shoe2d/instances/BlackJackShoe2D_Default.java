@@ -12,7 +12,7 @@ import app.srcfactory.card2d.Card2DAnimationFactory;
 import java.util.ArrayList;
 import java.awt.Graphics;
 
-public class BlackJackShoe2D_Default<C2D extends BlackJackCard2D> extends BlackJackShoe_Default<BlackJackCard> implements BlackJackShoe2D{
+public class BlackJackShoe2D_Default extends BlackJackShoe_Default implements BlackJackShoe2D{
 	private double xP;
 	private double yP;
 	Animation bg;
@@ -51,7 +51,7 @@ public class BlackJackShoe2D_Default<C2D extends BlackJackCard2D> extends BlackJ
 	}
 
 	//Cloning Constructor
-	private BlackJackShoe2D_Default(BlackJackShoe2D_Default<C2D> original){
+	private BlackJackShoe2D_Default(BlackJackShoe2D_Default original){
 		super(original);
 		xP=original.getXdbl();
 		yP=original.getYdbl();
@@ -110,8 +110,8 @@ public class BlackJackShoe2D_Default<C2D extends BlackJackCard2D> extends BlackJ
 		cse.draw(xPos_px,yPos_px,brush);
 	}
 
-	private class RogueBJShoe2D extends BlackJackShoe2D_Default<C2D> implements BlackJackShoe, CheatAccessCards{
-		private RogueBJShoe2D(BlackJackShoe2D_Default<C2D> org){
+	private class RogueBJShoe2D extends BlackJackShoe2D_Default implements BlackJackShoe, CheatAccessCards{
+		private RogueBJShoe2D(BlackJackShoe2D_Default org){
 			super(org);
 		}
 
