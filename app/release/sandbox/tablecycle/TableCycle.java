@@ -180,23 +180,13 @@ public class TableCycle extends GameMenu{
 		JButton hit2 = new JButton("P2 Hit");
 		hit2.setSize(st2.getSize());
 		hit2.setLocation(st2.getX(),hit1.getY());
-		hit2.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){
-				statUpdate.setText("<html><p>P2 hit button.</p><p>Will soon draw a card...</p></html>");
-			}
-		});
+		hit2.addActionListener(new SeatHitAction((byte)1,statUpdate));
 		a.add(hit2);
 
 		JButton hit3 = new JButton("P3 Hit");
 		hit3.setSize(st3.getSize());
 		hit3.setLocation(st3.getX(),hit2.getY());
-		hit3.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){
-				statUpdate.setText("<html><p>P3 hit button.</p><p>Will soon draw a card...</p></html>");
-			}
-		});
+		hit3.addActionListener(new SeatHitAction((byte)2,statUpdate));
 		a.add(hit3);
 	}
 
@@ -248,7 +238,7 @@ public class TableCycle extends GameMenu{
 			t.dealCard(si,h);
 			byte lastI=(byte)(t.getSeatHandQty(si,h)-1);
 			l.setText(
-				"<html><body><p>Player "+b+"Draws: </p><p>"+
+				"<html><body><p>Player "+b+" Draws: </p><p>"+
 				t.getSeatHandCardFace(si,h,lastI)+" of "+
 				t.getSeatHandCardSuit(si,h,lastI)+
 				"</p></body></html>"
