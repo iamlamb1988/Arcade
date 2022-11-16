@@ -8,7 +8,6 @@ import animation.SingleImage;
 import app.menu.gamemenu.GamePanel;
 import app.menu.gamemenu.GameField;
 import arcade.currency.currency_items.CarbonCoin;
-import app.games2d.blackjack2d.shoe2d.BlackJackCard2D;
 import app.games2d.blackjack2d.table2d.instances.BlackJackTable2D_Default;
 import arcade.game.blackjack.blackjack_items.BlackJackTable;
 import java.awt.Color;
@@ -20,11 +19,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class TableCycle extends GameMenu{
-	private BlackJackTable t;
+	private BlackJackTable2D_Default<CarbonCoin> t;
 
 	public TableCycle(DesktopApp parentApp, IMenu previous, int width_px, int height_px){
 		super(parentApp,previous,width_px,height_px);
-		t=new BlackJackTable2D_Default<CarbonCoin>();
+		t=new BlackJackTable2D_Default<CarbonCoin>(100);
 		t.shuffleShoe();
 
 		//Add Main Menu Bar (with back button)
@@ -149,6 +148,7 @@ public class TableCycle extends GameMenu{
 				t.dealDealer();
 				byte i=(byte)(t.getTableCardQty()-1);
 				statUpdate.setText("Dealer new Card: "+t.getTableCardFace(i)+" of "+t.getTableCardSuit(i));
+				repaint();
 			}
 		});
 		a.add(hitT);
@@ -174,19 +174,19 @@ public class TableCycle extends GameMenu{
 		JButton hit1 = new JButton("P1 Hit");
 		hit1.setSize(st1.getSize());
 		hit1.setLocation(st1.getX(),st1.getY()+st1.getHeight()+10);
-		hit1.addActionListener(new SeatHitAction((byte)0,statUpdate));
+		hit1.addActionListener(new SeatHitAction((byte)0,statUpdate,f));
 		a.add(hit1);
 
 		JButton hit2 = new JButton("P2 Hit");
 		hit2.setSize(st2.getSize());
 		hit2.setLocation(st2.getX(),hit1.getY());
-		hit2.addActionListener(new SeatHitAction((byte)1,statUpdate));
+		hit2.addActionListener(new SeatHitAction((byte)1,statUpdate,f));
 		a.add(hit2);
 
 		JButton hit3 = new JButton("P3 Hit");
 		hit3.setSize(st3.getSize());
 		hit3.setLocation(st3.getX(),hit2.getY());
-		hit3.addActionListener(new SeatHitAction((byte)2,statUpdate));
+		hit3.addActionListener(new SeatHitAction((byte)2,statUpdate,f));
 		a.add(hit3);
 	}
 
@@ -225,12 +225,21 @@ public class TableCycle extends GameMenu{
 		private byte b;
 		private final byte h;
 		private JLabel l;
+		private GameField f;
 
-		private SeatHitAction(byte seatIndex, JLabel newL){
+		private SeatHitAction(
+			byte seatIndex,
+			JLabel newL,
+			GameField field
+		){
 			si=seatIndex;
 			b=(byte)(si+1);
 			h=(byte)0;
 			l=newL;
+			f=field;
+
+			//add a card based on current card position
+			
 		}
 
 		@Override
@@ -243,6 +252,7 @@ public class TableCycle extends GameMenu{
 				t.getSeatHandCardSuit(si,h,lastI)+
 				"</p></body></html>"
 			);
+			repaint();
 		}
 	}
 
