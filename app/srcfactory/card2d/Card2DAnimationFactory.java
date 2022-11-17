@@ -14,10 +14,11 @@ import java.awt.geom.AffineTransform;
 //This class preserves Card Images
 public class Card2DAnimationFactory extends AnimationFactory{
 	//Ratios for Standard Card (3.5" x 2.5")
-	private final byte LEN_RATIO;
-	private final byte WDT_RATIO;
-	private final double LEN_TO_WDT_FACTOR;
-	private final double WDT_TO_LEN_FACTOR;
+	//Standard Cards are 2.5 x 3.5 inches. Ratios are simplified as such for scalability.
+	public static final byte WIDTH_RATIO=5;
+	public static final byte HEIGHT_RATIO=7;
+	public static final double H_R=(double)HEIGHT_RATIO/WIDTH_RATIO;
+	public static final double R_H=(double)WIDTH_RATIO/HEIGHT_RATIO;
 
 	private int actualWidth_px;
 	private int actualHeight_px;
@@ -85,10 +86,6 @@ public class Card2DAnimationFactory extends AnimationFactory{
 
 	public Card2DAnimationFactory(){
 		super();
-		LEN_RATIO=(byte)7;
-		WDT_RATIO=(byte)5;
-		LEN_TO_WDT_FACTOR=(double)LEN_RATIO/WDT_RATIO;
-		WDT_TO_LEN_FACTOR=(double)WDT_RATIO/LEN_RATIO;
 
 		constructorHelp();
 		cif = new CardImgFetcher();
@@ -97,11 +94,6 @@ public class Card2DAnimationFactory extends AnimationFactory{
 
 	public Card2DAnimationFactory(int width_px, int height_px){
 		super();
-		LEN_RATIO=(byte)7;
-		WDT_RATIO=(byte)5;
-		LEN_TO_WDT_FACTOR=(double)LEN_RATIO/WDT_RATIO;
-		WDT_TO_LEN_FACTOR=(double)WDT_RATIO/LEN_RATIO;
-
 		constructorHelp();
 		cif = new CardImgFetcher();
 		cif.fetchAll(width_px,height_px);
@@ -110,7 +102,7 @@ public class Card2DAnimationFactory extends AnimationFactory{
 	}
 
 	public Card2DAnimationFactory(int height_px){
-		this((int)(5.0*height_px/7),height_px);
+		this((int)(R_H*height_px),height_px);
 	}
 
 	private byte getFaceIndex(char face){
