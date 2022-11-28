@@ -14,6 +14,9 @@ As the focus is BlackJack for now, the program will simulate millions of hands a
 
 ## Update
 Preparing to create a 2D Seat that has drawable methods of each hand and card.
+Need to ensure same structure format is followed throughout the program.
+Will be air force checking Shoe to Seat as comparison.
+Will not update documentation until succesful initial completion of Table.
 
 This next update will focus on the completion of TableCycle. The purpose of TableCycle is to ensure all mechanical functionality will work before BlackJack is released.
 
