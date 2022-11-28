@@ -147,15 +147,14 @@ public class BlackJackTable_Default
 			shoe.discard(hand.discardCard(CI));
 			--hndQty;
 		}
+
 		//2. move all cards from all hands.
 		for(BlackJackSeat s : seat){
 			hndQty=s.getNumberOfHands();
 			for(byte i=0;i<hndQty;++i){
 				byte crdQty=s.getNumberOfCardsInHand(i);
-				for(byte j=0;j<crdQty;++j){
-					shoe.discard(s.discardCard(i,CI));
-				}
-				
+				for(byte j=0;j<crdQty;++j){shoe.discard(s.discardCard(i,CI));}
+
 				//3. delete all but 1 hand from all seats
 				hndQty--; //preparing to remove all but one hand
 				while(hndQty>0){

@@ -13,10 +13,11 @@ public class BlackJackTable2D_Default
 	public BlackJackTable2D_Default(int cardWidth_px,int cardHeight_px){
 		super();
 		//Several pieces need to be considered. Will need a base constructor with MANY parameters
-		//1. Upgrade all cards to a 2D;
-		//1.1 set up a default Card Animation2D generator
-		//2. Upgrade the Shoe itself to 2D;
-		//3. Upgrade 'this' table itself to 2D;
+		//1.	Upgrade all cards to a 2D.
+			//1.1	Set up a default Card Animation2D generator.
+		//2.	Upgrade the Shoe itself to 2D.
+		//3.	Upgrade Seats to 2D.
+		//4.	Upgrade 'this' table itself to 2D.
 	}
 
 	public BlackJackTable2D_Default(int cardHeight_px){
