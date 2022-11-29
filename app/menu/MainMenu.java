@@ -3,11 +3,11 @@ package app.menu;
 import app.PanelSwapAction;
 import app.DesktopApp;
 import app.release.sandbox.shoecycle.ShoeCycle;
+import app.release.sandbox.shoecycle.SeatCycle;
 import app.release.sandbox.tablecycle.TableCycle;
 import resources.ImgFetcher;
 import animation.SingleImage;
 import javax.swing.JButton;
-import java.awt.event.*;
 
 public class MainMenu extends IMenu{
 	private DesktopApp parent;
@@ -28,14 +28,8 @@ public class MainMenu extends IMenu{
 		JButton seatCyc = new JButton("Seat Cycle");
 		seatCyc.setLocation(10,shoeCyc.getY()+shoeCyc.getHeight()+10);
 		seatCyc.setSize(150,40);
-		seatCyc.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent e){
-				System.out.println("Comming very soon! (As of 28NOV2022)");
-			}
-		});
+		seatCyc.addActionListener(new PanelSwapAction(parent,this,new SeatCycle(parent,this,width_px,height_px)));
 		add(seatCyc);
-		setVisible(true);
 
 		//Add TableCycle instance
 		JButton tableCyc = new JButton("Table Cycle");
