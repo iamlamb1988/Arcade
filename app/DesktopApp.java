@@ -8,7 +8,6 @@ public class DesktopApp extends JFrame{
 		super();
 		setLayout(null);
 		setSize(width_px,height_px);
-		// getContentPane().setSize(width_px,height_px);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		MainMenu tmpM = new MainMenu(this,width_px-16,height_px-39);
