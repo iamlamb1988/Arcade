@@ -13,6 +13,8 @@ Some systems will be much harder to implement than others.
 As the focus is BlackJack for now, the program will simulate millions of hands and generate Basic Strategy tables using various counting system techniques.
 
 ## Update
+This is an emergency master push. Eclipse has not been pushing all changed .java files to the repository. This master push is checked and verified that all required files are added and functioning.
+
 Preparing to create a 2D Seat that has drawable methods of each hand and card.
 Need to ensure same structure format is followed throughout the program.
 Will be air force checking Shoe to Seat as comparison.
