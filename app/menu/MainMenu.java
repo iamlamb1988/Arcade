@@ -3,7 +3,7 @@ package app.menu;
 import app.PanelSwapAction;
 import app.DesktopApp;
 import app.release.sandbox.shoecycle.ShoeCycle;
-import app.release.sandbox.shoecycle.SeatCycle;
+import app.release.sandbox.seatcycle.SeatCycle;
 import app.release.sandbox.tablecycle.TableCycle;
 import resources.ImgFetcher;
 import animation.SingleImage;

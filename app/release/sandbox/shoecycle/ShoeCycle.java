@@ -143,7 +143,7 @@ public class ShoeCycle extends GameMenu{
 			tmp2d.setY(100);
 		}
 
-		//Add dependant methods
+		//Add dependent methods
 		drw.addActionListener(new CardDrawingAction(f){
 			@Override
 			public void actionPerformed(ActionEvent e){
