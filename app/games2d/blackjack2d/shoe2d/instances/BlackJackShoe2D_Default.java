@@ -50,6 +50,10 @@ public class BlackJackShoe2D_Default extends BlackJackShoe_Default implements Bl
 		while(upgradeList.size()>0){list.add(upgradeList.remove(0));}
 	}
 
+	public BlackJackShoe2D_Default(int height_px){
+		this((int)(Card2DAnimationFactory.R_H*height_px),height_px);
+	}
+
 	//Cloning Constructor
 	private BlackJackShoe2D_Default(BlackJackShoe2D_Default original){
 		super(original);
@@ -60,9 +64,7 @@ public class BlackJackShoe2D_Default extends BlackJackShoe_Default implements Bl
 	}
 
 	@Override
-	public CheatAccessCards genRogueClone(){
-		return new RogueBJShoe2D(this);
-	}
+	public CheatAccessCards genRogueClone(){return new RogueBJShoe2D(this);}
 
 	//BlackJackShoe2D Overrides:
 	@Override
@@ -111,9 +113,7 @@ public class BlackJackShoe2D_Default extends BlackJackShoe_Default implements Bl
 	}
 
 	private class RogueBJShoe2D extends BlackJackShoe2D_Default implements BlackJackShoe, CheatAccessCards{
-		private RogueBJShoe2D(BlackJackShoe2D_Default org){
-			super(org);
-		}
+		private RogueBJShoe2D(BlackJackShoe2D_Default org){super(org);}
 
 		//CheatAccessCards Overrides:
 		@Override

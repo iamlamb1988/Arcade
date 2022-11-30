@@ -7,6 +7,7 @@ import app.menu.IMenu;
 import app.menu.gamemenu.GameMenu;
 import app.menu.gamemenu.GameField;
 import app.menu.gamemenu.GamePanel;
+import app.srcfactory.card2d.Card2DAnimationFactory;
 import app.games2d.blackjack2d.shoe2d.instances.BlackJackShoe2D_Default;
 import app.games2d.blackjack2d.shoe2d.BlackJackShoe2D;
 import app.games2d.blackjack2d.shoe2d.BlackJackCard2D;
@@ -26,7 +27,9 @@ public class ShoeCycle extends GameMenu{
 
 	public ShoeCycle(DesktopApp parentApp, IMenu previous, int width_px, int height_px){
 		super(parentApp,previous,width_px,height_px);
-		sh=(BlackJackShoe2D_Default)(new BlackJackShoe2D_Default(1000/7,200)).genRogueClone();
+		sh=(BlackJackShoe2D_Default)(
+			new BlackJackShoe2D_Default((int)(Card2DAnimationFactory.R_H*200),200)
+		).genRogueClone();
 		sh.shuffleShoe();
 
 		CheatAccessCards cheat = (CheatAccessCards)sh;
@@ -140,7 +143,7 @@ public class ShoeCycle extends GameMenu{
 			tmp2d.setY(100);
 		}
 
-		//Add dependant methods
+		//Add dependent methods
 		drw.addActionListener(new CardDrawingAction(f){
 			@Override
 			public void actionPerformed(ActionEvent e){
