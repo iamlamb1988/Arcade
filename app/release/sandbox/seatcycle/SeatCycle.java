@@ -34,7 +34,7 @@ public class SeatCycle extends GameMenu{
 		m.setLocation(0,0);
 		m.setBG(new SingleImage(m.getWidth(),m.getHeight(),128,128,128,255));
 		add(m);
-		
+
 		JButton mm=new JButton("Main Menu");
 		mm.setSize(100,40);
 		mm.setLocation(m.getWidth()-mm.getWidth()-10,10);
