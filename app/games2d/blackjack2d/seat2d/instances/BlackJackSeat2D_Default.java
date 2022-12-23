@@ -10,6 +10,7 @@ public class BlackJackSeat2D_Default extends BlackJackSeat_Default implements Bl
 	
 	public BlackJackSeat2D_Default(){
 		//set Default value for seatAnm
+		
 	}
 
 	//BlackJackSeat2D Overrides:

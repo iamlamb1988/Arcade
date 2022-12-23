@@ -10,6 +10,8 @@ public class BlackJackHand_Default implements BlackJackHand{
 		h_hand=new ArrayList<BlackJackCard>();
 	}
 
+	protected ArrayList<BlackJackCard> getHandRef(){return h_hand;}
+
 	//BlackJackHand Overrides:
 	@Override
 	public byte getCardQ(){return (byte)h_hand.size();}
