@@ -12,8 +12,13 @@ Some systems will be much harder to implement than others.
 
 As the focus is BlackJack for now, the program will simulate millions of hands and generate Basic Strategy tables using various counting system techniques.
 
+The final Product is the "arcade" library NOT the swing application.
+A separate project with using Spring Boot or Tomcat will be deployed using the arcade package.
+
 ## Update
 Return from vacation and work project.
+The last FOCUS is the Seat Cycle Panel in order to trouble shoot Seats to Card transaction.
+
 First commit for a while.
 
 ## Next Master Push Goals
